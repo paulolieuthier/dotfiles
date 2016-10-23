@@ -12,6 +12,7 @@
               inhibit-startup-message t
               initial-scratch-message nil
               make-backup-files nil
+              auto-save-default nil
               scroll-margin 5
               scroll-conservatively 9999
               scroll-step 1
