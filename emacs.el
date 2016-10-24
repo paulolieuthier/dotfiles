@@ -135,6 +135,7 @@
 (use-package rtags
   :ensure t
   :config
+  (add-hook 'rtags-jump-hook 'evil--jumps-push)
   (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
   (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
   (define-key evil-normal-state-map (kbd "gd") 'rtags-find-symbol-at-point))
