@@ -55,6 +55,13 @@
 (use-package evil
   :ensure t
   :config
+
+  (use-package evil-leader
+    :ensure t
+    :config
+    (global-evil-leader-mode)
+    (evil-leader/set-leader "<SPC>"))
+
   (evil-mode 1)
 
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
@@ -152,6 +159,12 @@
   :diminish autopair-mode
   :config
   (autopair-global-mode))
+
+(use-package avy
+  :ensure t
+  :diminish avy-mode
+  :config
+  (evil-leader/set-key "j" 'avy-goto-char))
 
 (use-package helm
   :ensure t
