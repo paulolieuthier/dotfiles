@@ -16,7 +16,8 @@
               scroll-margin 5
               scroll-conservatively 9999
               scroll-step 1
-              gdb-many-windows t)
+              gdb-many-windows t
+              vc-follow-symlinks nil)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (show-paren-mode t)
