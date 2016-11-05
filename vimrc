@@ -95,6 +95,16 @@ if has("gui_running")
     set guioptions+=c
 endif
 
+" Listen to Alt keys
+if !has('nvim')
+    let c = 'a'
+    while c <= 'z'
+        exec "set <A-" . c . ">=\e" . c
+        exec "imap \e" . c . " <A-" . c . ">"
+        let c = nr2char(1 + char2nr(c))
+    endw
+end
+
 " Switch between files in buffer
 nmap <C-Tab> :bn<CR>
 nmap <C-Right> :bn<CR>
@@ -191,14 +201,6 @@ if has("gui_running")
     nnoremap <silent> <Up> :resize +1<CR>
     nnoremap <silent> <Down> :resize -1<CR>
 end
-
-" Listen to Alt keys
-let c='a'
-while c <= 'z'
-    exec "set <A-".c.">=\e".c
-    exec "imap \e".c." <A-".c.">"
-    let c = nr2char(1+char2nr(c))
-endw
 
 " Omnicomplete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
