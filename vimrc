@@ -132,6 +132,9 @@ let g:mapleader=","
 " Remove search highlight
 noremap <Leader>n :noh<CR>
 
+" Enable C-BS
+imap <C-BS> <C-w>
+
 " Accepting case errors
 cab W! w!
 cab Q! q!
