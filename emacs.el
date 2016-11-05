@@ -66,6 +66,9 @@
 
   (setq key-chord-two-keys-delay 0.5)
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+
+  (define-key evil-normal-state-map (kbd ";") 'evil-ex)
+
   (define-key evil-normal-state-map (kbd "C-c") 'kill-this-buffer)
   (define-key evil-normal-state-map (kbd "M-l") 'next-buffer)
   (define-key evil-normal-state-map (kbd "M-h") 'previous-buffer)
