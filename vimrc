@@ -160,7 +160,7 @@ xnoremap > >gv
 
 " Exit terminal mode with ,ESC
 if has('nvim')
-    tnoremap <leader><ESC> <C-\><C-n>
+    tnoremap jk <C-\><C-n>
 end
 
 " Edit and source .vimrc easily
