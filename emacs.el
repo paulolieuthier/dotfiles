@@ -176,7 +176,8 @@
   :diminish helm-mode
   :config
   (helm-mode 1)
-  (setq helm-mode-fuzzy-match t)
+  (setq helm-mode-fuzzy-match t
+        helm-M-x-fuzzy-match t)
   (global-set-key (kbd "M-x") 'helm-M-x))
 
 (use-package projectile
