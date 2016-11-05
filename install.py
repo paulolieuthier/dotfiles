@@ -21,3 +21,4 @@ def install_config_file(config_file_name, symlink_name):
 install_config_file("zshrc", "~/.zshrc")
 install_config_file("emacs.el", "~/.emacs.d/init.el")
 install_config_file("vimrc", "~/.vimrc")
+install_config_file("Xmodmap", "~/.Xmodmap")
