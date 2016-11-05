@@ -1,0 +1,5 @@
+map ; :
+imap jk <ESC>
+nnoremap <A-h> :tabprev<CR>
+nnoremap <A-l> :tabnext<CR>
+
