@@ -185,6 +185,7 @@
   :diminish projectile-mode
   :config
   (projectile-global-mode)
+  (evil-leader/set-key "ps" 'projectile-run-shell)
   (setq projectile-completion-system 'helm))
 
 (use-package helm-projectile
