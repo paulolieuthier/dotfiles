@@ -242,6 +242,7 @@ let g:easytags_auto_highlight = 0
 
 " CtrlP
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 nnoremap <leader>. :CtrlPTag<CR>
 
 " Airline
