@@ -39,10 +39,10 @@ export CC=clang
 export CXX=clang++
 
 # aliases
-alias l="ls -G"
-alias ll="ls -lGh"
-alias la="ls -aGh"
-alias lla="ls -laGh"
+alias l="ls"
+alias ll="ls -lh"
+alias la="ls -ah"
+alias lla="ls -lah"
 alias parallel="parallel --will-cite"
 alias copy="rsync -ah --progress"
 alias xclip="xclip -selection c"
