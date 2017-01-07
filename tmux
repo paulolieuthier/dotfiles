@@ -19,6 +19,10 @@ set-window-option -g mode-keys vi
 set-option -g base-index 1
 set-window-option -g pane-base-index 1
 
+# force reload of config file
+unbind r
+bind r source-file ~/.tmux.conf
+
 # C-l is taken over by vim style pane navigation
 bind C-l send-keys 'C-l'
 
