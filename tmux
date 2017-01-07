@@ -8,6 +8,10 @@ set -g @plugin 'christoomey/vim-tmux-navigator'
 # theme
 set -g @themepack 'block/gray'
 
+# better split shortcuts
+bind | split-window -h
+bind - split-window -v
+
 # vi-style cursor movement
 set-window-option -g mode-keys vi
 
