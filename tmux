@@ -1,3 +1,12 @@
+# Install Tmux Plugin Manager by running:
+# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# plugins
+set -g @plugin 'jimeh/tmux-themepack'
+
+# theme
+set -g @themepack 'double/green'
+
 # vi-style cursor movement
 set-window-option -g mode-keys vi
 
@@ -24,3 +33,6 @@ bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
 # update default binding of `Enter` to also use copy-pipe
 unbind -t vi-copy Enter
 bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+
+# initialize tmux plugin manager (keep this at the very bottom)
+run '~/.tmux/plugins/tpm/tpm'
