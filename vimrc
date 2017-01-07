@@ -196,8 +196,8 @@ nnoremap p p`]
 vnoremap p "_dP`]
 
 " Easily replace the current word and all its occurrences.
-nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
-vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
+nnoremap <Leader>rr :%s/\<<C-r><C-w>\>/<C-r><C-w>
+vnoremap <Leader>rr y:%s/<C-r>"/<C-r>"
 
 " No more accidentally showing up command window (Use C-f to show it)
 map q: :q
