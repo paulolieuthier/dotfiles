@@ -51,8 +51,8 @@ alias xclip="xclip -selection c"
 export LESS="-R"
 
 # Rust
-export RUST_SRC_PATH="/home/paulo/Workspace/rust/src"
-
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
