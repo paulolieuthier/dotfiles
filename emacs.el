@@ -154,6 +154,23 @@
   (add-hook 'c++-mode-hook 'my-cmake-ide-hook)
   (add-hook 'c-mode-hook 'my-cmake-ide-hook))
 
+(use-package rust-mode
+  :ensure t)
+
+(use-package racer
+  :ensure t
+  :diminish racer-mode
+  :diminish eldoc-mode
+  :config
+  (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'racer-mode-hook #'eldoc-mode)
+  (add-hook 'racer-mode-hook #'company-mode))
+
+(use-package flycheck-rust
+  :ensure t
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
 (use-package powerline
   :ensure t
   :config
