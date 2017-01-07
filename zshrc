@@ -47,6 +47,9 @@ alias parallel="parallel --will-cite"
 alias copy="rsync -ah --progress"
 alias xclip="xclip -selection c"
 
+# tell gpg-agent which tty to use
+echo "UPDATESTARTUPTTY" | gpg-connect-agent > /dev/null 2&>1
+
 # less
 export LESS="-R"
 
