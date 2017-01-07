@@ -26,13 +26,14 @@ export ANT="/usr/bin/ant"
 export QT_ANDROID=/home/paulo/Workspace/android/Qt5.6.0/5.6/android_armv5
 export GSTREAMER_ROOT_ANDROID=/home/paulo/Workspace/android/gstreamer-1.0-android-arm-1.8.0
 
-# You may need to manually set your language environment
+# Basic exports
 export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
 export EDITOR=vim
 export GPGKEY=22760FEC9482A147CE29DA18F3CCB78DFFD36CE2
 export TERM=xterm-256color
+
+# TMUX workaround
+[ -n "$TMUX" ] && export TERM=screen-256color
 
 # Compilers
 export CC=clang
