@@ -15,9 +15,6 @@ set-window-option -g mode-keys vi
 set-option -g base-index 1
 set-window-option -g pane-base-index 1
 
-# use the system clipboard
-# set-option -g default-command "reattach-to-user-namespace -l bash"
-
 # C-l is taken over by vim style pane navigation
 bind C-l send-keys 'C-l'
 
