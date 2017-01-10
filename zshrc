@@ -55,8 +55,8 @@ echo "UPDATESTARTUPTTY" | gpg-connect-agent > /dev/null 2&>1
 export LESS="-R"
 
 # Rust
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export PATH="$HOME/.cargo/bin:$PATH"
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
