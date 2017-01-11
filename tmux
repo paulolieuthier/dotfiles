@@ -8,9 +8,12 @@ set -g @plugin 'christoomey/vim-tmux-navigator'
 # theme
 set -g @themepack 'block/gray'
 
+# open new windows in the same directory
+bind c new-window -c "#{pane_current_path}"
+
 # better split shortcuts
-bind | split-window -h
-bind - split-window -v
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
 
 # vi-style cursor movement
 set-window-option -g mode-keys vi
