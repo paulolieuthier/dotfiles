@@ -21,10 +21,14 @@ export ANDROID_SDK_ROOT=$ANDROID_SDK
 export ANDROID_HOME=$ANDROID_SDK
 export ANDROID_NDK="/home/paulo/Workspace/android/android-ndk-r10e"
 export ANDROID_NDK_ROOT=$ANDROID_NDK
-export JAVA_HOME="/usr/lib/jvm/java-8-openjdk/"
 export ANT="/usr/bin/ant"
 export QT_ANDROID=/home/paulo/Workspace/android/Qt5.6.0/5.6/android_armv5
 export GSTREAMER_ROOT_ANDROID=/home/paulo/Workspace/android/gstreamer-1.0-android-arm-1.8.0
+
+local JAVA_PATHS=("/usr/lib/jvm/java-8-openjdk/" "/usr/lib/jvm/java-8-openjdk-amd64/")
+for i in $JAVA_PATHS; do
+    [[ -d $i ]] && export JAVA_HOME="$i"
+done
 
 # Basic exports
 export LANG=en_US.UTF-8
