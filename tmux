@@ -8,6 +8,9 @@ set -g @plugin 'christoomey/vim-tmux-navigator'
 # theme
 set -g @themepack 'block/gray'
 
+# quick ESC
+set -g escape-time 0
+
 # open new windows in the same directory
 bind c new-window -c "#{pane_current_path}"
 
