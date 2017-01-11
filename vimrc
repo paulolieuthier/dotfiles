@@ -67,7 +67,7 @@ set autochdir
 set list
 set listchars=tab:>-,trail:·,extends:>,precedes:<,space:·,nbsp:·
 set encoding=utf-8
-set guifont=Monaco\ for\ Powerline\ 10
+set guifont=Fira\ Code\ 12
 colo gruvbox
 
 set mouse=v
