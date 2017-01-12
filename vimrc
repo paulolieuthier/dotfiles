@@ -111,6 +111,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" Easily create splits
+nnoremap <leader>sv :vsp<CR>
+nnoremap <leader>sh :sp<CR>
+
 " Switch between files in buffer
 nmap <C-Tab> :bn<CR>
 nmap <C-Right> :bn<CR>
@@ -176,7 +180,7 @@ end
 
 " Edit and source .vimrc easily
 noremap <leader>ev :e $MYVIMRC<cr>
-noremap <leader>sv :so $MYVIMRC<cr>
+noremap <leader>lv :so $MYVIMRC<cr>
 
 " Don't yank to default register when changing something
 nnoremap c "xc
