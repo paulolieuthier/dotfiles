@@ -117,10 +117,8 @@ nnoremap <leader>sh :sp<CR>
 
 " Switch between files in buffer
 nmap <C-Tab> :bn<CR>
-nmap <C-Right> :bn<CR>
 nmap <A-l> :bn<CR>
 nmap <C-S-Tab> :bp<CR>
-nmap <C-Left> :bp<CR>
 nmap <A-h> :bp<CR>
 
 " Don't close buffer on :bd if it's displayed more than once
