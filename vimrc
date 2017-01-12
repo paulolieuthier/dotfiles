@@ -199,14 +199,6 @@ vnoremap <Leader>rr y:%s/<C-r>"/<C-r>"
 " No more accidentally showing up command window (Use C-f to show it)
 map q: :q
 
-" Windows resizing using arrow keys
-if has("gui_running")
-    nnoremap <silent> <Left> :vertical resize -1<CR>
-    nnoremap <silent> <Right> :vertical resize +1<CR>
-    nnoremap <silent> <Up> :resize +1<CR>
-    nnoremap <silent> <Down> :resize -1<CR>
-end
-
 " Omnicomplete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
