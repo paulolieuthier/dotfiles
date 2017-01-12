@@ -135,9 +135,9 @@ inoremap jk <Esc>
 noremap j gj
 noremap k gk
 
-" User comma as leader key
-let mapleader=","
-let g:mapleader=","
+" User space as leader key
+let mapleader="\<Space>"
+let g:mapleader="\<Space>"
 
 " Remove search highlight
 noremap <Leader>n :noh<CR>
