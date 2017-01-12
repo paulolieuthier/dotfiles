@@ -1,7 +1,7 @@
 clear Lock
-keycode 66 = Mode_switch Caps_Lock
+keycode 66 = ISO_Level3_Shift Caps_Lock
 
-keycode 43 = h H Left
-keycode 44 = j J Down
-keycode 45 = k K Up
-keycode 46 = l L Right
+keycode 43 = h H NoSymbol NoSymbol Left  Left
+keycode 44 = j J NoSymbol NoSymbol Down  Down
+keycode 45 = k K NoSymbol NoSymbol Up    Up
+keycode 46 = l L NoSymbol NoSymbol Right Right
