@@ -15,6 +15,9 @@ plugins=(git git-extras)
 
 source $ZSH/oh-my-zsh.sh
 
+# Local PATH
+export PATH="$HOME/.local/bin:$PATH"
+
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/lib32/pkgconfig"
 export ANDROID_SDK="/home/paulo/Workspace/android/android-sdk-linux"
 export ANDROID_SDK_ROOT=$ANDROID_SDK
