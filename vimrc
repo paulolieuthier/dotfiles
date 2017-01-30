@@ -55,6 +55,7 @@ set autoindent
 set nobackup
 set nowb
 set noswapfile
+set scrolloff=5
 set background=dark
 set hid
 set noerrorbells
