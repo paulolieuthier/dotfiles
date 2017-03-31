@@ -4,9 +4,13 @@
 # plugins
 set -g @plugin 'jimeh/tmux-themepack'
 set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 
 # theme
 set -g @themepack 'block/gray'
+
+# enable mouse support
+set-option -g mouse on
 
 # quick ESC
 set -g escape-time 0
