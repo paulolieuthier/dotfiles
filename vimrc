@@ -109,11 +109,16 @@ if !has('nvim')
     endw
 end
 
+" User space as leader key
+let mapleader="\<Space>"
+let g:mapleader="\<Space>"
+
 " Easily move between splits
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+noremap <leader>wc <C-w>c
 
 " Easily create splits
 nnoremap <leader>sv :vsp<CR>
@@ -136,10 +141,6 @@ noremap ; :
 inoremap jk <Esc>
 noremap j gj
 noremap k gk
-
-" User space as leader key
-let mapleader="\<Space>"
-let g:mapleader="\<Space>"
 
 " Remove search highlight
 noremap <Leader>n :noh<CR>
@@ -181,8 +182,8 @@ if has('nvim')
 end
 
 " Edit and source .vimrc easily
-noremap <leader>ev :e $MYVIMRC<cr>
-noremap <leader>lv :so $MYVIMRC<cr>
+noremap <leader>ev :e $MYVIMRC<CR>
+noremap <leader>lv :so $MYVIMRC<CR>
 
 " Don't yank to default register when changing something
 nnoremap c "xc
