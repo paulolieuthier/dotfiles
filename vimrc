@@ -9,31 +9,42 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-" Plugins:
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'jceb/vim-orgmode'
-Plugin 'matze/vim-move'
-Plugin 'Valloric/YouCompleteMe'
+" File management
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
+
+" Colors
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'benekastah/neomake'
+
+" Completion/IDE
+"Plugin 'roxma/nvim-completion-manager'
+"Plugin 'autozimu/LanguageClient-neovim'
+
+" Compilation
+"Plugin 'benekastah/neomake'
 Plugin 'vim-scripts/SingleCompile'
+
+" Helpers
 Plugin 'majutsushi/tagbar'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'cohama/lexima.vim'
-Plugin 'moll/vim-bbye'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-speeddating'
-Plugin 'ConradIrwin/vim-bracketed-paste'
+
+" Languages
 Plugin 'othree/yajs.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'rust-lang/rust.vim'
+Plugin 'tinco/haskell.vim'
+
+" Misc
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'matze/vim-move'
+Plugin 'moll/vim-bbye'
+Plugin 'ConradIrwin/vim-bracketed-paste'
+
 call vundle#end()
 
 filetype plugin indent on
@@ -220,13 +231,6 @@ nnoremap <C-c> :Bdelete<CR>
 nmap <F9> :SCCompile<cr>
 nmap <F10> :SCCompileRun<cr>
 
-" NERDTree
-let g:NERDTreeDirArrows = 0
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeWinSize  =35
-let g:NERDTreeAutoDeleteBuffer  =0
-nnoremap <leader>m :NERDTreeToggle<CR>
-
 " EasyTags
 let g:easytags_async = 1
 let g:easytags_syntax_keyword = 'always'
@@ -248,14 +252,5 @@ let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
-" YouCompleteMe
-let g:ycm_server_python_interpreter = '/usr/bin/python'
-let g:ycm_confirm_extra_conf = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_global_ycm_extra_conf = '~/Dropbox/DotFiles/.ycm_extra_conf.py'
-let g:ycm_extra_conf_globlist = ['~/Workspace/*', '~/Desktop/*', '!~/*']
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_rust_src_path = '/home/paulo/Workspace/rust/src'
-set completeopt-=preview
+" Language Client
+"let g:LanguageClient_serverCommands = { 'cpp': ['clangd'] }
