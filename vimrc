@@ -78,7 +78,7 @@ set tabstop=4
 set laststatus=2
 set t_Co=256
 set completeopt=menu
-set clipboard+=unnamedplus
+set clipboard=unnamedplus
 set autochdir
 set list
 set listchars=tab:>-,trail:·,extends:>,precedes:<,space:·,nbsp:·
