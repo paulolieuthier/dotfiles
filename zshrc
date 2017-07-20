@@ -15,18 +15,8 @@ plugins=(git git-extras docker docker-compose gradle)
 
 source $ZSH/oh-my-zsh.sh
 
-# Local PATH
 export PATH="$HOME/.local/bin:$PATH"
-
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/lib32/pkgconfig"
-export ANDROID_SDK="/home/paulo/Workspace/android/android-sdk-linux"
-export ANDROID_SDK_ROOT=$ANDROID_SDK
-export ANDROID_HOME=$ANDROID_SDK
-export ANDROID_NDK="/home/paulo/Workspace/android/android-ndk-r10e"
-export ANDROID_NDK_ROOT=$ANDROID_NDK
-export ANT="/usr/bin/ant"
-export QT_ANDROID=/home/paulo/Workspace/android/Qt5.6.0/5.6/android_armv5
-export GSTREAMER_ROOT_ANDROID=/home/paulo/Workspace/android/gstreamer-1.0-android-arm-1.8.0
 
 local JAVA_PATHS=("/usr/lib/jvm/java-8-openjdk/" "/usr/lib/jvm/java-8-openjdk-amd64/")
 for i in $JAVA_PATHS; do
@@ -34,7 +24,7 @@ for i in $JAVA_PATHS; do
 done
 
 # Basic exports
-export LANG=en_US.UTF-8
+export LANG=en_US.utf8
 export EDITOR=vim
 export GPGKEY=22760FEC9482A147CE29DA18F3CCB78DFFD36CE2
 export TERM=xterm-256color
@@ -69,9 +59,6 @@ export LESS="-R"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # start TMUX
 if [[ `command -v tmux` && -z "$TMUX" ]]; then
