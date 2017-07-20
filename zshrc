@@ -60,10 +60,5 @@ export LESS="-R"
 export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
-# start TMUX
-if [[ `command -v tmux` && -z "$TMUX" ]]; then
-    exec eval "tmux has-session 2>/dev/null && tmux attach || tmux"
-fi
-
 # Powerfull syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
