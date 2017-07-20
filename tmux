@@ -37,12 +37,12 @@ bind r source-file ~/.tmux.conf
 bind C-l send-keys 'C-l'
 
 # setup 'v' to begin selection as in vim
-bind-key -t vi-copy v begin-selection
-bind-key -t vi-copy y copy-pipe "xclip -in -selection clipboard"
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-pipe "xclip -in -selection clipboard"
 
 # update default binding of `Enter` to also use copy-pipe
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "xclip -in -selection clipboard"
+unbind -T copy-mode-vi Enter
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe "xclip -in -selection clipboard"
 
 # initialize tmux plugin manager (keep this at the very bottom)
 run '~/.tmux/plugins/tpm/tpm'
