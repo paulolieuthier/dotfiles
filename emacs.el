@@ -154,6 +154,11 @@
   (add-hook 'c++-mode-hook 'my-cmake-ide-hook)
   (add-hook 'c-mode-hook 'my-cmake-ide-hook))
 
+(use-package yasnippet
+  :ensure t
+  :diminish yas-mode
+  :config
+  (yas-global-mode 1))
 (use-package rust-mode
   :ensure t)
 
