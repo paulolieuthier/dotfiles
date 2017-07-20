@@ -159,6 +159,13 @@
   :diminish yas-mode
   :config
   (yas-global-mode 1))
+
+(use-package modern-cpp-font-lock
+  :ensure t
+  :diminish modern-c++-font-lock-mode
+  :config
+  (add-hook 'c++-mode-hook #'modern-c++-font-lock-mode))
+
 (use-package rust-mode
   :ensure t)
 
