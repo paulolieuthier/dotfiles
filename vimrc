@@ -258,7 +258,6 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 nnoremap <leader>. :CtrlPTag<CR>
 
 " Airline
-let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:rehash256 = 1
 let g:airline_theme = 'base16'
