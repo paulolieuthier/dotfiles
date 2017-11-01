@@ -62,3 +62,5 @@ export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Powerfull syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
