@@ -18,6 +18,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.local/bin:$PATH"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/lib32/pkgconfig"
 
+export GRADLE_USER_HOME="${HOME}/.gradle"
 local JAVA_PATHS=("/usr/lib/jvm/java-8-openjdk/" "/usr/lib/jvm/java-8-openjdk-amd64/")
 for i in $JAVA_PATHS; do
     [[ -d $i ]] && export JAVA_HOME="$i"
