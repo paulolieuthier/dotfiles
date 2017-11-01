@@ -197,6 +197,19 @@ end
 noremap <leader>ev :e $MYVIMRC<CR>
 noremap <leader>lv :so $MYVIMRC<CR>
 
+" Create necessary directories on saving files
+augroup vimrc-auto-mkdir
+    autocmd!
+    autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+    function! s:auto_mkdir(dir, force)
+        if !isdirectory(a:dir)
+                    \   && (a:force
+                    \       || input("'" . a:dir . "' does not exist. Create? [y/N]") =~? '^y\%[es]$')
+            call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+        endif
+    endfunction
+augroup END
+
 " Don't yank to default register when changing something
 nnoremap c "xc
 xnoremap c "xc
