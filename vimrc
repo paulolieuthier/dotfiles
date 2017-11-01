@@ -90,7 +90,7 @@ set encoding=utf-8
 set guifont=Fira\ Code\ 12
 colo gruvbox
 
-set mouse=v
+set mouse=a
 
 if has("gui_running")
     " Remove menus and toolbars
