@@ -11,6 +11,9 @@ set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 # theme
 set -g @themepack 'block/gray'
 
+# history
+set -g history-limit 10000
+
 # enable mouse support
 set-option -g mouse on
 
