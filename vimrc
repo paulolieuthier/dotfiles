@@ -11,7 +11,6 @@ Plugin 'gmarik/Vundle.vim'
 
 " File management
 Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'numkil/ag.nvim'
 
 " Colors
@@ -42,6 +41,7 @@ Plugin 'tinco/haskell.vim'
 
 " Misc
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tpope/vim-commentary'
 Plugin 'matze/vim-move'
 Plugin 'moll/vim-bbye'
 Plugin 'ConradIrwin/vim-bracketed-paste'
