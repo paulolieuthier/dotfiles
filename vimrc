@@ -237,6 +237,10 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+" Custom tab size
+autocmd FileType json,javascript setlocal tabstop=2 shiftwidth=2
+autocmd FileType yml,yaml setlocal tabstop=2 shiftwidth=2
+
 """""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""
