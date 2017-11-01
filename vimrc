@@ -12,6 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 " File management
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'numkil/ag.nvim'
 
 " Colors
 Plugin 'vim-airline/vim-airline'
@@ -265,6 +266,9 @@ let g:airline_theme = 'base16'
 let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+
+" Ag
+let g:ag_working_path_mode="r" 
 
 " Language Client
 "let g:LanguageClient_serverCommands = { 'cpp': ['clangd'] }
