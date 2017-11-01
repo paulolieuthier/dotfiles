@@ -252,11 +252,6 @@ nnoremap <C-c> :Bdelete<CR>
 nmap <F9> :SCCompile<cr>
 nmap <F10> :SCCompileRun<cr>
 
-" EasyTags
-let g:easytags_async = 1
-let g:easytags_syntax_keyword = 'always'
-let g:easytags_auto_highlight = 0
-
 " CtrlP
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -265,7 +260,7 @@ nnoremap <leader>pr :CtrlPMRUFiles<CR>
 
 " Airline
 let g:airline_powerline_fonts = 1
-let g:rehash256 = 1
+"let g:rehash256 = 1
 let g:airline_theme = 'base16'
 
 " Ultisnips
