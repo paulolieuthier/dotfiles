@@ -29,13 +29,13 @@ export EDITOR=vim
 export GPGKEY=22760FEC9482A147CE29DA18F3CCB78DFFD36CE2
 export TERM=xterm-256color
 
+# TMUX workaround
+[ -n "$TMUX" ] && export TERM=screen-256color
+
 if [[ `command -v nvim` ]]; then
     export EDITOR=nvim
     alias vim=nvim
 fi
-
-# TMUX workaround
-[ -n "$TMUX" ] && export TERM=screen-256color
 
 # Compilers
 export CC=clang

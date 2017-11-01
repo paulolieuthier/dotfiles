@@ -1,6 +1,8 @@
 # Install Tmux Plugin Manager by running:
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+set -g default-terminal 'screen-256color'
+
 # plugins
 set -g @plugin 'jimeh/tmux-themepack'
 set -g @plugin 'christoomey/vim-tmux-navigator'
