@@ -45,6 +45,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'matze/vim-move'
 Plugin 'moll/vim-bbye'
 Plugin 'ConradIrwin/vim-bracketed-paste'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 
