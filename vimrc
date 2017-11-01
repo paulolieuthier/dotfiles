@@ -21,6 +21,7 @@ Plugin 'flazz/vim-colorschemes'
 " Completion/IDE
 "Plugin 'roxma/nvim-completion-manager'
 "Plugin 'autozimu/LanguageClient-neovim'
+Plugin 'Shougo/echodoc.vim'
 
 " Compilation
 "Plugin 'benekastah/neomake'
