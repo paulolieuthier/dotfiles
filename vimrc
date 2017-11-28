@@ -19,7 +19,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
 
 " Completion/IDE
-"Plugin 'roxma/nvim-completion-manager'
+Plugin 'roxma/nvim-completion-manager'
 "Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'Shougo/echodoc.vim'
 
