@@ -259,7 +259,6 @@ nnoremap <leader>pf :CtrlP<CR>
 nnoremap <leader>pr :CtrlPMRUFiles<CR>
 
 " Airline
-let g:airline_powerline_fonts = 1
 "let g:rehash256 = 1
 let g:airline_theme = 'base16'
 
