@@ -1,0 +1,11 @@
+bar {
+    status_command i3status --config ~/.config/i3status/config
+    position top
+    separator_symbol " | "
+    tray_outpuy all
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #323232 #323232 #ffffff
+    }
+}
