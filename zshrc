@@ -19,10 +19,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/lib32/pkgconfig"
 
 export GRADLE_USER_HOME="${HOME}/.gradle"
-local JAVA_PATHS=("/usr/lib/jvm/java-8-openjdk/" "/usr/lib/jvm/java-8-openjdk-amd64/")
-for i in $JAVA_PATHS; do
-    [[ -d $i ]] && export JAVA_HOME="$i"
-done
+which javac > /dev/null 2>&1 && export JAVA_PATH=$(dirname $(dirname $(readlink -f $(which javac))))
 
 # Basic exports
 export LANG=en_US.utf8
