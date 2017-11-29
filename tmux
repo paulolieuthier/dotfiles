@@ -55,5 +55,5 @@ run '~/.tmux/plugins/tpm/tpm'
 # tweak theme (keep this even lower)
 set -g status-fg colour250
 set -g status-left ""
-set -g status-right "#[fg=colour235,bg=colour233]#[fg=colour248,bg=colour235] %H:%M #[fg=colour240,bg=colour235]#[fg=colour250,bg=colour240] #I:#P #[fg=colour245,bg=colour240]#[fg=colour232,bg=colour245,bold] #S "
+set -g status-right "#[fg=colour248,bg=colour235] %H:%M #[fg=colour250,bg=colour240] #I:#P #[fg=colour232,bg=colour245,bold] #S "
 set -g status-justify left
