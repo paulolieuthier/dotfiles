@@ -54,7 +54,7 @@ filetype plugin indent on
 syntax on
 set backspace=eol,start,indent
 set cursorline
-"set cursorcolumn
+set cursorcolumn
 set wildmenu
 set wildmode=longest,list:longest
 set ruler
