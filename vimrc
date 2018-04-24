@@ -266,5 +266,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 " Ag
 let g:ag_working_path_mode="r" 
 
-" Language Client
-"let g:LanguageClient_serverCommands = { 'cpp': ['clangd'] }
+" YouCompleteMe
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
