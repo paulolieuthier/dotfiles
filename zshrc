@@ -53,3 +53,4 @@ alias gw="./gradlew"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
