@@ -23,6 +23,7 @@ def install_config_file(file_name, symlink_name):
     os.symlink(full_config_name, full_symlink_name)
 
 install_config_file("zshrc", "~/.zshrc")
+install_config_file("tigrc", "~/.tigrc")
 install_config_file("emacs.el", "~/.emacs.d/init.el")
 install_config_file("vimrc", "~/.config/nvim/init.vim")
 install_config_file("Xmodmap", "~/.Xmodmap")
