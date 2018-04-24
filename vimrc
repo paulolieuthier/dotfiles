@@ -224,7 +224,7 @@ nnoremap <Leader>rr :%s/\<<C-r><C-w>\>/<C-r><C-w>
 vnoremap <Leader>rr y:%s/<C-r>"/<C-r>"
 
 " No more accidentally showing up command window (Use C-f to show it)
-map q: :q
+map q: :q<CR>
 
 " Omnicomplete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
