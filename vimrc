@@ -5,50 +5,46 @@
 set nocompatible
 set shell=/usr/bin/bash
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/bundle')
 
 " File management
-Plugin 'kien/ctrlp.vim'
-Plugin 'numkil/ag.nvim'
+Plug 'kien/ctrlp.vim'
+Plug 'numkil/ag.nvim'
 
 " Colors
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'flazz/vim-colorschemes'
-
-" Completion/IDE
-Plugin 'roxma/nvim-completion-manager'
-"Plugin 'autozimu/LanguageClient-neovim'
-Plugin 'Shougo/echodoc.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'flazz/vim-colorschemes'
 
 " Compilation
-"Plugin 'benekastah/neomake'
-Plugin 'vim-scripts/SingleCompile'
+Plug 'benekastah/neomake'
+Plug 'vim-scripts/SingleCompile'
 
 " Helpers
-Plugin 'majutsushi/tagbar'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'cohama/lexima.vim'
-Plugin 'tpope/vim-surround'
+Plug 'majutsushi/tagbar'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'cohama/lexima.vim'
+Plug 'tpope/vim-surround'
+
+" Completion/IDE
+Plug 'Valloric/YouCompleteMe'
 
 " Languages
-Plugin 'othree/yajs.vim'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'rust-lang/rust.vim'
-Plugin 'tinco/haskell.vim'
+Plug 'othree/yajs.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'rust-lang/rust.vim'
+Plug 'tinco/haskell.vim'
 
 " Misc
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'tpope/vim-commentary'
-Plugin 'matze/vim-move'
-Plugin 'moll/vim-bbye'
-Plugin 'ConradIrwin/vim-bracketed-paste'
-Plugin 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-commentary'
+Plug 'matze/vim-move'
+Plug 'moll/vim-bbye'
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'airblade/vim-gitgutter'
 
-call vundle#end()
+call plug#end()
 
 filetype plugin indent on
 syntax on
