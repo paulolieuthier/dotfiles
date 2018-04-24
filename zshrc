@@ -29,7 +29,7 @@ export TERM=xterm-256color
 export LESS="-R"
 
 # TMUX workaround
-[ -n "$TMUX" ] && export TERM=screen-256color
+[ -n "$TMUX" ] && export TERM=xterm-256color
 
 if [[ `command -v nvim` ]]; then
     export EDITOR=nvim
