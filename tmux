@@ -16,6 +16,7 @@ set -g history-limit 100000000
 
 # enable mouse support
 set-option -g mouse on
+set-option -s set-clipboard off
 
 # quick ESC
 set -g escape-time 0
