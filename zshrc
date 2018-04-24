@@ -26,6 +26,7 @@ export LANG=en_US.utf8
 export EDITOR=vim
 export GPGKEY=22760FEC9482A147CE29DA18F3CCB78DFFD36CE2
 export TERM=xterm-256color
+export LESS="-R"
 
 # TMUX workaround
 [ -n "$TMUX" ] && export TERM=screen-256color
@@ -47,9 +48,7 @@ alias lla="ls -lah"
 alias parallel="parallel --will-cite"
 alias copy="rsync -ah --progress"
 alias xclip="xclip -selection c"
-
-# less
-export LESS="-R"
+alias gw="./gradlew"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
