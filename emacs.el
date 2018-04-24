@@ -32,7 +32,6 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-(setq use-package-verbose t)
 (require 'use-package)
 
 (use-package base16-theme
@@ -84,7 +83,6 @@
   (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
   (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right))
 
-(use-package linum-relative
   :ensure t
   :diminish linum-relative-mode
   :config
@@ -205,15 +203,13 @@
   :diminish helm-mode
   :config
   (helm-mode 1)
-  (setq helm-mode-fuzzy-match t
-        helm-M-x-fuzzy-match t)
   (global-set-key (kbd "M-x") 'helm-M-x))
 
 (use-package projectile
   :ensure t
   :diminish projectile-mode
   :config
-  (projectile-global-mode)
+  (projectile-mode)
   (evil-leader/set-key "ps" 'projectile-run-shell)
   (setq projectile-completion-system 'helm))
 
