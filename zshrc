@@ -15,7 +15,7 @@ plugins=(git git-extras docker docker-compose gradle)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/lib32/pkgconfig"
 
 export GRADLE_USER_HOME="${HOME}/.gradle"
@@ -24,7 +24,6 @@ which javac > /dev/null 2>&1 && export JAVA_PATH=$(dirname $(dirname $(readlink 
 # Basic exports
 export LANG=en_US.utf8
 export EDITOR=vim
-export GPGKEY=22760FEC9482A147CE29DA18F3CCB78DFFD36CE2
 export MANPAGER="nvim -c 'set ft=man' -"
 export TERM=xterm-256color
 export LESS="-R"
@@ -37,10 +36,6 @@ if [[ `command -v nvim` ]]; then
     alias vim=nvim
 fi
 
-# Compilers
-export CC=clang
-export CXX=clang++
-
 # aliases
 alias l="ls"
 alias ll="ls -lh"
@@ -51,7 +46,5 @@ alias copy="rsync -ah --progress"
 alias xclip="xclip -selection c"
 alias gw="./gradlew"
 
-# Rust
-export PATH="$HOME/.cargo/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
