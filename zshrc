@@ -26,7 +26,7 @@ export LANG=en_US.utf8
 export EDITOR=vim
 export MANPAGER="nvim -c 'set ft=man' -"
 export TERM=xterm-256color
-export LESS="-R"
+export LESS="-FXR"
 
 # TMUX workaround
 [ -n "$TMUX" ] && export TERM=xterm-256color
