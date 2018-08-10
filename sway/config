@@ -14,9 +14,7 @@ default_border pixel 4
 output * bg /usr/local/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 ### Runner
-# set $menu termite --name "fzf-menu" -e ~/.local/bin/fzfmenu
-for_window [class="^fzf-menu$"] floating enable
-set $menu sh -c "dmenu-launch || dmenu_run"
+set $menu sh -c "~/.local/bin/dmenu-launch || dmenu_run"
 
 ### Key bindings
 
