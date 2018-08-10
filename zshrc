@@ -25,6 +25,7 @@ which javac > /dev/null 2>&1 && export JAVA_PATH=$(dirname $(dirname $(readlink 
 export LANG=en_US.utf8
 export EDITOR=vim
 export GPGKEY=22760FEC9482A147CE29DA18F3CCB78DFFD36CE2
+export MANPAGER="nvim -c 'set ft=man' -"
 export TERM=xterm-256color
 export LESS="-R"
 
