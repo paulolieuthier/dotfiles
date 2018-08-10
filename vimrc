@@ -129,7 +129,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-noremap <leader>wc <C-w>c
+nnoremap <leader>wc <C-w>c
 
 " Easily create splits
 nnoremap <leader>sv :vsp<CR>
@@ -154,7 +154,7 @@ noremap j gj
 noremap k gk
 
 " Remove search highlight
-noremap <Leader>n :noh<CR>
+nnoremap <Leader>n :noh<CR>
 
 " Enable C-BS
 imap <C-BS> <C-w>
@@ -193,8 +193,8 @@ if has('nvim')
 end
 
 " Edit and source .vimrc easily
-noremap <leader>ev :e $MYVIMRC<CR>
-noremap <leader>lv :so $MYVIMRC<CR>
+nnoremap <leader>ev :e $MYVIMRC<CR>
+nnoremap <leader>lv :so $MYVIMRC<CR>
 
 " Create necessary directories on saving files
 augroup vimrc-auto-mkdir
