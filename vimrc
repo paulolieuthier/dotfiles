@@ -102,9 +102,9 @@ if has("gui_running")
     set guioptions-=L
     set guioptions-=b
 
-    " Remove autoselection
-    "set guioptions-=a
-    "set guioptions-=A
+    " Remove clipboard autoselection
+    set guioptions-=a
+    set guioptions-=A
 
     " Console dialogs
     set guioptions+=c
