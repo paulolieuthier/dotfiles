@@ -5,7 +5,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term termite -e tmux
+set $term termite -e "zsh -i -c \"tmux\""
 
 ### Look
 
