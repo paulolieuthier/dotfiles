@@ -5,12 +5,13 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term termite -e tmux
+set $term termite -e "zsh -i -c tmux"
 
 ### Look
 
-gaps inner 10
-new_window 1pixel
+default_border pixel 5
+
+### execs
 
 exec --no-startup-id dex --autostart
 exec --no-startup-id xsetroot -solid "#333333"
@@ -149,7 +150,8 @@ bar {
     status_command i3status # --config ~/.config/i3status/config
     position top
     separator_symbol " | "
-    # tray_outpuy all
+    tray_output primary
+
     colors {
         statusline #ffffff
         background #323232
