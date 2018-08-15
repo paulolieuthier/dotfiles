@@ -111,6 +111,9 @@ bindsym $mod+space focus mode_toggle
 # move focus to the parent container
 bindsym $mod+a focus parent
 
+# move floating windows
+floating_modifier $mod
+
 ### Scratchpad
 
 # wove window to the scratchpad
