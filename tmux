@@ -1,8 +1,9 @@
 # Install Tmux Plugin Manager by running:
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-set -g default-shell '/usr/bin/zsh'
 set -g default-terminal 'screen-256color'
+set -g default-command '/usr/bin/fish'
+set -g default-shell '/usr/bin/fish'
 
 # plugins
 set -g @plugin 'jimeh/tmux-themepack'
