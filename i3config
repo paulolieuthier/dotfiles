@@ -14,7 +14,7 @@ default_border pixel 5
 
 ### execs
 
-exec --no-startup-id dex --autostart
+exec --no-startup-id sh -c "dex --autostart || dex-autostart --autostart"
 exec --no-startup-id xsetroot -solid "#333333"
 
 ### Key bindings
