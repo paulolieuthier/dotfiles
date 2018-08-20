@@ -1,6 +1,7 @@
 ### Variables
 
 set $mod Mod4
+set $alt Mod1
 set $left h
 set $down j
 set $up k
@@ -22,7 +23,7 @@ exec --no-startup-id xsetroot -solid "#333333"
 bindsym $mod+Return exec $term
 
 # lock screen
-bindsym Ctrl+Alt+l exec sh -c "~/.local/bin/lockscreen || swaylock -c 3e3e3e"
+bindsym Control+$alt+l exec sh -c "i3lock -c 3e3e3e || swaylock -c 3e3e3e"
 
 # kill focused window
 bindsym $mod+Shift+q kill
