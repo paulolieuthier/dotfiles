@@ -26,9 +26,15 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround'
+Plug 'junegunn/fzf'
 
 " Completion/IDE
-Plug 'Valloric/YouCompleteMe'
+Plug 'w0rp/ale'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Languages
 Plug 'othree/yajs.vim'
@@ -266,8 +272,18 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 " Ag
 let g:ag_working_path_mode="r" 
 
-" YouCompleteMe
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" ALE
+let g:ale_fix_on_save = 1
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+
+" LanguageClient
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls']
+    \ }
+nnoremap <leader><leader> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>i :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <leader>rr :call LanguageClient#textDocument_rename()<CR>
