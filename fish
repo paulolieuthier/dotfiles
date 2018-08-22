@@ -1,17 +1,17 @@
 # PATH
-set PATH $HOME/.local/bin $HOME/.cargo/bin $PATH
-set PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/local/lib32/pkgconfig $PKG_CONFIG_PATH
+set -x PATH $HOME/.local/bin $HOME/.cargo/bin $PATH
+set -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/local/lib32/pkgconfig $PKG_CONFIG_PATH
 
 # Basic exports
-set LANG en_US.utf8
-set EDITOR vim
-set MANPAGER "nvim -c 'set ft=man' -"
-set TERM xterm-256color
-set LESS -FXR
+set -x LANG en_US.utf8
+set -x EDITOR vim
+set -x MANPAGER "nvim -c 'set ft=man' -"
+set -x TERM xterm-256color
+set -x LESS -FXR
 
 # Neovim
 if command -v nvim
-    set EDITOR nvim
+    set -x EDITOR nvim
     alias vim nvim
 end
 
