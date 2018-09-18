@@ -25,6 +25,7 @@ alias copy "rsync -ah --progress"
 alias xclip "xclip -selection c"
 alias gw "./gradlew"
 alias k "kubectl"
+alias kubectl10 "kubectl"
 
 # disable greeting
 set fish_greeting
