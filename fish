@@ -10,7 +10,7 @@ set -x TERM xterm-256color
 set -x LESS -FXR
 
 # Neovim
-if command -v nvim
+if command -sq nvim
     set -x EDITOR nvim
     alias vim nvim
 end
