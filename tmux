@@ -1,7 +1,6 @@
 # Install Tmux Plugin Manager by running:
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-set -g default-terminal 'screen-256color'
 set -g default-command '/usr/bin/zsh'
 set -g default-shell '/usr/bin/zsh'
 
