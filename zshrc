@@ -38,3 +38,5 @@ alias copy="rsync -ah --progress"
 alias xclip="xclip -selection c"
 alias gw="./gradlew"
 alias kubectl10="kubectl"
+
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
