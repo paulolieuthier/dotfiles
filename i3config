@@ -11,6 +11,7 @@ set $term termite -e "zsh -i -c tmux"
 ### Look
 
 default_border pixel 5
+gaps inner 15
 
 ### execs
 
