@@ -22,19 +22,22 @@ Plug 'vim-scripts/SingleCompile'
 
 " Helpers
 Plug 'majutsushi/tagbar'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf'
 
 " Completion/IDE
 Plug 'w0rp/ale'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+
+" Snippets
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'SirVer/ultisnips'
 
 " Languages
 Plug 'othree/yajs.vim'
@@ -262,19 +265,21 @@ nnoremap <leader>pr :CtrlPMRUFiles<CR>
 "let g:rehash256 = 1
 let g:airline_theme = 'base16'
 
-" Ultisnips
-let g:UltiSnipsExpandTrigger = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-
 " Ag
 let g:ag_working_path_mode="r" 
 
 " ALE
 let g:ale_fix_on_save = 1
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
+" NCM2
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" snippets
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " LanguageClient
 let g:LanguageClient_autoStart = 1
