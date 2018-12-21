@@ -219,11 +219,9 @@ augroup END
 nnoremap c "xc
 xnoremap c "xc
 
-" After block yank and paste, move cursor to the end of operated text
-" Also, don't copy over-pasted text in visual mode
-vnoremap y y`]
-nnoremap p p`]
-vnoremap p "_dP`]
+" Don't copy over-pasted text in visual mode
+xnoremap p "_dP
+xnoremap P "_dP
 
 " Easily replace the current word and all its occurrences.
 nnoremap <Leader>rr :%s/\<<C-r><C-w>\>/<C-r><C-w>
