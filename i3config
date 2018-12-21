@@ -29,10 +29,10 @@ bindsym Control+$alt+l exec sh -c "i3lock -c 3e3e3e || swaylock -c 3e3e3e"
 bindsym $mod+Shift+q kill
 
 # launcher
-bindsym $mod+d exec sh -c "rofi -show drun || ~/.local/bin/dmenu-launch"
+bindsym $mod+d exec rofi -show drun
 
 # clipboard manager
-bindsym $mod+p exec sh -c "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"
+bindsym $mod+p exec rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
