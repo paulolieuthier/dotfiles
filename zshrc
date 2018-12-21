@@ -10,7 +10,7 @@ plugins=(git git-extras docker docker-compose gradle)
 source $ZSH/oh-my-zsh.sh
 
 export GOPATH="$HOME/.go"
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$GOPAH/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:$PATH"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/lib32/pkgconfig"
 
 export GRADLE_USER_HOME="${HOME}/.gradle"
