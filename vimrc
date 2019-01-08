@@ -223,7 +223,7 @@ nnoremap c "xc
 xnoremap c "xc
 
 " Don't copy over-pasted text in visual mode
-xnoremap p "_dP
+xnoremap p "_dp
 xnoremap P "_dP
 
 " Easily replace the current word and all its occurrences.
