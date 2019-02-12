@@ -224,7 +224,7 @@ xnoremap c "xc
 
 " Don't copy over-pasted text in visual mode
 xnoremap p "_dp
-xnoremap P "_dP
+xnoremap P "_dp
 
 " Easily replace the current word and all its occurrences.
 nnoremap <Leader>rr :%s/\<<C-r><C-w>\>/<C-r><C-w>
