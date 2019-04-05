@@ -11,7 +11,7 @@ source $ZSH/oh-my-zsh.sh
 
 export GOPATH="$HOME/.go"
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:$PATH"
-export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/lib32/pkgconfig"
+export PKG_CONFIG_PATH="/usr/local/lib64/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig"
 
 export GRADLE_USER_HOME="${HOME}/.gradle"
 which javac > /dev/null 2>&1 && export JAVA_PATH=$(dirname $(dirname $(readlink -f $(which javac))))
