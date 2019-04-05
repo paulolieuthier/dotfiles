@@ -46,6 +46,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'tinco/haskell.vim'
 
 " Misc
+Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-commentary'
 Plug 'matze/vim-move'
@@ -247,6 +248,9 @@ autocmd FileType yml,yaml setlocal tabstop=2 shiftwidth=2
 """""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""
+
+" Easymotion
+map <Leader>j <Plug>(easymotion-prefix)
 
 " vim-bbye: close buffer without closing split view
 nnoremap <C-c> :Bdelete<CR>
