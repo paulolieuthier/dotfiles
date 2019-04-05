@@ -12,7 +12,9 @@ def install_config_file(file_name, symlink_name):
     full_config_name = os.path.realpath(pwd + "/" + file_name)
 
     if os.path.exists(full_symlink_name):
-        if os.path.samefile(full_symlink_name, full_config_name):
+        if not os.path.exists(os.readlink(full_symlink_name)):
+            os.remove(full_symlink_name)
+        elif os.path.samefile(full_symlink_name, full_config_name):
             return
         else:
             shutil.move(full_symlink_name, full_symlink_name + ".old")
