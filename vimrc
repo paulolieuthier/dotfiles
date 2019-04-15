@@ -70,7 +70,7 @@ set infercase
 set hlsearch
 set incsearch
 set showmatch
-set number
+set nonumber
 set autoindent
 set nobackup
 set nowb
