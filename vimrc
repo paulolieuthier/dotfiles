@@ -159,7 +159,6 @@ autocmd BufEnter * silent! lcd %:p:h
 
 " Basic mappings
 noremap ; :
-inoremap jk <Esc>
 noremap j gj
 noremap k gk
 
