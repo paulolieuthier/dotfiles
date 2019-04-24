@@ -39,4 +39,10 @@ alias xclip="xclip -selection c"
 alias gw="./gradlew"
 alias kubectl10="kubectl"
 
+# fuzzy finder
+if [ -f ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+    export FZF_TMUX=1
+fi
+
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
