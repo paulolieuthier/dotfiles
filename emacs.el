@@ -23,6 +23,7 @@
 (show-paren-mode t)
 (save-place-mode 1)
 (savehist-mode 1)
+(set-frame-font "Fira Mono 14")
 
 ; basic package management settings
 (package-initialize nil)
