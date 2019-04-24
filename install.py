@@ -7,7 +7,7 @@ import shutil
 pwd = os.path.dirname(os.path.realpath(__file__))
 
 
-def install_config_file(file_name, symlink_name):
+def symlink_file(file_name, symlink_name):
     full_symlink_name = os.path.expanduser(symlink_name)
     full_config_name = os.path.realpath(pwd + "/" + file_name)
 
@@ -25,19 +25,19 @@ def install_config_file(file_name, symlink_name):
 
     os.symlink(full_config_name, full_symlink_name)
 
-
-install_config_file("zshrc", "~/.zshrc")
-install_config_file("tigrc", "~/.tigrc")
-install_config_file("gitconfig", "~/.gitconfig")
-install_config_file("emacs.el", "~/.emacs.d/init.el")
-install_config_file("vimrc", "~/.config/nvim/init.vim")
-install_config_file("ideavimrc", "~/.ideavimrc")
-install_config_file("Xmodmap", "~/.Xmodmap")
-install_config_file("tmux", "~/.tmux.conf")
-install_config_file("termite", "~/.config/termite/config")
-install_config_file("sway", "~/.config/sway")
-install_config_file("i3config", "~/.config/i3/config")
-install_config_file("i3status", "~/.config/i3status/config")
-install_config_file("systemd/ssh-agent.service", "~/.config/systemd/user/ssh-agent.service")
-install_config_file("pam_environment", "~/.pam_environment")
-install_config_file("bin/dmenu-launch", "~/.local/bin/dmenu-launch")
+symlink_file("background.jpg", "~/.background.jpg")
+symlink_file("zshrc", "~/.zshrc")
+symlink_file("tigrc", "~/.tigrc")
+symlink_file("gitconfig", "~/.gitconfig")
+symlink_file("emacs.el", "~/.emacs.d/init.el")
+symlink_file("vimrc", "~/.config/nvim/init.vim")
+symlink_file("ideavimrc", "~/.ideavimrc")
+symlink_file("Xmodmap", "~/.Xmodmap")
+symlink_file("tmux", "~/.tmux.conf")
+symlink_file("termite", "~/.config/termite/config")
+symlink_file("sway", "~/.config/sway")
+symlink_file("i3config", "~/.config/i3/config")
+symlink_file("i3status", "~/.config/i3status/config")
+symlink_file("systemd/ssh-agent.service", "~/.config/systemd/user/ssh-agent.service")
+symlink_file("pam_environment", "~/.pam_environment")
+symlink_file("bin/dmenu-launch", "~/.local/bin/dmenu-launch")
