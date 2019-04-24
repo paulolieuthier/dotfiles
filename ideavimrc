@@ -5,22 +5,17 @@ set nonumber
 map <C-n> :action EditorDown<CR>
 map <C-p> :action EditorUp<CR>
 
-map <A-h> :action PreviousTab<CR>
-map <A-l> :action NextTab<CR>
-
-map <A-j> :action MoveLineDown<CR>
-map <A-k> :action MoveLineUp<CR>
-
 inoremap <C-\> <C-O>:action ParameterInfo<CR>
+map gd :action GotoDeclaration<CR>
 
 map <C-O> :action Back<CR>
 map <C-I> :action Forward<CR>
 
-map gd :action GotoDeclaration<CR>
+map <C-l> :action VimWindowRight<CR>
+map <C-h> :action VimWindowLeft<CR>
+map <C-j> :action VimWindowDown<CR>
+map <C-k> :action VimWindowUp<CR>
 
-"
-" igor
-"
 let mapleader = "\<space>"
 
 map <space>: :action GotoAction<CR>
@@ -46,10 +41,6 @@ map <space>tr :action RunClass<CR>
 map <space>tt :action Rerun<CR>
 map <space>tf :action RerunFailedTests<CR>
 
-map <space>g :action Vcs.QuickListPopupAction<CR>
 map <space>n :noh<CR>
-
-map <C-l> :action VimWindowRight<CR>
-map <C-h> :action VimWindowLeft<CR>
-map <C-j> :action VimWindowDown<CR>
-map <C-k> :action VimWindowUp<CR>
+map <space>jw :action KJumpAction.Word1<CR>
+map <space>jf :action KJumpAction<CR>
