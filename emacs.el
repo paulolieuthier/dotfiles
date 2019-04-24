@@ -132,11 +132,15 @@
   :diminish projectile-mode
   :config
   (projectile-mode)
-  (evil-leader/set-key "ps" 'projectile-run-shell)
-  (setq projectile-completion-system 'helm))
+  (evil-leader/set-key "ps" 'projectile-switch-project)
+  (setq projectile-completion-system 'helm)
 
-(use-package helm-projectile
-  :ensure t
-  :config
-  (helm-projectile-on)
-  (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file))
+  (use-package ag
+    :ensure t
+    :diminish ag-mode)
+
+  (use-package helm-projectile
+    :ensure t
+    :config
+    (helm-projectile-on)
+    (evil-leader/set-key "pf" 'helm-projectile-find-file)))
