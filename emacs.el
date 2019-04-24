@@ -35,6 +35,10 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))
+
 (use-package base16-theme
   :config
   (load-theme 'base16-twilight t)
