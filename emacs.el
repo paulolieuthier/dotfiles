@@ -102,6 +102,12 @@
   :config
   (powerline-default-theme))
 
+(use-package rainbow-delimiters
+  :ensure t
+  :diminish rainbow-delimiters-mode
+  :config
+  (rainbow-delimiters-mode 1))
+
 (use-package autopair
   :ensure t
   :diminish autopair-mode
