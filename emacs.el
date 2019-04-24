@@ -101,7 +101,7 @@
 (use-package rainbow-delimiters
   :diminish rainbow-delimiters-mode
   :config
-  (rainbow-delimiters-mode 1))
+  (rainbow-delimiters-mode))
 
 (use-package autopair
   :diminish autopair-mode
