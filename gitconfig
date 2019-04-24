@@ -22,3 +22,6 @@
 
 [rebase]
     autoSquash = true
+
+[diff]
+    algorithm = patience
