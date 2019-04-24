@@ -118,7 +118,7 @@
   :ensure t
   :diminish avy-mode
   :config
-  (evil-leader/set-key "j" 'avy-goto-char))
+  (evil-leader/set-key "jf" 'avy-goto-char))
 
 (use-package helm
   :ensure t
