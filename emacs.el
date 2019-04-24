@@ -33,9 +33,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 (require 'use-package)
+(setq use-package-always-ensure t)
 
 (use-package base16-theme
-  :ensure t
   :config
   (load-theme 'base16-twilight t)
 
@@ -44,11 +44,9 @@
                       :background (face-background 'default)))
 
 (use-package evil
-  :ensure t
   :config
 
   (use-package evil-leader
-    :ensure t
     :config
     (global-evil-leader-mode)
     (evil-leader/set-leader "<SPC>"))
@@ -73,13 +71,11 @@
   (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right))
 
 (use-package flycheck
-  :ensure t
   :diminish flycheck-mode
   :config
   (global-flycheck-mode))
 
 (use-package company
-  :ensure t
   :diminish company-mode
   :config
   (setq company-idle-delay 0.1)
@@ -89,46 +85,38 @@
   (define-key company-active-map (kbd "C-p") 'company-select-previous)
   (global-company-mode)
 
-  (use-package company-quickhelp
-    :ensure t))
+  (use-package company-quickhelp))
 
 (use-package eglot
-  :ensure t
   :config
   (setq eglot-autoreconnect 1))
 
 (use-package powerline
-  :ensure t
   :config
   (powerline-default-theme))
 
 (use-package rainbow-delimiters
-  :ensure t
   :diminish rainbow-delimiters-mode
   :config
   (rainbow-delimiters-mode 1))
 
 (use-package autopair
-  :ensure t
   :diminish autopair-mode
   :config
   (autopair-global-mode))
 
 (use-package avy
-  :ensure t
   :diminish avy-mode
   :config
   (evil-leader/set-key "jf" 'avy-goto-char))
 
 (use-package helm
-  :ensure t
   :diminish helm-mode
   :config
   (helm-mode 1)
   (global-set-key (kbd "M-x") 'helm-M-x))
 
 (use-package projectile
-  :ensure t
   :diminish projectile-mode
   :config
   (projectile-mode)
@@ -136,11 +124,9 @@
   (setq projectile-completion-system 'helm)
 
   (use-package ag
-    :ensure t
     :diminish ag-mode)
 
   (use-package helm-projectile
-    :ensure t
     :config
     (helm-projectile-on)
     (evil-leader/set-key "pf" 'helm-projectile-find-file)))
