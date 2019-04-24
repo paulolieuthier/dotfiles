@@ -43,6 +43,9 @@
                       :foreground (face-foreground 'default)
                       :background (face-background 'default)))
 
+(use-package doom-modeline
+  :hook (after-init . doom-modeline-mode))
+
 (use-package evil
   :config
 
@@ -90,10 +93,6 @@
 (use-package eglot
   :config
   (setq eglot-autoreconnect 1))
-
-(use-package powerline
-  :config
-  (powerline-default-theme))
 
 (use-package rainbow-delimiters
   :diminish rainbow-delimiters-mode
