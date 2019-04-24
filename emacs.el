@@ -43,9 +43,6 @@
                       :foreground (face-foreground 'default)
                       :background (face-background 'default)))
 
-(use-package undo-tree :diminish 'undo-tree-mode)
-(use-package abbrev :diminish 'abbrev-mode)
-
 (use-package evil
   :ensure t
   :config
@@ -74,15 +71,6 @@
   (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
   (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
   (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right))
-
-  :ensure t
-  :diminish linum-relative-mode
-  :config
-  (setq linum-format "%d ")
-  (linum-relative-global-mode)
-  (set-face-attribute 'linum nil
-                      :foreground (face-foreground 'default)
-                      :background (face-background 'default)))
 
 (use-package flycheck
   :ensure t
