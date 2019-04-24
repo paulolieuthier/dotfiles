@@ -46,11 +46,6 @@
 (use-package undo-tree :diminish 'undo-tree-mode)
 (use-package abbrev :diminish 'abbrev-mode)
 
-(use-package key-chord
-  :ensure t
-  :config
-  (key-chord-mode 1))
-
 (use-package evil
   :ensure t
   :config
@@ -62,9 +57,6 @@
     (evil-leader/set-leader "<SPC>"))
 
   (evil-mode 1)
-
-  (setq key-chord-two-keys-delay 0.5)
-  (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 
   (define-key evil-normal-state-map (kbd ";") 'evil-ex)
 
