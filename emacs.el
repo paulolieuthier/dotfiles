@@ -82,6 +82,9 @@
   :ensure t
   :diminish company-mode
   :config
+  (setq company-idle-delay 0.1)
+  (setq company-minimum-prefix-length 2)
+  (define-key company-mode-map [remap indent-for-tab-command] #'company-indent-or-complete-common)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous)
   (global-company-mode))
