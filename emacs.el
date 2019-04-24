@@ -87,82 +87,15 @@
   (define-key company-mode-map [remap indent-for-tab-command] #'company-indent-or-complete-common)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous)
-  (global-company-mode))
+  (global-company-mode)
 
-(use-package irony
-  :ensure t
-  :diminish irony-mode
-  :config
-  (add-hook 'c++-mode-hook 'irony-mode)
-  (add-hook 'c-mode-hook 'irony-mode)
-  (add-hook 'objc-mode-hook 'irony-mode)
+  (use-package company-quickhelp
+    :ensure t))
 
-  ;; replace the `completion-at-point' and `complete-symbol' bindings
-  ;in irony-mode's buffers by irony-mode's function
-  (defun my-irony-mode-hook ()
-    (define-key irony-mode-map [remap completion-at-point]
-      'irony-completion-at-point-async)
-    (define-key irony-mode-map [remap complete-symbol]
-      'irony-completion-at-point-async))
-  (add-hook 'irony-mode-hook 'my-irony-mode-hook)
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
-
-(use-package company-irony
+(use-package eglot
   :ensure t
   :config
-  (add-to-list 'company-backends 'company-irony))
-
-(use-package flycheck-irony
-  :ensure t
-  :config
-  (flycheck-irony-setup))
-
-(use-package rtags
-  :ensure t
-  :config
-  (add-hook 'rtags-jump-hook 'evil--jumps-push)
-  (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
-  (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
-  (define-key evil-normal-state-map (kbd "gd") 'rtags-find-symbol-at-point))
-
-(use-package cmake-ide
-  :ensure t
-  :config
-  (defun my-cmake-ide-hook ()
-    (setq cmake-ide-build-dir "./build")
-    (cmake-ide-setup))
-
-  (add-hook 'c++-mode-hook 'my-cmake-ide-hook)
-  (add-hook 'c-mode-hook 'my-cmake-ide-hook))
-
-(use-package yasnippet
-  :ensure t
-  :diminish yas-mode
-  :config
-  (yas-global-mode 1))
-
-(use-package modern-cpp-font-lock
-  :ensure t
-  :diminish modern-c++-font-lock-mode
-  :config
-  (add-hook 'c++-mode-hook #'modern-c++-font-lock-mode))
-
-(use-package rust-mode
-  :ensure t)
-
-(use-package racer
-  :ensure t
-  :diminish racer-mode
-  :diminish eldoc-mode
-  :config
-  (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'racer-mode-hook #'eldoc-mode)
-  (add-hook 'racer-mode-hook #'company-mode))
-
-(use-package flycheck-rust
-  :ensure t
-  :config
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+  (setq eglot-autoreconnect 1))
 
 (use-package powerline
   :ensure t
