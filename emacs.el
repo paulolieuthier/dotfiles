@@ -28,8 +28,7 @@
 ; basic package management settings
 (package-initialize nil)
 (unless (assoc-default "melpa" package-archives)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
-
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
