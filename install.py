@@ -26,6 +26,7 @@ def symlink_file(file_name, symlink_name):
     os.symlink(full_config_name, full_symlink_name)
 
 symlink_file("background.jpg", "~/.background.jpg")
+symlink_file("profile", "~/.profile")
 symlink_file("zshrc", "~/.zshrc")
 symlink_file("tigrc", "~/.tigrc")
 symlink_file("gitconfig", "~/.gitconfig")
@@ -40,5 +41,4 @@ symlink_file("i3config", "~/.config/i3/config")
 symlink_file("i3status", "~/.config/i3status/config")
 symlink_file("systemd/ssh-agent.service", "~/.config/systemd/user/ssh-agent.service")
 symlink_file("systemd/greenclip.service", "~/.config/systemd/user/greenclip.service")
-symlink_file("pam_environment", "~/.pam_environment")
 symlink_file("bin/dmenu-launch", "~/.local/bin/dmenu-launch")
