@@ -103,7 +103,8 @@
 (use-package rainbow-delimiters
   :diminish rainbow-delimiters-mode
   :config
-  (rainbow-delimiters-mode))
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'text-mode-hook #'rainbow-delimiters-mode))
 
 (use-package autopair
   :diminish autopair-mode
