@@ -106,6 +106,13 @@
   (use-package company-lsp
     :commands company-lsp))
 
+(use-package clojure-mode
+  :config
+
+  (use-package cider
+    :config
+    (define-key evil-normal-state-map (kbd "gd") (lambda () (interactive) (cider-find-var t)))))
+
 (use-package rainbow-delimiters
   :diminish rainbow-delimiters-mode
   :config
