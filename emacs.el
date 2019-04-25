@@ -95,11 +95,16 @@
 
   (use-package company-quickhelp))
 
-(use-package eglot
-  :hook (prog-mode . eglot-ensure)
+(use-package lsp-mode
+  :commands lsp
+  :hook (prog-mode . lsp)
   :config
-  (setq eglot-autoreconnect 1)
-  (add-to-list 'eglot-server-programs '(clojure-mode . ("bash" "-c" "exec clojure-lsp"))))
+
+  (use-package lsp-ui
+    :commands lsp-ui-mode)
+
+  (use-package company-lsp
+    :commands company-lsp))
 
 (use-package rainbow-delimiters
   :diminish rainbow-delimiters-mode
