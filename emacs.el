@@ -138,14 +138,16 @@
 (use-package projectile
   :diminish projectile-mode
   :config
-  (projectile-mode)
-  (evil-leader/set-key "ps" 'projectile-switch-project)
   (setq projectile-completion-system 'helm)
+  (projectile-mode)
+  (evil-leader/set-key "pf" 'projectile-find-file)
+  (evil-leader/set-key "pr" 'projectile-recentf)
+  (evil-leader/set-key "pp" 'projectile-switch-project)
+  (evil-leader/set-key "ps" 'projectile-ag)
 
   (use-package ag
     :diminish ag-mode)
 
   (use-package helm-projectile
     :config
-    (helm-projectile-on)
-    (evil-leader/set-key "pf" 'helm-projectile-find-file)))
+    (helm-projectile-on)))
