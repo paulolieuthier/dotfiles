@@ -292,6 +292,7 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'go': ['go-langserver'],
     \ 'ruby': ['rvm', '2.6.0@global', 'do', 'solargraph', 'stdio'],
+    \ 'cpp': ['clangd', '-background-index'],
     \ }
 nnoremap <leader><leader> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
