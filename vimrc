@@ -24,19 +24,16 @@ Plug 'vim-scripts/SingleCompile'
 Plug 'majutsushi/tagbar'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc' }
+Plug 'junegunn/fzf.vim'
 
 " Completion/IDE
 Plug 'w0rp/ale'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/echodoc.vim'
 
 " Snippets
-Plug 'ncm2/ncm2-ultisnips'
 Plug 'SirVer/ultisnips'
 
 " Languages
@@ -58,6 +55,7 @@ call plug#end()
 
 filetype plugin indent on
 syntax on
+set noshowmode
 set backspace=eol,start,indent
 set cursorline
 set cursorcolumn
@@ -80,6 +78,7 @@ set background=dark
 set hid
 set noerrorbells
 set novisualbell
+set signcolumn=yes
 set expandtab
 set smarttab
 set shiftwidth=4
@@ -87,7 +86,7 @@ set tabstop=4
 set inccommand=nosplit
 set laststatus=2
 set t_Co=256
-set completeopt=menu,menuone,noinsert,noselect,preview
+set completeopt=menu,menuone,noinsert,noselect
 set clipboard=unnamedplus
 set autochdir
 set list
@@ -233,13 +232,6 @@ vnoremap <Leader>rr y:%s/<C-r>"/<C-r>"
 " No more accidentally showing up command window (Use C-f to show it)
 map q: :q<CR>
 
-" Omnicomplete
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
 " Custom tab size
 autocmd FileType json,javascript setlocal tabstop=2 shiftwidth=2
 autocmd FileType yml,yaml setlocal tabstop=2 shiftwidth=2
@@ -275,11 +267,10 @@ let g:ag_working_path_mode="r"
 " ALE
 let g:ale_fix_on_save = 1
 
-" NCM2
-autocmd BufEnter * call ncm2#enable_for_buffer()
+" deplete
+let g:deoplete#enable_at_startup = 1
 
 " snippets
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
 let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
@@ -298,3 +289,7 @@ nnoremap <leader><leader> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <leader>i :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> <leader>rr :call LanguageClient#textDocument_rename()<CR>
+
+" echodoc
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'signature'
