@@ -3,7 +3,7 @@ Description=Start greenclip daemon
 After=display-manager.service
 
 [Service]
-ExecStart=%h/.local/bin/greenclip daemon
+ExecStart=greenclip daemon
 Restart=always
 
 [Install]
