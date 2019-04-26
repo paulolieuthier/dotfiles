@@ -26,7 +26,7 @@ def symlink_file(file_name, symlink_name):
     os.symlink(full_config_name, full_symlink_name)
 
 symlink_file("background.jpg", "~/.background.jpg")
-symlink_file("profile", "~/.profile")
+symlink_file("environment.conf", "~/.config/environment.d/basic.conf")
 symlink_file("zshrc", "~/.zshrc")
 symlink_file("tigrc", "~/.tigrc")
 symlink_file("gitconfig", "~/.gitconfig")
