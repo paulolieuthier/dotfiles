@@ -11,7 +11,7 @@ def symlink_file(file_name, symlink_name):
     full_symlink_name = os.path.expanduser(symlink_name)
     full_config_name = os.path.realpath(PWD + "/" + file_name)
 
-    if os.path.exists(full_symlink_name):
+    if os.path.lexists(full_symlink_name):
         if os.path.islink(full_symlink_name) and not os.path.exists(os.readlink(full_symlink_name)):
             os.remove(full_symlink_name)
         elif os.path.samefile(full_symlink_name, full_config_name):
