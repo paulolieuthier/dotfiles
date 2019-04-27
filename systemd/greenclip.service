@@ -7,4 +7,4 @@ ExecStart=greenclip daemon
 Restart=always
 
 [Install]
-WantedBy=default.target
+WantedBy=user-applications.target
