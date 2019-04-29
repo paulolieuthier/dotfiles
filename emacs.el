@@ -110,6 +110,7 @@
   :config
 
   (use-package cider
+    :hook clojure-mode
     :config
     (define-key evil-normal-state-map (kbd "gd") (lambda () (interactive) (cider-find-var t)))))
 
