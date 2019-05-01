@@ -99,15 +99,12 @@
   (use-package company-quickhelp))
 
 (use-package lsp-mode
-  :commands lsp
   :hook (prog-mode . lsp)
   :config
 
-  (use-package lsp-ui
-    :commands lsp-ui-mode)
+  (use-package lsp-ui)
+  (use-package company-lsp)
 
-  (use-package company-lsp
-    :commands company-lsp))
 
 (use-package clojure-mode
   :config
