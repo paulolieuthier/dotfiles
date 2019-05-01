@@ -50,7 +50,9 @@
                       :background (face-background 'default)))
 
 (use-package doom-modeline
-  :hook (after-init . doom-modeline-mode))
+  :hook (after-init . doom-modeline-mode)
+  :config
+  (setq column-number-mode t))
 
 (use-package evil
   :config
