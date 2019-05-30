@@ -235,6 +235,7 @@ map q: :q<CR>
 " Custom tab size
 autocmd FileType json,javascript setlocal tabstop=2 shiftwidth=2
 autocmd FileType yml,yaml setlocal tabstop=2 shiftwidth=2
+autocmd FileType go setlocal tabstop=8 shiftwidth=8 noexpandtab
 
 """""""""""""""""""""""""""""""""""""""""""
 " Plugins
