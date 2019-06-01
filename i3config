@@ -105,7 +105,7 @@ bindsym $mod+v splitv
 
 # switch the current container between layout styles
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # fullscreen
@@ -122,6 +122,9 @@ bindsym $mod+a focus parent
 
 # move floating windows
 floating_modifier $mod
+
+# sticky windows
+bindsym $mod+w sticky toggle
 
 ### Scratchpad
 
