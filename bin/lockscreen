@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+scrot /tmp/screenlocked.png
+mogrify -scale 10% -scale 1000% /tmp/screenlocked.png
+i3lock -i /tmp/screenlocked.png

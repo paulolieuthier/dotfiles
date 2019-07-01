@@ -28,7 +28,8 @@ bindsym $mod+Return exec $term
 bindsym Control+q exec true
 
 # lock screen
-bindsym Control+$alt+l exec sh -c "i3lock -c 3e3e3e || swaylock -c 3e3e3e"
+bindsym Control+$alt+l exec lockscreen
+exec xautolock -time 2 -locker 'lockscreen' &
 
 # kill focused window
 bindsym $mod+Shift+q kill
