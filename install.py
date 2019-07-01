@@ -44,3 +44,5 @@ symlink_file("i3status", "~/.config/i3status/config")
 symlink_file("systemd/user-applications.target", "~/.config/systemd/user/user-applications.target")
 symlink_file("systemd/greenclip.service", "~/.config/systemd/user/greenclip.service")
 symlink_file("systemd/ssh-agent.service", "~/.config/systemd/user/ssh-agent.service")
+
+print("Take a look at PACKAGES for a list of packages you may want to install")
