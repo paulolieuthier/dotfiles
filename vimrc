@@ -29,9 +29,10 @@ Plug 'junegunn/fzf.vim'
 
 " Completion/IDE
 Plug 'w0rp/ale'
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/echodoc.vim'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc-json'
+Plug 'neoclide/coc-yaml'
+Plug 'neoclide/coc-snippets'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -57,6 +58,7 @@ call plug#end()
 filetype plugin indent on
 syntax on
 set noshowmode
+set cmdheight=2
 set backspace=eol,start,indent
 set cursorline
 set cursorcolumn
@@ -72,11 +74,12 @@ set showmatch
 set nonumber
 set autoindent
 set nobackup
+set nowritebackup
 set nowb
 set noswapfile
 set scrolloff=5
 set background=dark
-set hid
+set hidden
 set noerrorbells
 set novisualbell
 set signcolumn=yes
@@ -87,8 +90,10 @@ set tabstop=4
 set inccommand=nosplit
 set laststatus=2
 set t_Co=256
+set shortmess+=c
 set completeopt=menu,menuone,noinsert,noselect
 set clipboard=unnamedplus
+set updatetime=300
 set autochdir
 set list
 set listchars=tab:>-,trail:·,extends:>,precedes:<,space:·,nbsp:·
@@ -238,9 +243,9 @@ autocmd FileType json,javascript setlocal tabstop=2 shiftwidth=2
 autocmd FileType yml,yaml setlocal tabstop=2 shiftwidth=2
 autocmd FileType go setlocal tabstop=8 shiftwidth=8 noexpandtab
 
-"""""""""""""""""""""""""""""""""""""""""""
-" Plugins
-"""""""""""""""""""""""""""""""""""""""""""
+"""""""""""
+" Plugins "
+"""""""""""
 
 " Easymotion
 map <Leader>j <Plug>(easymotion-prefix)
@@ -269,29 +274,86 @@ let g:ag_working_path_mode="r"
 " ALE
 let g:ale_fix_on_save = 1
 
-" deplete
-let g:deoplete#enable_at_startup = 1
+"""""""
+" COC "
+"""""""
 
-" snippets
-let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" LanguageClient
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'python': ['pyls'],
-    \ 'go': ['go-langserver'],
-    \ 'ruby': ['rvm', '2.6.0@global', 'do', 'solargraph', 'stdio'],
-    \ 'cpp': ['clangd', '-background-index'],
-    \ }
-nnoremap <leader><leader> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <leader>i :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <leader>rr :call LanguageClient#textDocument_rename()<CR>
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-" echodoc
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'signature'
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rr <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf <Plug>(coc-fix-current)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
