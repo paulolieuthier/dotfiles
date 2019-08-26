@@ -89,6 +89,7 @@ set shiftwidth=4
 set tabstop=4
 set inccommand=nosplit
 set laststatus=2
+set cmdheight=2
 set t_Co=256
 set shortmess+=c
 set completeopt=menu,menuone,noinsert,noselect
