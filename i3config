@@ -29,7 +29,7 @@ bindsym Control+q exec true
 
 # lock screen
 bindsym Control+$alt+l exec lockscreen
-exec xautolock -time 2 -locker 'lockscreen' &
+exec xautolock -time 5 -locker 'lockscreen' &
 
 # kill focused window
 bindsym $mod+Shift+q kill
