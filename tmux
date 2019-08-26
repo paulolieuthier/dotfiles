@@ -23,6 +23,12 @@ set -g @fzf-url-bind 'x'
 set-option -g mouse on
 set-option -s set-clipboard off
 
+# disable leaving copy mode on click when in copy mode, but keep clearing selection
+# on click and exiting copy mode when scrolling back to the end
+unbind-key -T copy-mode-vi MouseDragEnd1Pane
+bind-key -T copy-mode-vi MouseDown1Pane select-pane\; send-keys -X clear-selection
+bind -n MouseDrag1Pane if -Ft= '#{mouse_any_flag}' 'if -Ft= \"#{pane_in_mode}\" \"copy-mode -eM\" \"send-keys -M\"' 'copy-mode -eM'
+
 # quick ESC
 set -g escape-time 0
 
