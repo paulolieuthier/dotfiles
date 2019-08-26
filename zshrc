@@ -32,7 +32,6 @@ alias parallel="parallel --will-cite"
 alias copy="rsync -ah --progress"
 alias xclip="xclip -selection c"
 alias gw="./gradlew"
-alias kubectl10="kubectl"
 
 # fuzzy finder
 if [ -f ~/.fzf.zsh ]; then
