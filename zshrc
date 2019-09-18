@@ -33,6 +33,9 @@ alias copy="rsync -ah --progress"
 alias xclip="xclip -selection c"
 alias gw="./gradlew"
 
+# run local npm programs
+function npm-do { (PATH=$(npm bin):$PATH; eval $@;) }
+
 # fuzzy finder
 if [ -f ~/.fzf.zsh ]; then
     source ~/.fzf.zsh
