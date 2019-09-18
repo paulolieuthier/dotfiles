@@ -177,10 +177,11 @@ bar {
 
 ### Displays configuration
 
-set $displayMode "Set display mode [m]onitor [l]aptop"
+set $displayMode "Set display mode [m]onitor [l]aptop [d]ual"
 bindsym $mod+x mode $displayMode
 mode $displayMode {
     bindsym m exec "xrandr --output HDMI-1 --auto --primary && xrandr --output eDP-1 --off"; mode "default"
     bindsym l exec "xrandr --output HDMI-1 --off && xrandr --output eDP-1 --auto --primary"; mode "default"
+    bindsym d exec "xrandr --output HDMI-1 --auto --pos 0x0 && xrandr --output eDP-1 --auto --primary --pos 1920x640"; mode "default"
     bindsym Escape mode "default"
 }
