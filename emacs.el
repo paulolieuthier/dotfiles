@@ -91,61 +91,13 @@
   :config
   (setq company-idle-delay 0.1)
   (setq company-minimum-prefix-length 2)
+  (setq company-tooltip-align-annotations t)
   (define-key company-mode-map [remap indent-for-tab-command] #'company-indent-or-complete-common)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous)
   (global-company-mode)
 
   (use-package company-quickhelp))
-
-(use-package lsp-mode
-  :hook (prog-mode . lsp)
-  :config
-
-  (use-package lsp-ui)
-  (use-package company-lsp)
-
-  ; languages
-  (use-package ccls
-    :hook ((c-mode c++-mode) . (lambda () (require 'ccls) (lsp)))
-    :config
-    (setq ccls-initialization-options '(:index (:comments 2)
-                                        :completion (:detailedLabel t)
-                                        :compilationDatabaseDirectory "build"))))
-
-(use-package cmake-mode
-  :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'"))
-
-(use-package cmake-font-lock
-  :after (cmake-mode)
-  :hook (cmake-mode . cmake-font-lock-activate))
-
-(use-package cmake-ide
-  :after projectile
-  :hook (c++-mode . my/cmake-ide-find-project)
-  :preface
-  (defun my/cmake-ide-find-project ()
-    "Finds the directory of the project for cmake-ide."
-    (with-eval-after-load 'projectile
-      (setq cmake-ide-project-dir (projectile-project-root))
-      (setq cmake-ide-build-dir (concat cmake-ide-project-dir "build")))
-    (setq cmake-ide-compile-command (concat "cd " cmake-ide-build-dir " && cmake .. && cmake --build ."))
-    (cmake-ide-load-db))
-
-  (defun my/switch-to-compilation-window ()
-    "Switches to the *compilation* buffer after compilation."
-    (other-window 1))
-  :bind ([remap comment-region] . cmake-ide-compile)
-  :init (cmake-ide-setup)
-  :config (advice-add 'cmake-ide-compile :after #'my/switch-to-compilation-window))
-
-(use-package clojure-mode
-  :config
-
-  (use-package cider
-    :hook clojure-mode
-    :config
-    (define-key evil-normal-state-map (kbd "gd") (lambda () (interactive) (cider-find-var t)))))
 
 (use-package rainbow-delimiters
   :diminish rainbow-delimiters-mode
