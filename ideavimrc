@@ -44,3 +44,4 @@ map <space>tf :action RerunFailedTests<CR>
 map <space>n :noh<CR>
 map <space>jw :action KJumpAction.Word1<CR>
 map <space>jf :action KJumpAction<CR>
+set clipboard+=ideaput
