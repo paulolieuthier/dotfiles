@@ -47,3 +47,4 @@ map <space>jw :action KJumpAction.Word1<CR>
 map <space>jf :action KJumpAction<CR>
 
 set surround
+set ideajoin
