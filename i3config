@@ -18,6 +18,7 @@ gaps inner 15
 exec --no-startup-id sh -c "dex --autostart || dex-autostart --autostart"
 exec --no-startup-id xsetroot -solid "#333333"
 exec --no-startup-id wallpaper
+exec --no-startup-id ibus-daemon --xim -r -d
 
 ### Key bindings
 
