@@ -181,8 +181,8 @@ bar {
 set $displayMode "Set display mode [m]onitor [l]aptop [d]ual"
 bindsym $mod+x mode $displayMode
 mode $displayMode {
-    bindsym m exec "xrandr --output HDMI-1 --auto --primary && xrandr --output eDP-1 --off && wallpaper"; mode "default"
-    bindsym l exec "xrandr --output HDMI-1 --off && xrandr --output eDP-1 --auto --primary && wallpaper"; mode "default"
-    bindsym d exec "xrandr --output HDMI-1 --auto --pos 0x0 && xrandr --output eDP-1 --auto --primary --pos 1920x640 && wallpaper"; mode "default"
+    bindsym m exec "xrandr --output HDMI-1 --auto --primary && xrandr --output eDP-1 --off && sleep 1 && wallpaper"; mode "default"
+    bindsym l exec "xrandr --output HDMI-1 --off && xrandr --output eDP-1 --auto --primary && sleep 1 && wallpaper"; mode "default"
+    bindsym d exec "xrandr --output HDMI-1 --auto --primary --pos 0x0 && xrandr --output eDP-1 --auto --pos 1920x640 && sleep 1 && wallpaper"; mode "default"
     bindsym Escape mode "default"
 }
