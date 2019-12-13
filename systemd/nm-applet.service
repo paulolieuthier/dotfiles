@@ -1,0 +1,10 @@
+[Unit]
+Description=Start nm-applet
+After=display-manager.service
+
+[Service]
+ExecStart=nm-applet
+Restart=always
+
+[Install]
+WantedBy=user-applications.target
