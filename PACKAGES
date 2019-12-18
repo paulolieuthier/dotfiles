@@ -1,6 +1,7 @@
 rofi
 tmux
 dex
+dex-autostart
 greenclip
 vim
 neovim
@@ -17,3 +18,4 @@ the_silver_searcher
 parallel
 pv
 jq
+htop
