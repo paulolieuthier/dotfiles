@@ -24,6 +24,7 @@ Plug 'vim-scripts/SingleCompile'
 Plug 'majutsushi/tagbar'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc' }
 Plug 'junegunn/fzf.vim'
 
