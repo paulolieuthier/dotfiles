@@ -5,30 +5,37 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term termite -e "zsh -i -c \"tmux\""
+set $term gnome-terminal -e tmux
 
 ### Look
 
 gaps inner 10
 default_border pixel 4
-output * bg /usr/local/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+font pango:DejaVu Sans Mono 12
+output * bg ~/dotfiles/background.jpg fill
 
-### Runner
-set $menu sh -c "~/.local/bin/dmenu-launch || dmenu_run"
+### Execs
+
+exec --no-startup-id systemctl --user start user-applications.target
+exec --no-startup-id sh -c "dex --autostart || dex-autostart --autostart"
+exec --no-startup-id ibus-daemon --xim -r -d
 
 ### Key bindings
 
 # start a terminal
 bindsym $mod+Return exec $term
 
+# keep cool
+bindsym Control+q exec true
+
 # lock screen
-bindsym Ctrl+Alt+l exec sh -c "~/.local/bin/lockscreen || swaylock -c 3e3e3e"
+bindsym Ctrl+Alt+l exec wl-lockscreen
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # launcher
-bindsym $mod+d exec $menu
+bindsym $mod+d exec rofi -show drun
 
 # drag and resize modifier
 floating_modifier $mod normal
@@ -141,6 +148,36 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-### More settings
+### Bar
 
-include ~/.config/sway/conf.d/*
+bar {
+    status_command i3status --config ~/.config/i3status/config
+    position top
+    separator_symbol " | "
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #323232 #323232 #ffffff
+    }
+}
+
+### Device setup
+
+input type:keyboard {
+    xkb_layout us
+    xkb_variant intl
+}
+
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+### Special keyboard keys
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
