@@ -43,9 +43,9 @@ Plug 'othree/yajs.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rust-lang/rust.vim'
 Plug 'tinco/haskell.vim'
-Plug 'jodosha/vim-godebug'
 
 " Misc
+Plug 'preservim/nerdtree'
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-commentary'
