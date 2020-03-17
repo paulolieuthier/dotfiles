@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+grim /tmp/screenlocked.png
+mogrify -scale 10% -scale 1000% /tmp/screenlocked.png
+swaylock -i /tmp/screenlocked.png
