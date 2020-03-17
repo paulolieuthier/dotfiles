@@ -11,6 +11,7 @@ set $term gnome-terminal -e tmux
 ### Look
 
 default_border pixel 5
+font pango:DejaVu Sans Mono 12
 
 ### execs
 
