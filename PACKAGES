@@ -12,8 +12,10 @@ tig
 xrandr
 xclip
 xsetroot
+wl-clipboard
 feh
 scrot
+grim
 imagemagick
 ImageMagick
 light
