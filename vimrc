@@ -31,9 +31,6 @@ Plug 'junegunn/fzf.vim'
 " Completion/IDE
 Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-Plug 'neoclide/coc-json'
-Plug 'neoclide/coc-yaml'
-Plug 'neoclide/coc-snippets'
 
 " Snippets
 Plug 'SirVer/ultisnips'
