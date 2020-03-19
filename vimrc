@@ -262,6 +262,9 @@ nnoremap <C-c> :Bdelete<CR>
 nmap <F9> :SCCompile<cr>
 nmap <F10> :SCCompileRun<cr>
 
+" NERDTree
+map <A-q> :NERDTreeToggle<CR>
+
 " CtrlP
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.git'] 
