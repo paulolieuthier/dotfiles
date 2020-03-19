@@ -264,8 +264,8 @@ nmap <F10> :SCCompileRun<cr>
 
 " CtrlP
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_cmd = ''
+let g:ctrlp_root_markers = ['.git'] 
+let g:ctrlp_mruf_relative = 1 
 nnoremap <leader>pf :CtrlP<CR>
 nnoremap <leader>pr :CtrlPMRUFiles<CR>
 
