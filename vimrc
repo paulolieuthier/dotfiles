@@ -8,7 +8,7 @@ filetype off
 call plug#begin('~/.vim/bundle')
 
 " File management
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'numkil/ag.nvim'
 
 " Colors
@@ -269,8 +269,8 @@ map <A-q> :NERDTreeToggle<CR>
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.git'] 
 let g:ctrlp_mruf_relative = 1 
-nnoremap <leader>pf :CtrlP<CR>
-nnoremap <leader>pr :CtrlPMRUFiles<CR>
+nnoremap <leader>pf :CtrlPMixed<CR>
+nnoremap <leader>pr :CtrlPMRU<CR>
 
 " Airline
 "let g:rehash256 = 1
