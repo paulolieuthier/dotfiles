@@ -1,5 +1,5 @@
 "
-" My .vimrc :D
+" my .vimrc :D
 "
 
 set nocompatible
@@ -7,20 +7,16 @@ set shell=/usr/bin/bash
 filetype off
 call plug#begin('~/.vim/bundle')
 
-" File management
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'numkil/ag.nvim'
-
-" Colors
+" colors
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 
-" Compilation
+" compilation
 Plug 'benekastah/neomake'
 Plug 'vim-scripts/SingleCompile'
 
-" Helpers
+" helpers
 Plug 'majutsushi/tagbar'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround'
@@ -28,21 +24,15 @@ Plug 'tpope/vim-repeat'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc' }
 Plug 'junegunn/fzf.vim'
 
-" Completion/IDE
+" ide
 Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-
-" Snippets
 Plug 'SirVer/ultisnips'
-
-" Languages
-Plug 'othree/yajs.vim'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'rust-lang/rust.vim'
-Plug 'tinco/haskell.vim'
-
-" Misc
 Plug 'preservim/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'numkil/ag.nvim'
+
+" misc
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-commentary'
@@ -106,76 +96,71 @@ if has("nvim")
 endif
 
 if has("gui_running")
-    " Remove menus and toolbars
+    " remove menus and toolbars
     set guioptions-=m
     set guioptions-=g
     set guioptions-=t
     set guioptions-=T
 
-    " Remove scrollbars
+    " remove scrollbars
     set guioptions-=r
     set guioptions-=R
     set guioptions-=l
     set guioptions-=L
     set guioptions-=b
 
-    " Remove clipboard autoselection
+    " remove clipboard autoselection
     set guioptions-=a
     set guioptions-=A
 
-    " Console dialogs
+    " console dialogs
     set guioptions+=c
 endif
 
-" Listen to Alt keys
-if !has('nvim')
-    let c = 'a'
-    while c <= 'z'
-        exec "set <A-" . c . ">=\e" . c
-        exec "imap \e" . c . " <A-" . c . ">"
-        let c = nr2char(1 + char2nr(c))
-    endw
-end
-
-" User space as leader key
-let mapleader="\<Space>"
-let g:mapleader="\<Space>"
-
-" Easily move between splits
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-nnoremap <leader>wc <C-w>c
-
-" Easily create splits
-nnoremap <leader>sv :vsp<CR>
-nnoremap <leader>sh :sp<CR>
-
-" Switch between files in buffer
-nmap <C-Tab> :bn<CR>
-nmap <A-l> :bn<CR>
-nmap <C-S-Tab> :bp<CR>
-nmap <A-h> :bp<CR>
-
-" Don't close buffer on :bd if it's displayed more than once
-let bclose_multiple = 0
-
-" Always set the current file directory as the local current directory
-autocmd BufEnter * silent! lcd %:p:h
-
-" Basic mappings
+" basic mappings
 noremap ; :
 noremap j gj
 noremap k gk
 
-" Remove search highlight
-nnoremap <Leader>n :noh<CR>
+" user space as leader key
+let mapleader="\<space>"
+let g:mapleader="\<space>"
 
-" Enable C-BS
-imap <C-BS> <C-w>
+" listen to Alt keys
+if !has('nvim')
+    let c = 'a'
+    while c <= 'z'
+        exec "set <a-" . c . ">=\e" . c
+        exec "imap \e" . c . " <a-" . c . ">"
+        let c = nr2char(1 + char2nr(c))
+    endw
+end
 
-" Accepting case errors
+" easily move between splits
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <leader>wc <c-w>c
+
+" easily create splits
+nnoremap <leader>sv :vsp<cr>
+nnoremap <leader>sh :sp<cr>
+
+" switch between files in buffer
+nmap <a-l> :bn<cr>
+nmap <a-h> :bp<cr>
+
+" don't close buffer on :bd if it's displayed more than once
+let bclose_multiple = 0
+
+" always set the current file directory as the local current directory
+autocmd BufEnter * silent! lcd %:p:h
+
+" remove search highlight
+nnoremap <leader>n :noh<cr>
+
+" useful for keeping sanity
 cab W! w!
 cab Q! q!
 cab Wq wq
@@ -185,34 +170,30 @@ cab WQ wq
 cab W w
 cab Q q
 cab E e
+map q: :q
 
-" Save with sudo
+" save with sudo
 cmap w!! w !sudo tee > /dev/null %
 
-" Centralize screen on jumping
+" centralize screen on jumping
 noremap n nzz
 noremap N Nzz
-noremap <C-d> <C-d>zz
-noremap <C-u> <C-u>zz
+noremap <c-d> <c-d>zz
+noremap <c-u> <c-u>zz
 
-" Vimdiff
-nnoremap <leader>do :diffget<CR>
-nnoremap <leader>dp :diffput<CR>
+" diffing
+nnoremap <leader>do :diffget<cr>
+nnoremap <leader>dp :diffput<cr>
 
-" Don't lose selection when shifting sidewards
+" don't lose selection when shifting sidewards
 xnoremap < <gv
 xnoremap > >gv
 
-" Exit terminal mode with ,ESC
-if has('nvim')
-    tnoremap jk <C-\><C-n>
-end
-
-" Edit and source .vimrc easily
+" edit and source .vimrc easily
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>lv :so $MYVIMRC<CR>
 
-" Create necessary directories on saving files
+" create necessary directories on saving files
 augroup vimrc-auto-mkdir
     autocmd!
     autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
@@ -225,97 +206,69 @@ augroup vimrc-auto-mkdir
     endfunction
 augroup END
 
-" Don't yank to default register when changing something
+" don't yank to default register when changing something
 nnoremap c "xc
 xnoremap c "xc
 
-" Don't copy over-pasted text in visual mode
+" don't copy over-pasted text in visual mode
 xnoremap p "_dp
 xnoremap P "_dP
 
-" Easily replace the current word and all its occurrences.
-nnoremap <Leader>rr :%s/\<<C-r><C-w>\>/<C-r><C-w>
-vnoremap <Leader>rr y:%s/<C-r>"/<C-r>"
-
-" No more accidentally showing up command window (Use C-f to show it)
-map q: :q<CR>
-
-" Custom tab size
+" different settings for some file types
 autocmd FileType json,javascript setlocal tabstop=2 shiftwidth=2
 autocmd FileType yml,yaml setlocal tabstop=2 shiftwidth=2
 autocmd FileType go setlocal tabstop=8 shiftwidth=8 noexpandtab
 
-"""""""""""
-" Plugins "
-"""""""""""
+"
+" plugins
+"
 
-" Easymotion
-map <Leader>j <Plug>(easymotion-prefix)
+" easymotion
+nnoremap <leader>j <plug>(easymotion-prefix)
 
 " vim-bbye: close buffer without closing split view
-nnoremap <C-c> :Bdelete<CR>
+nnoremap <c-c> :Bdelete<cr>
 
-" SingleCompile
-nmap <F9> :SCCompile<cr>
-nmap <F10> :SCCompileRun<cr>
+" nerdtree: open/focus or hide
+nnoremap <silent><expr> <a-1> winnr()==g:NERDTree.GetWinNum() ? ":NERDTreeClose\<cr>" : ":NERDTreeFocus\<cr>"
 
-" NERDTree
-map <A-q> :NERDTreeToggle<CR>
-
-" CtrlP
+" ctrlp
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.git'] 
 let g:ctrlp_mruf_relative = 1 
-nnoremap <leader>pf :CtrlPMixed<CR>
-nnoremap <leader>pr :CtrlPMRU<CR>
+nnoremap <leader>pf :CtrlPMixed<cr>
+nnoremap <leader>pr :CtrlPMRU<cr>
 
-" Airline
-"let g:rehash256 = 1
+" airline
 let g:airline_theme = 'base16'
 
-" Ag
+" ag
 let g:ag_working_path_mode="r" 
 
-" ALE
+" ale
 let g:ale_fix_on_save = 1
 
-"""""""
-" COC "
-"""""""
+"
+" COC
+"
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" fuzzy commands
+nnoremap <leader><space> :CocList<cr>
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" tabs and completion
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-Tab> pumvisible() ? "\<c-p>" : "\<c-h>"
+inoremap <silent><expr><c-space> coc#refresh()
+inoremap <expr><cr> pumvisible() ? "\<c-y>" : "\<cr>"
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" gotos
+nnoremap <silent> gd <plug>(coc-definition)
+nnoremap <silent> gy <plug>(coc-type-definition)
+nnoremap <silent> gi <plug>(coc-implementation)
+nnoremap <silent> gr <plug>(coc-references)
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
+" show documentation in preview window
+nnoremap <silent> K :call <sid>show_documentation()<cr>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -324,41 +277,25 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight symbol under cursor on CursorHold
+" show completion hint
+inoremap <silent><c-\> <c-o>:call CocActionAsync('showSignatureHelp')<cr>
+
+" highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Remap for rename current word
-nmap <leader>rr <Plug>(coc-rename)
+" remap for rename current word or rename locally in visual mode
+nnoremap <leader>rr <plug>(coc-rename)
+vnoremap <leader>rr y:%s/<c-r>"/<c-r>"
 
-" Remap for format selected region
-xmap <leader>f <Plug>(coc-format-selected)
-nmap <leader>f <Plug>(coc-format-selected)
+" remap for format selected region
+xmap <leader>f <plug>(coc-format-selected)
+nmap <leader>f <plug>(coc-format-selected)
 
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+" codeaction for current line
+nmap <leader>ac <plug>(coc-codeaction)
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a <Plug>(coc-codeaction-selected)
-nmap <leader>a <Plug>(coc-codeaction-selected)
+" autofix for current line
+nmap <leader>qf <plug>(coc-fix-current)
 
-" Remap for do codeAction of current line
-nmap <leader>ac <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf <Plug>(coc-fix-current)
-
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
-
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
+" add status line support, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
