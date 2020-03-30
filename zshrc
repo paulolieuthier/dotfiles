@@ -29,8 +29,6 @@ alias ll="ls -lh"
 alias la="ls -ah"
 alias lla="ls -lah"
 alias parallel="parallel --will-cite"
-alias copy="rsync -ah --progress"
-alias xclip="xclip -selection c"
 alias gw="./gradlew"
 
 # run local npm programs
