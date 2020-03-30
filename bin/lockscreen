@@ -1,5 +1,11 @@
 #!/usr/bin/env sh
 
-scrot /tmp/screenlocked.png
-mogrify -scale 10% -scale 1000% /tmp/screenlocked.png
-i3lock -i /tmp/screenlocked.png
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    grim /tmp/screenlocked.png
+    mogrify -scale 10% -scale 1000% /tmp/screenlocked.png
+    swaylock -i /tmp/screenlocked.png
+else
+    scrot /tmp/screenlocked.png
+    mogrify -scale 10% -scale 1000% /tmp/screenlocked.png
+    i3lock -i /tmp/screenlocked.png
+fi
