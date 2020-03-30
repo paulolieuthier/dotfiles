@@ -51,7 +51,7 @@ set backspace=eol,start,indent
 set cursorline
 set cursorcolumn
 set wildmenu
-set wildmode=longest,list:longest
+set wildmode=longest,list:longest,full
 set ruler
 set ignorecase
 set smartcase
@@ -73,13 +73,13 @@ set novisualbell
 set signcolumn=yes
 set expandtab
 set smarttab
-set shiftwidth=4
+set shiftwidth=0
 set tabstop=4
 set laststatus=2
 set cmdheight=2
 set t_Co=256
 set shortmess+=c
-set completeopt=menu,menuone,noinsert,noselect
+set completeopt=menu,menuone,preview,noinsert,noselect
 set clipboard=unnamedplus
 set updatetime=300
 set autochdir
@@ -215,9 +215,9 @@ xnoremap p "_dp
 xnoremap P "_dP
 
 " different settings for some file types
-autocmd FileType json,javascript setlocal tabstop=2 shiftwidth=2
-autocmd FileType yml,yaml setlocal tabstop=2 shiftwidth=2
-autocmd FileType go setlocal tabstop=8 shiftwidth=8 noexpandtab
+autocmd FileType json,javascript setlocal tabstop=2
+autocmd FileType yml,yaml setlocal tabstop=2
+autocmd FileType go setlocal tabstop=4 noexpandtab
 
 "
 " plugins
