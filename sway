@@ -16,9 +16,7 @@ output * bg ~/.background.jpg fill
 
 ### Execs
 
-exec --no-startup-id systemctl --user start user-applications.target
-exec --no-startup-id sh -c "dex --autostart || dex-autostart --autostart"
-exec --no-startup-id ibus-daemon --xim -r -d
+exec systemctl --user start user-applications.target
 
 ### Key bindings
 
