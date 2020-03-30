@@ -259,7 +259,7 @@ nnoremap <leader><space> :CocList<cr>
 inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-Tab> pumvisible() ? "\<c-p>" : "\<c-h>"
 inoremap <silent><expr><c-space> coc#refresh()
-inoremap <expr><cr> pumvisible() ? "\<c-y>" : "\<cr>"
+inoremap <expr><cr> complete_info()["selected"] != "-1" ? "\<c-y>" : "\<c-g>u\<cr>"
 
 " gotos
 nmap <silent>gd <plug>(coc-definition)
@@ -279,9 +279,6 @@ endfunction
 
 " show completion hint
 inoremap <silent><c-\> <c-o>:call CocActionAsync('showSignatureHelp')<cr>
-
-" highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " remap for rename current word or rename locally in visual mode
 nnoremap <leader>rr <plug>(coc-rename)
