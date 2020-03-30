@@ -8,16 +8,12 @@ set -g default-shell '/usr/bin/zsh'
 set -g @plugin 'jimeh/tmux-themepack'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'nhdaly/tmux-better-mouse-mode'
-set -g @plugin 'tmux-plugins/tmux-urlview'
 
 # theme
 set -g @themepack 'block/gray'
 
 # history
 set -g history-limit 100000000
-
-# copy urls
-set -g @fzf-url-bind 'x'
 
 # enable mouse support
 set-option -g mouse on
