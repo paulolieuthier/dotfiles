@@ -211,7 +211,7 @@ nnoremap c "xc
 xnoremap c "xc
 
 " don't copy over-pasted text in visual mode
-xnoremap p "_dp
+xnoremap p "_dP
 xnoremap P "_dP
 
 " different settings for some file types
