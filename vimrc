@@ -158,7 +158,7 @@ let bclose_multiple = 0
 autocmd BufEnter * silent! lcd %:p:h
 
 " remove search highlight
-nnoremap <leader>n :noh<cr>
+nnoremap <silent><leader>n :noh<cr>
 
 " useful for keeping sanity
 cab W! w!
@@ -227,7 +227,7 @@ autocmd FileType go setlocal tabstop=4 noexpandtab
 nnoremap <leader>j <plug>(easymotion-prefix)
 
 " vim-bbye: close buffer without closing split view
-nnoremap <c-c> :Bdelete<cr>
+nnoremap <silent><c-c> :Bdelete<cr>
 
 " nerdtree: open/focus or hide
 nnoremap <silent><expr> <a-1> winnr()==g:NERDTree.GetWinNum() ? ":NERDTreeClose\<cr>" : ":NERDTreeFocus\<cr>"
@@ -262,10 +262,10 @@ inoremap <silent><expr><c-space> coc#refresh()
 inoremap <expr><cr> pumvisible() ? "\<c-y>" : "\<cr>"
 
 " gotos
-nnoremap <silent> gd <plug>(coc-definition)
-nnoremap <silent> gy <plug>(coc-type-definition)
-nnoremap <silent> gi <plug>(coc-implementation)
-nnoremap <silent> gr <plug>(coc-references)
+nmap <silent>gd <plug>(coc-definition)
+nmap <silent>gy <plug>(coc-type-definition)
+nmap <silent>gi <plug>(coc-implementation)
+nmap <silent>gr <plug>(coc-references)
 
 " show documentation in preview window
 nnoremap <silent> K :call <sid>show_documentation()<cr>
