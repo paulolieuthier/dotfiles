@@ -29,6 +29,7 @@ alias ll="ls -lh"
 alias la="ls -ah"
 alias lla="ls -lah"
 alias parallel="parallel --will-cite"
+alias open="xdg-open"
 alias gw="./gradlew"
 
 # run local npm programs
