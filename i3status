@@ -1,43 +1,53 @@
 general {
-       colors = true
-       interval = 1
+    colors = true
+    interval = 1
 }
 
-order += "disk /"
 order += "wireless _first_"
 order += "ethernet _first_"
-order += "load"
+order += "run_watch VPN"
 order += "volume master"
+order += "load"
+order += "memory"
+order += "disk /"
 order += "battery all"
 order += "tztime local"
 
 wireless _first_ {
-       format_up = "W: (%quality at %essid)"
-       format_down = "W: down"
+    format_up = "WIFI: (%quality at %essid)"
+    format_down = "WIFI: down"
 }
 
 ethernet _first_ {
-       format_up = "E: %ip"
-       format_down = "E: down"
+    format_up = "CABLE: %ip"
+    format_down = "CABLE: down"
+}
+
+run_watch VPN {
+    pidfile = "/sys/class/net/tun0/dev_id"
 }
 
 volume master {
-       format = "VOL: %volume"
-       format_muted = "MUTE (%volume)"
-}
-
-battery all {
-       format = "%status: %percentage"
-}
-
-tztime local {
-       format = "%H:%M:%S %Y-%m-%d "
+    format = "VOLUME: %volume"
+    format_muted = "VOLUME (MUTE): %volume"
 }
 
 load {
-       format = "LOAD: %1min"
+    format = "LOAD: %1min"
+}
+
+memory {
+    format = "FREE RAM: %free"
 }
 
 disk "/" {
-       format = "FREE: %avail"
+    format = "FREE DISK: %avail"
+}
+
+battery all {
+    format = "BATTERY (%status): %percentage"
+}
+
+tztime local {
+    format = "%H:%M %d/%m "
 }
