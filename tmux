@@ -51,11 +51,11 @@ bind C-l send-keys 'C-l'
 
 # setup 'v' to begin selection as in vim
 bind-key -T copy-mode-vi v send-keys -X begin-selection
-bind-key -T copy-mode-vi y send-keys -X copy-pipe xclip
+bind-key -T copy-mode-vi y send-keys -X copy-pipe copy
 
 # update default binding of `Enter` to also use copy-pipe
 unbind -T copy-mode-vi Enter
-bind-key -T copy-mode-vi Enter send-keys -X copy-pipe xclip
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe copy
 
 # initialize tmux plugin manager (keep this at the very bottom)
 run '~/.tmux/plugins/tpm/tpm'
