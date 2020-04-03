@@ -27,5 +27,8 @@
     algorithm = patience
 
 [rerere]
-	enabled = true
-	autoupdate = true
+    enabled = true
+    autoupdate = true
+
+[includeIf "gitdir:~/Code/inloco/"]
+    path = ~/Code/inloco/.gitconfig
