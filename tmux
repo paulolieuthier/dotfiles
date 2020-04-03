@@ -1,5 +1,6 @@
 # Install Tmux Plugin Manager by running:
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# And type Prefix+I to install plugins
 
 set -g default-command '/usr/bin/zsh'
 set -g default-shell '/usr/bin/zsh'
