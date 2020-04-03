@@ -211,8 +211,8 @@ nnoremap c "xc
 xnoremap c "xc
 
 " don't copy over-pasted text in visual mode
-xnoremap p "_dP
-xnoremap P "_dP
+xnoremap p "_s<c-r>"<esc>
+xnoremap P "_s<c-r>"<esc>
 
 " different settings for some file types
 autocmd FileType json,javascript setlocal tabstop=2
