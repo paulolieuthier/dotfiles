@@ -47,6 +47,7 @@ filetype plugin indent on
 syntax on
 set noshowmode
 set cmdheight=2
+set showcmd
 set backspace=eol,start,indent
 set cursorline
 set cursorcolumn
