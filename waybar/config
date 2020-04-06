@@ -1,0 +1,66 @@
+{
+    "height": 30,
+    "layer": "top",
+    "modules-left": ["sway/workspaces"],
+    "modules-right": ["network", "cpu", "memory", "backlight", "pulseaudio", "battery", "clock", "tray"],
+
+    "sway/workspaces": {
+        "disable-scroll-wraparound": true,
+        "enable-bar-scroll": true,
+        "smooth-scrolling-threshold": 5.0
+    },
+    "network": {
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": " Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": " {}%"
+    },
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["", ""]
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%   {format_source}",
+        "format-bluetooth": "{icon} {volume}%   {format_source}",
+        // "format-bluetooth-muted": " {icon}   {format_source}",
+        // "format-muted": "{volume}%     {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "format": " {:%H:%M %a %d/%m}"
+    },
+    "tray": {
+        "spacing": 10
+    }
+}

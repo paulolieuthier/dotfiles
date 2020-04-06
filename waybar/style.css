@@ -1,0 +1,44 @@
+* {
+  border-radius: 0px;
+  font-family: 'sans-serif, FontAwesome';
+  font-size: 16px;
+}
+
+window#waybar {
+  background-color: transparent;
+  color: white;
+}
+
+#workspaces button {
+  background: transparent;
+  padding: 0 2px;
+}
+
+#workspaces button label {
+  padding: 0;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+}
+
+#workspaces button.focused {
+  background-color: #64727D;
+}
+
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+}
+
+label {
+  background-color: transparent;
+  padding: 0 15px;
+}
+
+label.muted {
+  color: yellow;
+}
+
+label.critical {
+  color: red;
+}
