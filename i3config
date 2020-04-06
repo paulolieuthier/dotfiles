@@ -16,6 +16,7 @@ font pango:DejaVu Sans Mono 12
 ### execs
 
 exec --no-startup-id sh -c "dex --autostart || dex-autostart --autostart"
+exec --no-startup-id dunst
 exec --no-startup-id xsetroot -solid "#333333"
 exec --no-startup-id wallpaper
 exec --no-startup-id ibus-daemon --xim -r -d
