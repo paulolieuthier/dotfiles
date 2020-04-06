@@ -17,6 +17,8 @@ output * bg ~/.background.jpg fill
 ### Execs
 
 exec systemctl --user start user-applications.target
+exec mako
+exec nm-applet --indicator
 
 ### Key bindings
 
