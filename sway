@@ -41,6 +41,10 @@ bindsym $mod+Shift+q kill
 # launcher
 bindsym $mod+d exec rofi -show drun
 
+# screenshot
+bindsym Print exec slurp | grim -g - - | wl-copy
+bindsym Shift+Print exec grim
+
 # drag and resize modifier
 floating_modifier $mod normal
 
