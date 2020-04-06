@@ -30,7 +30,7 @@ bindsym $mod+Return exec $term
 bindsym Control+q exec true
 
 # lock screen
-bindsym Ctrl+Alt+l exec wl-lockscreen
+bindsym Ctrl+Alt+l exec lockscreen
 
 # clipboard management
 bindsym $mod+p exec clipman pick -t rofi
