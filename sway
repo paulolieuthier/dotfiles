@@ -18,6 +18,7 @@ output * bg ~/.background.jpg fill
 
 exec systemctl --user start user-applications.target
 exec mako
+exec wl-paste -t text --watch clipman store
 exec nm-applet --indicator
 
 ### Key bindings
@@ -30,6 +31,9 @@ bindsym Control+q exec true
 
 # lock screen
 bindsym Ctrl+Alt+l exec wl-lockscreen
+
+# clipboard management
+bindsym $mod+p exec clipman pick -t rofi
 
 # kill focused window
 bindsym $mod+Shift+q kill
