@@ -50,6 +50,9 @@ bind r source-file ~/.tmux.conf
 # C-l is taken over by vim style pane navigation
 bind C-l send-keys 'C-l'
 
+# consider prefix+C-[ the same as prefix+[, for sanity
+bind C-[ copy-mode
+
 # setup 'v' to begin selection as in vim
 bind -T copy-mode-vi v send-keys -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-pipe copy
