@@ -22,8 +22,8 @@ set-option -s set-clipboard off
 
 # disable leaving copy mode on click when in copy mode, but keep clearing selection
 # on click and exiting copy mode when scrolling back to the end
-unbind-key -T copy-mode-vi MouseDragEnd1Pane
-bind-key -T copy-mode-vi MouseDown1Pane select-pane\; send-keys -X clear-selection
+unbind -T copy-mode-vi MouseDragEnd1Pane
+bind -T copy-mode-vi MouseDown1Pane select-pane\; send-keys -X clear-selection
 bind -n MouseDrag1Pane if -Ft= '#{mouse_any_flag}' 'if -Ft= \"#{pane_in_mode}\" \"copy-mode -eM\" \"send-keys -M\"' 'copy-mode -eM'
 
 # quick ESC
@@ -51,12 +51,12 @@ bind r source-file ~/.tmux.conf
 bind C-l send-keys 'C-l'
 
 # setup 'v' to begin selection as in vim
-bind-key -T copy-mode-vi v send-keys -X begin-selection
-bind-key -T copy-mode-vi y send-keys -X copy-pipe copy
+bind -T copy-mode-vi v send-keys -X begin-selection
+bind -T copy-mode-vi y send-keys -X copy-pipe copy
 
 # update default binding of `Enter` to also use copy-pipe
 unbind -T copy-mode-vi Enter
-bind-key -T copy-mode-vi Enter send-keys -X copy-pipe copy
+bind -T copy-mode-vi Enter send-keys -X copy-pipe copy
 
 # initialize tmux plugin manager (keep this at the very bottom)
 run '~/.tmux/plugins/tpm/tpm'
