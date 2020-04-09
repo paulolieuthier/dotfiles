@@ -51,7 +51,9 @@ bind r source-file ~/.tmux.conf
 bind C-l send-keys 'C-l'
 
 # consider prefix+C-[ the same as prefix+[, for sanity
+# and same for pasting
 bind C-[ copy-mode
+bind C-] paste-buffer
 
 # setup 'v' to begin selection as in vim
 bind -T copy-mode-vi v send-keys -X begin-selection
