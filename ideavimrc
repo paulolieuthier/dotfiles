@@ -1,7 +1,7 @@
 source ~/.vimrc
 
 set nonumber
-set clipboard+=ideaput
+set clipboard=unnamedplus
 
 map <C-n> :action EditorDown<CR>
 map <C-p> :action EditorUp<CR>
@@ -46,5 +46,3 @@ map <space>n :noh<CR>
 map <space>jw :action KJumpAction.Word1<CR>
 map <space>jf :action KJumpAction<CR>
 
-set surround
-set ideajoin
