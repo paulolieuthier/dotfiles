@@ -85,6 +85,7 @@ set clipboard=unnamedplus
 set updatetime=300
 set autochdir
 set list
+set fileformats=unix
 set listchars=tab:>-,trail:·,extends:>,precedes:<,space:·,nbsp:·
 set encoding=utf-8
 set guifont=Fira\ Code\ 12
