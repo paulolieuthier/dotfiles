@@ -1,7 +1,7 @@
 {
     "height": 30,
     "layer": "top",
-    "modules-left": ["sway/workspaces"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-right": ["network", "cpu", "memory", "backlight", "pulseaudio", "battery", "clock", "tray"],
 
     "sway/workspaces": {
@@ -61,6 +61,6 @@
         "format": " {:%H:%M %a %d/%m}"
     },
     "tray": {
-        "spacing": 10
+        "spacing": 5
     }
 }

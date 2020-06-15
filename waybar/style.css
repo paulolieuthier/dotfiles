@@ -42,3 +42,7 @@ label.muted {
 label.critical {
   color: red;
 }
+
+#tray {
+    margin-right: 10px;
+}
