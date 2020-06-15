@@ -167,6 +167,7 @@ bar {
 input type:keyboard {
     xkb_layout us
     xkb_variant intl
+    xkb_layout arrowsinhomerow
 }
 
 input type:touchpad {

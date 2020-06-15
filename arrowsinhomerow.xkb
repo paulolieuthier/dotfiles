@@ -1,0 +1,12 @@
+default partial alphanumeric_keys
+xkb_symbols "intl" {
+	include "us(intl)"
+	include "level3(caps_switch)"
+	name[Group1] = "English (US, intl., with dead keys and arrows in home row)";
+	key <AC05> { [	   g,          G,          Home,             Home ] };
+	key <AC06> { [	   h,          H,          Left,             Left ] };
+	key <AC07> { [	   j,          J,          Down,             Down ] };
+	key <AC08> { [	   k,          K,            Up,               Up ] };
+	key <AC09> { [	   l,          L,         Right,            Right ] };
+	key <AC10> { [ semicolon,  colon,           End,              End ] };
+};
