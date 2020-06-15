@@ -12,19 +12,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 
-" compilation
-Plug 'benekastah/neomake'
-Plug 'vim-scripts/SingleCompile'
-
 " helpers
-Plug 'majutsushi/tagbar'
-Plug 'cohama/lexima.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc' }
 Plug 'junegunn/fzf.vim'
 
 " ide
+Plug 'airblade/vim-rooter'
 Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 Plug 'SirVer/ultisnips'
@@ -83,7 +79,6 @@ set shortmess+=c
 set completeopt=menu,menuone,preview,noinsert,noselect
 set clipboard=unnamedplus
 set updatetime=300
-set autochdir
 set list
 set fileformats=unix
 set listchars=tab:>-,trail:·,extends:>,precedes:<,space:·,nbsp:·
@@ -224,6 +219,9 @@ autocmd FileType go setlocal tabstop=4 noexpandtab
 "
 " plugins
 "
+
+" rooter
+let g:rooter_change_directory_for_non_project_files = 'current'
 
 " easymotion
 nnoremap <leader>j <plug>(easymotion-prefix)
