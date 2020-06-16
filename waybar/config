@@ -61,6 +61,7 @@
         "format": " {:%H:%M %a %d/%m}"
     },
     "tray": {
-        "spacing": 5
+        "spacing": 5,
+        "icon-size": 22
     }
 }
