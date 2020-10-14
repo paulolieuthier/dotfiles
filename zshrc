@@ -32,6 +32,7 @@ alias lla="ls -lah --color --group-directories-first"
 alias parallel="parallel --will-cite"
 alias open="xdg-open"
 alias gw="./gradlew"
+alias k="kubectl"
 
 # run local npm programs
 function npm-do { (PATH=$(npm bin):$PATH; eval $@;) }
