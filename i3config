@@ -7,6 +7,7 @@ set $down j
 set $up k
 set $right l
 set $term gnome-terminal -e tmux
+set $filemanager nautilus
 
 ### Look
 
@@ -29,6 +30,9 @@ for_window [class="jetbrains-idea-ce"] border normal
 
 # start a terminal
 bindsym $mod+Return exec $term
+
+# start a file manager
+bindsym $mod+Shift+Return exec $filemanager
 
 # keep cool
 bindsym Control+q exec true
