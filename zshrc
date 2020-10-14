@@ -24,10 +24,11 @@ if [[ `command -v nvim` ]]; then
 fi
 
 # aliases
-alias l="ls"
-alias ll="ls -lh"
-alias la="ls -ah"
-alias lla="ls -lah"
+alias l="ls --color --group-directories-first"
+alias ls="ls --color --group-directories-first"
+alias ll="ls -lh --color --group-directories-first"
+alias la="ls -ah --color --group-directories-first"
+alias lla="ls -lah --color --group-directories-first"
 alias parallel="parallel --will-cite"
 alias open="xdg-open"
 alias gw="./gradlew"
