@@ -64,11 +64,11 @@ set infercase
 set hlsearch
 set incsearch
 set showmatch
+set nostartofline
 set nonumber
 set autoindent
 set nobackup
 set nowritebackup
-set nowb
 set noswapfile
 set scrolloff=5
 set background=dark
