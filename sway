@@ -21,6 +21,11 @@ exec mako
 exec wl-paste -t text --watch clipman store
 exec nm-applet --indicator
 
+# https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
 ### Key bindings
 
 # start a terminal
