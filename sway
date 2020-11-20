@@ -55,6 +55,9 @@ bindsym Shift+Print exec grim
 # drag and resize modifier
 floating_modifier $mod normal
 
+# sticky windows
+bindsym $mod+w sticky toggle
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
@@ -126,7 +129,7 @@ bindsym $mod+v splitv
 
 # switch the current container between layout styles
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # fullscreen
