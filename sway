@@ -5,7 +5,6 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term gnome-terminal -e tmux
 
 ### Look
 
@@ -29,7 +28,10 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 ### Key bindings
 
 # start a terminal
-bindsym $mod+Return exec $term
+bindsym $mod+Return exec gnome-terminal -e tmux
+
+# start a file manager
+bindsym $mod+Shift+Return exec nautilus
 
 # keep cool
 bindsym Control+q exec true
