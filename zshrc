@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="robbyrussell"
 
-plugins=(git git-extras docker docker-compose gradle)
+plugins=(git git-extras docker docker-compose kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -43,7 +43,6 @@ alias lla="ls -lah --color --group-directories-first"
 alias parallel="parallel --will-cite"
 alias open="xdg-open"
 alias gw="./gradlew"
-alias k="kubectl"
 
 # run local npm programs
 function npm-do { (PATH=$(npm bin):$PATH; eval $@;) }
