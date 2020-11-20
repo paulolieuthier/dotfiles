@@ -13,7 +13,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 filetype off
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/.config/nvim/bundle')
 
 " colors
 Plug 'vim-airline/vim-airline'
