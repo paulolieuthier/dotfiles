@@ -18,7 +18,7 @@ call plug#begin('~/.vim/bundle')
 " colors
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'flazz/vim-colorschemes'
+Plug 'morhetz/gruvbox'
 
 " helpers
 Plug 'jiangmiao/auto-pairs'
@@ -71,7 +71,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 set scrolloff=5
-set background=dark
 set hidden
 set noerrorbells
 set novisualbell
@@ -91,10 +90,12 @@ set list
 set fileformats=unix
 set listchars=tab:>-,trail:·,extends:>,precedes:<,space:·,nbsp:·
 set encoding=utf-8
-set guifont=Fira\ Code\ 12
-colo gruvbox
-
 set mouse=a
+
+" colors
+set termguicolors
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 if has("nvim")
     set inccommand=nosplit
