@@ -1,0 +1,32 @@
+CYAN="%{$fg[cyan]%}"
+RED="%{$fg[red]%}"
+GREEN="%{$fg[green]%}"
+YELLOW="%{$fg[yellow]%}"
+WHITE="%{$fg[white]%}"
+BYELLOW="%{$fg_bold[yellow]%}"
+BBLUE="%{$fg_bold[blue]%}"
+BGREEN="%{$fg_bold[green]%}"
+
+function prompt_clock() {
+    echo "${WHITE}[%*]"
+}
+
+function prompt_pwd() {
+  echo " ${BYELLOW}${PWD/$HOME/~}"
+}
+
+function prompt_git() {
+    ref=$(git symbolic-ref HEAD 2> /dev/null || git rev-parse --short HEAD 2> /dev/null) || return 0
+    dirty=$([[ -n "$(git status --porcelain | tail -n1)" ]] && echo "✗")
+    echo " ${BBLUE}git:(${RED}${ref#refs/heads/}${BBLUE})${YELLOW}${dirty}"
+}
+
+function prompt_kube() {
+    ctx=$(kubectl config current-context 2> /dev/null) || return 0
+    ns=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2> /dev/null)
+    echo " ${BBLUE}kube:(${RED}${ctx##*:}${WHITE}:${CYAN}${ns:-default}${BBLUE})"
+}
+
+PROMPT='
+$(prompt_clock)$(prompt_pwd)$(prompt_git)$(prompt_kube)
+${GREEN}➜${reset_color} '

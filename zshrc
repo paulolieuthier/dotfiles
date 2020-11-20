@@ -26,6 +26,9 @@ export MANPAGER="nvim -c 'set ft=man' -"
 export TERM=screen-256color
 export LESS="-FXR"
 
+# prompt
+source ~/.zsh_prompt.zsh
+
 if [[ `command -v nvim` ]]; then
     export EDITOR=nvim
     alias vim=nvim
