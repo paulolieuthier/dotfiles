@@ -23,7 +23,7 @@ which javac > /dev/null 2>&1 && export JAVA_PATH=$(dirname $(dirname $(readlink 
 export LANG=en_US.utf8
 export EDITOR=vim
 export MANPAGER="nvim -c 'set ft=man' -"
-export TERM=xterm-256color
+export TERM=screen-256color
 export LESS="-FXR"
 
 if [[ `command -v nvim` ]]; then

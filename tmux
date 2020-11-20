@@ -4,6 +4,7 @@
 
 set -g default-command '/usr/bin/zsh'
 set -g default-shell '/usr/bin/zsh'
+set-option -g default-terminal screen
 
 # plugins
 set -g @plugin 'jimeh/tmux-themepack'
