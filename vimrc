@@ -30,7 +30,6 @@ Plug 'junegunn/fzf.vim'
 " ide
 Plug 'airblade/vim-rooter'
 Plug 'w0rp/ale'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 Plug 'SirVer/ultisnips'
 Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -256,52 +255,3 @@ let g:ag_working_path_mode="r"
 
 " ale
 let g:ale_fix_on_save = 1
-
-"
-" COC
-"
-
-" fuzzy commands
-nnoremap <leader><space> :CocList<cr>
-
-" tabs and completion
-inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><s-Tab> pumvisible() ? "\<c-p>" : "\<c-h>"
-inoremap <silent><expr><c-space> coc#refresh()
-inoremap <expr><cr> complete_info()["selected"] != "-1" ? "\<c-y>" : "\<c-g>u\<cr>"
-
-" gotos
-nmap <silent>gd <plug>(coc-definition)
-nmap <silent>gy <plug>(coc-type-definition)
-nmap <silent>gi <plug>(coc-implementation)
-nmap <silent>gr <plug>(coc-references)
-
-" show documentation in preview window
-nnoremap <silent> K :call <sid>show_documentation()<cr>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" show completion hint
-inoremap <silent><c-\> <c-o>:call CocActionAsync('showSignatureHelp')<cr>
-
-" remap for rename current word or rename locally in visual mode
-nnoremap <leader>rr <plug>(coc-rename)
-vnoremap <leader>rr y:%s/<c-r>"/<c-r>"
-
-" remap for format selected region
-xmap <leader>f <plug>(coc-format-selected)
-nmap <leader>f <plug>(coc-format-selected)
-
-" codeaction for current line
-nmap <leader>ac <plug>(coc-codeaction)
-
-" autofix for current line
-nmap <leader>qf <plug>(coc-fix-current)
-
-" add status line support, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
