@@ -19,6 +19,7 @@ exec systemctl --user start user-applications.target
 exec mako
 exec wl-paste -t text --watch clipman store
 exec nm-applet --indicator
+exec dex-autostart --autostart
 
 # https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
