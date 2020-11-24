@@ -37,6 +37,7 @@ fi
 # aliases
 alias l="ls --color --group-directories-first"
 alias ls="ls --color --group-directories-first"
+alias sl="ls --color --group-directories-first"
 alias ll="ls -lh --color --group-directories-first"
 alias la="ls -ah --color --group-directories-first"
 alias lla="ls -lah --color --group-directories-first"
