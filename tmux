@@ -7,7 +7,6 @@ set -g default-shell '/usr/bin/zsh'
 set-option -g default-terminal screen
 
 # plugins
-set -g @plugin 'jimeh/tmux-themepack'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 
@@ -46,7 +45,7 @@ set-window-option -g pane-base-index 1
 
 # force reload of config file
 unbind r
-bind r source-file ~/.tmux.conf
+bind r source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
 
 # C-l is taken over by vim style pane navigation
 bind C-l send-keys 'C-l'
@@ -64,11 +63,14 @@ bind -T copy-mode-vi y send-keys -X copy-pipe copy
 unbind -T copy-mode-vi Enter
 bind -T copy-mode-vi Enter send-keys -X copy-pipe copy
 
+# style
+set -g status-bg black
+set -g status-left " "
+set -g window-status-current-style fg=black,bg=white
+set -g window-status-style fg=white,bg=black
+set -g window-status-format " #I:#W "
+set -g window-status-current-format " #I:#W "
+set -g window-status-separator " "
+
 # initialize tmux plugin manager (keep this at the very bottom)
 run '~/.tmux/plugins/tpm/tpm'
-
-# tweak theme (keep this even lower)
-set -g status-fg colour250
-set -g status-left ""
-set -g status-right "#[fg=colour248,bg=colour235] %H:%M #[fg=colour250,bg=colour240] #I:#P #[fg=colour232,bg=colour245,bold] #S "
-set -g status-justify left
