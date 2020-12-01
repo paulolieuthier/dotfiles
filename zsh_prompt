@@ -9,7 +9,11 @@ function prompt_clock() {
     echo "${WHITE}$(date +'%R')"
 }
 
-function prompt_pwd() {
+function prompt_pwd_large() {
+    echo " ${YELLOW}${PWD/$HOME/~}"
+}
+
+function prompt_pwd_short() {
     wd="${PWD/$HOME/~}"
     IFS='/' arr=($(echo -n "$wd"))
     last="${arr[-1]}"
@@ -42,15 +46,30 @@ function prompt_prompt() {
     echo "%(?.${BGREEN}.${BRED})> "
 }
 
+function expand_prompt() {
+    echo -n $1 | sed -r 's/(%b|%B|%F\{[^}]+}|%\([^)]+\))//g'
+}
+
 function build_prompt() {
     max=$(tput cols)
-    prompt_pre="$(prompt_clock)$(prompt_pwd)$(prompt_git)$(prompt_aws)$(prompt_kube)"
-    prompt_pre_text=$(print -P "${prompt_pre}") # only text
+
+    # try single line with large pwd
+    prompt_pre="$(prompt_clock)$(prompt_pwd_large)$(prompt_git)$(prompt_aws)$(prompt_kube)"
+    prompt_pre_text=$(expand_prompt "${prompt_pre}")
+
+    # if too large try single line with short pwd
     if [ ${#prompt_pre_text} -ge ${max} ]; then
-        prompt_pre="$(prompt_clock)$(prompt_pwd)"
+        prompt_pre="$(prompt_clock)$(prompt_pwd_short)$(prompt_git)$(prompt_aws)$(prompt_kube)"
+        prompt_pre_text=$(expand_prompt "${prompt_pre}")
+    fi
+
+    # if too large use multi line with large pwd
+    if [ ${#prompt_pre_text} -ge ${max} ]; then
+        prompt_pre="$(prompt_clock)$(prompt_pwd_large)"
         prompt_pre_second="$(prompt_git)$(prompt_aws)$(prompt_kube)"
         prompt_pre="${prompt_pre}\n${prompt_pre_second:1}" # remove initial space from second line
     fi
+
     echo "${prompt_pre}\n$(prompt_prompt)${RESET}"
 }
 
