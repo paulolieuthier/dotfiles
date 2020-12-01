@@ -6,11 +6,19 @@ BRED="%B%F{red}"
 BBLUE="%B%F{blue}"
 
 function prompt_clock() {
-    echo "${WHITE}[$(date +'%T')]"
+    echo "${WHITE}$(date +'%R')"
 }
 
 function prompt_pwd() {
-  echo " ${YELLOW}${PWD/$HOME/~}"
+    wd="${PWD/$HOME/~}"
+    IFS='/' arr=($(echo -n "$wd"))
+    last="${arr[-1]}"
+    unset "arr[-1]"
+    echo -n " ${YELLOW}"
+    for el in ${arr[@]}; do
+        echo -n "${el:0:1}/"
+    done
+    echo "${last}"
 }
 
 function prompt_git() {
@@ -27,7 +35,7 @@ function prompt_aws() {
 function prompt_kube() {
     ctx=$(kubectl config current-context 2> /dev/null) || return 0
     ns=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2> /dev/null)
-    echo " ${BBLUE}kube:(${BRED}${ctx##*:}${WHITE}:${BCYAN}${ns:-default}${BBLUE})"
+    echo " ${BBLUE}k8s:(${BRED}${ctx##*:cluster/}${WHITE}:${BCYAN}${ns:-default}${BBLUE})"
 }
 
 function prompt_prompt() {
@@ -38,13 +46,12 @@ function prompt_prompt() {
 function build_prompt() {
     prev_status=$?
     max=$(tput cols)
-    prompt_pre="$(prompt_clock)$(prompt_pwd)$(prompt_aws)$(prompt_git)$(prompt_kube)"
+    prompt_pre="$(prompt_clock)$(prompt_pwd)$(prompt_git)$(prompt_aws)$(prompt_kube)"
     # remove colors
     prompt_pre_text=$(echo -n "${prompt_pre}" | sed -r 's/(%b|%B|%F\{[^}]+})//g')
-    echo "${#prompt_pre_text}, ${max}, '${prompt_pre_text}'" >> ~/log
     if [ ${#prompt_pre_text} -ge ${max} ]; then
         prompt_pre="$(prompt_clock)$(prompt_pwd)"
-        prompt_pre_second="$(prompt_aws)$(prompt_git)$(prompt_kube)"
+        prompt_pre_second="$(prompt_git)$(prompt_aws)$(prompt_kube)"
         prompt_pre="${prompt_pre}\n${prompt_pre_second:1}" # remove initial space from second line
     fi
     echo "${prompt_pre}\n$(prompt_prompt ${prev_status})${reset_color}"
