@@ -3,7 +3,6 @@ WHITE="%b%F{white}"
 BGREEN="%B%F{green}"
 BCYAN="%B%F{cyan}"
 BRED="%B%F{red}"
-BBLUE="%B%F{blue}"
 
 function prompt_clock() {
     echo "${WHITE}$(date +'%R')"
@@ -24,18 +23,18 @@ function prompt_pwd() {
 function prompt_git() {
     ref=$(git symbolic-ref HEAD 2> /dev/null || git rev-parse --short HEAD 2> /dev/null) || return 0
     dirty=$([[ -n "$(git status --porcelain | tail -n1)" ]] && echo " X")
-    echo " ${BBLUE}git:(${BRED}${ref#refs/heads/}${YELLOW}${dirty}${BBLUE})"
+    echo " ${BCYAN}git:(${BRED}${ref#refs/heads/}${YELLOW}${dirty}${BCYAN})"
 }
 
 function prompt_aws() {
     profile=$(export | grep AWS_PROFILE) || return 0
-    echo " ${BBLUE}aws:(${BRED}${AWS_PROFILE}${BBLUE})"
+    echo " ${BCYAN}aws:(${BRED}${AWS_PROFILE}${BCYAN})"
 }
 
 function prompt_kube() {
     ctx=$(kubectl config current-context 2> /dev/null) || return 0
     ns=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2> /dev/null)
-    echo " ${BBLUE}k8s:(${BRED}${ctx##*:cluster/}${WHITE}:${BCYAN}${ns:-default}${BBLUE})"
+    echo " ${BCYAN}k8s:(${BRED}${ctx##*:cluster/}${WHITE}:${BGREEN}${ns:-default}${BCYAN})"
 }
 
 function prompt_prompt() {
