@@ -3,6 +3,7 @@ WHITE="%b%F{white}"
 BGREEN="%B%F{green}"
 BCYAN="%B%F{cyan}"
 BRED="%B%F{red}"
+RESET="%b%f"
 
 function prompt_clock() {
     echo "${WHITE}$(date +'%R')"
@@ -38,22 +39,19 @@ function prompt_kube() {
 }
 
 function prompt_prompt() {
-    [[ $1 -eq 0 ]] && echo -n "${BGREEN}" || echo -n "${BRED}"
-    echo "> "
+    echo "%(?.${BGREEN}.${BRED})> "
 }
 
 function build_prompt() {
-    prev_status=$?
     max=$(tput cols)
     prompt_pre="$(prompt_clock)$(prompt_pwd)$(prompt_git)$(prompt_aws)$(prompt_kube)"
-    # remove colors
-    prompt_pre_text=$(echo -n "${prompt_pre}" | sed -r 's/(%b|%B|%F\{[^}]+})//g')
+    prompt_pre_text=$(print -P "${prompt_pre}") # only text
     if [ ${#prompt_pre_text} -ge ${max} ]; then
         prompt_pre="$(prompt_clock)$(prompt_pwd)"
         prompt_pre_second="$(prompt_git)$(prompt_aws)$(prompt_kube)"
         prompt_pre="${prompt_pre}\n${prompt_pre_second:1}" # remove initial space from second line
     fi
-    echo "${prompt_pre}\n$(prompt_prompt ${prev_status})${reset_color}"
+    echo "${prompt_pre}\n$(prompt_prompt)${RESET}"
 }
 
 PROMPT='
