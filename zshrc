@@ -1,10 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="robbyrussell"
-
 plugins=(git git-extras docker docker-compose kubectl)
 
 source $ZSH/oh-my-zsh.sh
