@@ -26,6 +26,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc' }
 Plug 'junegunn/fzf.vim'
+Plug 'mg979/vim-visual-multi'
 
 " ide
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
