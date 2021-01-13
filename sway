@@ -69,7 +69,7 @@ bindsym $mod+Shift+e exit
 for_window [app_id="wdisplays"] floating enable
 for_window [app_id="gnome-calculator"] floating enable
 for_window [title="Firefox - Choose User Profile"] floating enabled
-for_window [title="Firefox - Sharing Indicator"] kill
+for_window [title="Firefox — Sharing Indicator"] kill
 
 ### Moving around
 
