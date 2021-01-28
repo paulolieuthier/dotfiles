@@ -75,3 +75,4 @@ function build_prompt() {
 
 PROMPT='
 $(build_prompt)'
+RPROMPT=''

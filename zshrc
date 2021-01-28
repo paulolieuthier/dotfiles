@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-plugins=(git git-extras docker docker-compose kubectl)
+plugins=(git git-extras docker docker-compose kubectl aws)
 
 source $ZSH/oh-my-zsh.sh
 
