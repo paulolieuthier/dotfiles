@@ -33,3 +33,9 @@
 
 [includeIf "gitdir:~/Code/inloco/"]
     path = ~/Code/inloco/.gitconfig
+
+[http "https://gopkg.in"]
+	followRedirects = true
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
