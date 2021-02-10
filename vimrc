@@ -182,12 +182,6 @@ map q: :q
 " save with sudo
 cmap w!! w !sudo tee > /dev/null %
 
-" centralize screen on jumping
-noremap n nzz
-noremap N Nzz
-noremap <c-d> <c-d>zz
-noremap <c-u> <c-u>zz
-
 " diffing
 nnoremap <leader>do :diffget<cr>
 nnoremap <leader>dp :diffput<cr>
