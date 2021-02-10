@@ -15,6 +15,7 @@ window#waybar {
 }
 
 #workspaces button label {
+  color: white;
   padding: 0;
 }
 
