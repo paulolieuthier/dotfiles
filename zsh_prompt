@@ -9,68 +9,49 @@ function prompt_clock() {
     echo "${WHITE}$(date +'%R')"
 }
 
-function prompt_pwd_large() {
-    echo " ${YELLOW}${PWD/$HOME/~}"
-}
-
-function prompt_pwd_short() {
-    wd="${PWD/$HOME/~}"
-    IFS='/' arr=($(echo -n "$wd"))
-    last="${arr[-1]}"
-    unset "arr[-1]"
-    echo -n " ${YELLOW}"
-    for el in ${arr[@]}; do
-        echo -n "${el:0:1}/"
-    done
-    echo "${last}"
+function prompt_pwd() {
+    echo "${YELLOW}${PWD/$HOME/~}"
 }
 
 function prompt_git() {
     ref=$(git symbolic-ref HEAD 2> /dev/null || git rev-parse --short HEAD 2> /dev/null) || return 0
     dirty=$([[ -n "$(git status --porcelain | tail -n1)" ]] && echo " X")
-    echo " ${BCYAN}git:(${BRED}${ref#refs/heads/}${YELLOW}${dirty}${BCYAN})"
+    echo "${BCYAN}git:(${BRED}${ref#refs/heads/}${YELLOW}${dirty}${BCYAN})"
 }
 
 function prompt_aws() {
     profile=$(export | grep AWS_PROFILE) || return 0
-    echo " ${BCYAN}aws:(${BRED}${AWS_PROFILE}${BCYAN})"
+    echo "${BCYAN}aws:(${BRED}${AWS_PROFILE}${BCYAN})"
 }
 
 function prompt_kube() {
     ctx=$(kubectl config current-context 2> /dev/null) || return 0
     ns=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2> /dev/null)
-    echo " ${BCYAN}k8s:(${BRED}${ctx##*:cluster/}${WHITE}:${BGREEN}${ns:-default}${BCYAN})"
+    echo "${BCYAN}k8s:(${BRED}${ctx##*:cluster/}${WHITE}:${BGREEN}${ns:-default}${BCYAN})"
 }
 
 function prompt_prompt() {
     echo "%(?.${BGREEN}.${BRED})> "
 }
 
-function expand_prompt() {
-    echo -n $1 | sed -r 's/(%b|%B|%F\{[^}]+}|%\([^)]+\))//g'
+function prompt_length() {
+    expanded_prompt=$(echo -n $1 | sed -r 's/(%b|%B|%F\{[^}]+}|%\([^)]+\))//g')
+    echo ${#expanded_prompt}
 }
 
 function build_prompt() {
     max=$(tput cols)
 
-    # try single line with large pwd
-    prompt_pre="$(prompt_clock)$(prompt_pwd_large)$(prompt_git)$(prompt_aws)$(prompt_kube)"
-    prompt_pre_text=$(expand_prompt "${prompt_pre}")
+    prompt_first="$(prompt_clock) $(prompt_pwd)"
+    prompt_last="$(prompt_git) $(prompt_aws) $(prompt_kube)"
+    prompt_sep=" "
 
-    # if too large try single line with short pwd
-    if [ ${#prompt_pre_text} -ge ${max} ]; then
-        prompt_pre="$(prompt_clock)$(prompt_pwd_short)$(prompt_git)$(prompt_aws)$(prompt_kube)"
-        prompt_pre_text=$(expand_prompt "${prompt_pre}")
+    # if too large use multi line
+    if [ $(prompt_length "${prompt_first}${prompt_sep}${prompt_last}") -gt ${max} ]; then
+        prompt_sep="\n"
     fi
 
-    # if too large use multi line with large pwd
-    if [ ${#prompt_pre_text} -ge ${max} ]; then
-        prompt_pre="$(prompt_clock)$(prompt_pwd_large)"
-        prompt_pre_second="$(prompt_git)$(prompt_aws)$(prompt_kube)"
-        prompt_pre="${prompt_pre}\n${prompt_pre_second:1}" # remove initial space from second line
-    fi
-
-    echo "${prompt_pre}\n$(prompt_prompt)${RESET}"
+    echo "${prompt_first}${prompt_sep}${prompt_last}\n$(prompt_prompt)${RESET}"
 }
 
 PROMPT='
