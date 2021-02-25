@@ -40,14 +40,16 @@ function prompt_length() {
 }
 
 function build_prompt() {
-    max=$(tput cols)
+    git=$(prompt_git)
+    aws=$(prompt_aws)
+    kube=$(prompt_kube)
 
     prompt_first="$(prompt_clock) $(prompt_pwd)"
-    prompt_last="$(prompt_git) $(prompt_aws) $(prompt_kube)"
+    prompt_last="${git:+$git }${aws:+$aws }${kube:+$kube }"
     prompt_sep=" "
 
     # if too large use multi line
-    if [ $(prompt_length "${prompt_first}${prompt_sep}${prompt_last}") -gt ${max} ]; then
+    if [ $(prompt_length "${prompt_first}${prompt_sep}${prompt_last}") -gt $(tput cols) ]; then
         prompt_sep="\n"
     fi
 
