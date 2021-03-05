@@ -12,10 +12,10 @@ map gd :action GotoDeclaration<CR>
 map <C-O> :action Back<CR>
 map <C-I> :action Forward<CR>
 
-map <C-l> :action VimWindowRight<CR>
-map <C-h> :action VimWindowLeft<CR>
-map <C-j> :action VimWindowDown<CR>
-map <C-k> :action VimWindowUp<CR>
+map <C-l> <C-W>l
+map <C-h> <C-W>h
+map <C-j> <C-W>j
+map <C-k> <C-W>k
 
 let mapleader = "\<space>"
 
