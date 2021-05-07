@@ -46,6 +46,8 @@ Plug 'moll/vim-bbye'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'airblade/vim-gitgutter'
 
+Plug 'posva/vim-vue'
+
 call plug#end()
 
 filetype plugin indent on
