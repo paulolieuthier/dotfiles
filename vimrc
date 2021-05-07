@@ -38,6 +38,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'numkil/ag.nvim'
 
 " misc
+Plug 'tommcdo/vim-express'
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-commentary'
