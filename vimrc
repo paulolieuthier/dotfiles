@@ -87,9 +87,9 @@ set shortmess+=c
 set completeopt=menu,menuone,preview,noinsert,noselect
 set clipboard=unnamedplus
 set updatetime=300
-set list
 set fileformats=unix
-set listchars=tab:>-,trail:·,extends:>,precedes:<,space:·,nbsp:·
+set list
+set listchars=tab:\|\ ,trail:-,extends:>,precedes:<
 set encoding=utf-8
 set mouse=a
 
