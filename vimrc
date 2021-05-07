@@ -218,7 +218,7 @@ xnoremap p "_s<c-r>+<esc>
 xnoremap P "_s<c-r>+<esc>
 
 " different settings for some file types
-autocmd FileType json,javascript setlocal tabstop=2
+autocmd FileType json,javascript,typescript setlocal tabstop=2
 autocmd FileType yml,yaml setlocal tabstop=2
 autocmd FileType go setlocal tabstop=4 noexpandtab
 
