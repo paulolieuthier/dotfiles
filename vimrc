@@ -255,8 +255,26 @@ let g:ag_working_path_mode="r"
 " ale
 let g:ale_fix_on_save = 1
 
+"
 " coc
+"
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" symbol renaming.
+nmap <leader>rr <Plug>(coc-rename)
+
+" use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+
+" apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-codeaction-line)
