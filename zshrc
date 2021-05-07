@@ -13,7 +13,7 @@ setopt appendhistory     # append history to the history file (no overwriting)
 setopt sharehistory      # share history across terminals
 setopt incappendhistory  # immediately append to the history file, not just when a term is killed
 
-which javac > /dev/null 2>&1 && export JAVA_PATH=$(dirname $(dirname $(readlink -f $(which javac))))
+which javac > /dev/null 2>&1 && export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))
 
 # Basic exports
 export LANG=en_US.utf8
