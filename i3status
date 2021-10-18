@@ -24,7 +24,7 @@ ethernet _first_ {
 }
 
 run_watch VPN {
-    pidfile = "/sys/class/net/tun0/dev_id"
+    pidfile = "/sys/class/net/wg0/dev_id"
 }
 
 volume master {
@@ -37,7 +37,7 @@ load {
 }
 
 memory {
-    format = "FREE RAM: %free"
+    format = "FREE RAM: %available"
 }
 
 disk "/" {
