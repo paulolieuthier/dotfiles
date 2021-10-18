@@ -1,5 +1,6 @@
 set main-view = id:yes date:relative-compact author:abbreviated commit-title:yes,graph,refs,overflow=no
-
 set line-graphics = utf-8
 set mouse = true
 set status-show-untracked-files = yes
+
+bind generic c >sh -c "echo -n %(commit) | copy"
