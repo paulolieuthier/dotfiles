@@ -18,7 +18,7 @@ call plug#begin('~/.config/nvim/bundle')
 " colors
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 
 " helpers
 Plug 'jiangmiao/auto-pairs'
@@ -98,8 +98,12 @@ set mouse=a
 
 " colors
 set termguicolors
-let g:gruvbox_italic=1
-colorscheme gruvbox
+let g:gruvbox_material_background='hard'
+let g:gruvbox_material_cursor='green'
+let g:gruvbox_material_enable_bold=1
+let g:gruvbox_material_enable_italic=1
+let g:gruvbox_material_transparent_background=1
+colorscheme gruvbox-material
 
 if has("nvim")
     set inccommand=nosplit
@@ -247,7 +251,7 @@ nnoremap <leader>pf :CtrlPMixed<cr>
 nnoremap <leader>pr :CtrlPMRU<cr>
 
 " airline
-let g:airline_theme = 'base16'
+let g:airline_theme = 'gruvbox_material'
 
 " ag
 let g:ag_working_path_mode="r" 
