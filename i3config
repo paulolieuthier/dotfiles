@@ -21,6 +21,7 @@ exec --no-startup-id dunst
 exec --no-startup-id xsetroot -solid "#333333"
 exec --no-startup-id wallpaper
 exec --no-startup-id ibus-daemon --xim -r -d
+exec --no-startup-id sh -c "until greenclip daemon; do sleep 1; done"
 
 ### custom config for windows
 
