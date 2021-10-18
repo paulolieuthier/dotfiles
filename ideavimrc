@@ -8,6 +8,7 @@ map <C-p> :action EditorUp<CR>
 
 inoremap <C-\> <C-O>:action ParameterInfo<CR>
 map gd :action GotoDeclaration<CR>
+map gi :action GotoImplementation<CR>
 
 map <C-O> :action Back<CR>
 map <C-I> :action Forward<CR>
