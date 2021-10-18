@@ -22,6 +22,15 @@ export MANPAGER="nvim -c 'set ft=man' -"
 export TERM=screen-256color
 export LESS="-FXR"
 
+# better shortcuts for command line
+bindkey '\eB' vi-backward-blank-word
+bindkey '\eF' vi-forward-blank-word
+
+autoload -Uz backward-kill-word-match
+bindkey '\e^W' backward-kill-space-word
+zle -N backward-kill-space-word backward-kill-word-match
+zstyle :zle:backward-kill-space-word word-style space
+
 # prompt
 source ~/.zsh_prompt.zsh
 
