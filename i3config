@@ -188,11 +188,23 @@ bar {
 
 ### Displays configuration
 
-set $displayMode "Set display mode [m]onitor [l]aptop [d]ual"
+set $displayMode "Display: [m]onitor [l]aptop [d]ual"
 bindsym $mod+x mode $displayMode
 mode $displayMode {
     bindsym m exec "xrandr --output $(xrandr | grep ' connected ' | awk '{print $1}' | grep -v 'eDP' | head -n 1) --auto --primary --output eDP-1 --off && sleep 1 && wallpaper"; mode "default"
     bindsym l exec "xrandr --output $(xrandr | grep ' connected ' | awk '{print $1}' | grep -v 'eDP' | head -n 1) --off --output eDP-1 --auto --primary && sleep 1 && wallpaper"; mode "default"
     bindsym d exec "xrandr --output $(xrandr | grep ' connected ' | awk '{print $1}' | grep -v 'eDP' | head -n 1) --auto --primary --pos 0x0 && xrandr --output eDP-1 --auto --pos 1920x0 && sleep 1 && wallpaper"; mode "default"
+    bindsym Escape mode "default"
+}
+
+### Leave menu
+
+set $leaveMode "Leave: [l]ogout [s]uspend [p]oweroff [r]estart"
+bindsym $mod+z mode $leaveMode
+mode $leaveMode {
+    bindsym l exit; mode "default"
+    bindsym s exec "systemctl suspend"; mode "default"
+    bindsym p exec "systemctl poweroff"; mode "default"
+    bindsym r exec "systemctl restart"; mode "default"
     bindsym Escape mode "default"
 }
