@@ -198,9 +198,23 @@ input type:touchpad {
 bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
 
+### Leave menu
+
+set $leaveMode "Leave: [l]ock [e]xit [s]uspend [p]oweroff [r]estart"
+bindsym $mod+z mode $leaveMode
+mode $leaveMode {
+    bindsym l exec "~/.local/bin/lockscreen"; mode "default"
+    bindsym e exit; mode "default"
+    bindsym s exec "~/.local/bin/lockscreen && systemctl suspend"; mode "default"
+    bindsym p exec "systemctl poweroff"; mode "default"
+    bindsym r exec "systemctl reboot"; mode "default"
+    bindsym Escape mode "default"
+}
+
 ### Special keyboard keys
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/.* index:/{print $3}') +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/.* index:/{print $3}') -5%
-bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86MonBrightnessDown exec light -U 5
 bindsym XF86MonBrightnessUp exec light -A 5
