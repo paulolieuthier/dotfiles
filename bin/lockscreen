@@ -3,9 +3,9 @@
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     grim /tmp/screenlocked.png
     mogrify -scale 10% -scale 1000% /tmp/screenlocked.png
-    swaylock -i /tmp/screenlocked.png
+    exec swaylock -i /tmp/screenlocked.png
 else
     maim /tmp/screenlocked.png
     mogrify -scale 10% -scale 1000% /tmp/screenlocked.png
-    i3lock -i /tmp/screenlocked.png
+    exec i3lock -i /tmp/screenlocked.png
 fi

@@ -206,11 +206,12 @@ mode $displayMode {
 
 ### Leave menu
 
-set $leaveMode "Leave: [l]ogout [s]uspend [p]oweroff [r]estart"
+set $leaveMode "Leave: [l]ock [e]xit [s]uspend [p]oweroff [r]estart"
 bindsym $mod+z mode $leaveMode
 mode $leaveMode {
-    bindsym l exit; mode "default"
-    bindsym s exec "systemctl suspend"; mode "default"
+    bindsym l exec "lockscreen"; mode "default"
+    bindsym e exit; mode "default"
+    bindsym s exec "lockscreen && systemctl suspend"; mode "default"
     bindsym p exec "systemctl poweroff"; mode "default"
     bindsym r exec "systemctl reboot"; mode "default"
     bindsym Escape mode "default"
