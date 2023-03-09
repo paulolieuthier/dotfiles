@@ -212,6 +212,6 @@ mode $leaveMode {
     bindsym l exit; mode "default"
     bindsym s exec "systemctl suspend"; mode "default"
     bindsym p exec "systemctl poweroff"; mode "default"
-    bindsym r exec "systemctl restart"; mode "default"
+    bindsym r exec "systemctl reboot"; mode "default"
     bindsym Escape mode "default"
 }
