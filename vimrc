@@ -32,7 +32,8 @@ Plug 'mg979/vim-visual-multi'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips'
-Plug 'preservim/nerdtree'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -242,8 +243,29 @@ EOF
 " vim-bbye: close buffer without closing split view
 nnoremap <silent><c-c> :Bdelete<cr>
 
-" nerdtree: open/focus or hide
-nnoremap <silent><expr> <a-1> winnr()==g:NERDTree.GetWinNum() ? ":NERDTreeClose\<cr>" : ":NERDTreeFocus\<cr>"
+" nvim-tree
+nnoremap <silent><expr> <a-1> &filetype == 'NvimTree' ? ":NvimTreeClose\<cr>" : ":NvimTreeFocus\<cr>"
+nnoremap <silent> <leader>nc <cmd>NvimTreeFindFile<cr>
+lua <<EOF
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+  require("nvim-tree").setup {
+    view = {
+      adaptive_size = true,
+      mappings = {
+        list = {
+          { key = "u", action = "dir_up" },
+        },
+      },
+    },
+    renderer = {
+      group_empty = true,
+    },
+    filters = {
+      dotfiles = true,
+    },
+  }
+EOF
 
 " telescope
 nnoremap <silent> <leader>pf <cmd>Telescope find_files<cr>
