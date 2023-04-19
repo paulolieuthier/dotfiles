@@ -273,11 +273,15 @@ nnoremap <silent> <leader>pg <cmd>Telescope live_grep<cr>
 nnoremap <silent> <leader>pb <cmd>Telescope buffers<cr>
 nnoremap <silent> <leader>pr <cmd>Telescope oldfiles<cr>
 nnoremap <silent> <leader>pt <cmd>Telescope file_browser<cr>
+nnoremap <silent> <leader>pp <cmd>Telescope pickers<cr>
 
 lua <<EOF
 require('telescope').setup {
     defaults = {
-        file_ignore_patterns = {"node_modules"}
+        cache_picker = {
+            num_pickers = -1
+        },
+        file_ignore_patterns = { "node_modules" }
     }
 }
 EOF
