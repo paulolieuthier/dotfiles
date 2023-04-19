@@ -7,7 +7,7 @@
     "sway/workspaces": {
         "disable-scroll-wraparound": true,
         "enable-bar-scroll": true,
-        "smooth-scrolling-threshold": 5.0
+        "smooth-scrolling-threshold": 1.0
     },
     "network": {
         "format-wifi": " {essid} ({signalStrength}%)",
