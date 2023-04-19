@@ -7,6 +7,9 @@
     st = status
     diff = diff -M
 
+[init]
+	defaultBranch = master
+
 [merge]
     ff = false
 
