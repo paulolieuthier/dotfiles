@@ -9,6 +9,7 @@ set-option -g default-terminal screen
 # plugins
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'nhdaly/tmux-better-mouse-mode'
+set -g @plugin 'schasse/tmux-jump'
 
 # theme
 set -g @themepack 'block/gray'
