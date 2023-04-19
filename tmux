@@ -4,7 +4,10 @@
 
 set -g default-command '/usr/bin/zsh'
 set -g default-shell '/usr/bin/zsh'
-set-option -g default-terminal screen
+
+# terminal
+set-option -g default-terminal screen-256color
+set-option -sa terminal-overrides ',screen-256color:RGB'
 
 # plugins
 set -g @plugin 'christoomey/vim-tmux-navigator'
