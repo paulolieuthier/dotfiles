@@ -40,6 +40,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fannheyward/telescope-coc.nvim'
 
+Plug 'ggandor/leap.nvim'
+
 " misc
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'airblade/vim-gitgutter'
@@ -291,6 +293,11 @@ require('telescope').setup {
         file_ignore_patterns = { "node_modules" }
     }
 }
+EOF
+
+" leap
+lua <<EOF
+require('leap').set_default_keymaps()
 EOF
 
 " airline
