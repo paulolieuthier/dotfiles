@@ -227,6 +227,13 @@ autocmd FileType json,javascript,typescript setlocal tabstop=2
 autocmd FileType yml,yaml setlocal tabstop=2 indentkeys-=<:> foldmethod=indent
 autocmd FileType go setlocal tabstop=4 noexpandtab
 
+augroup TerminalMappings
+  autocmd!
+  if has('nvim')
+    autocmd TermOpen * nnoremap <buffer> <C-c> i
+  endif
+augroup END
+
 "
 " plugins
 "
