@@ -65,3 +65,6 @@ if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
 elif [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+alias urlencode="python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.stdin.read()))'"
+alias urldecode="python3 -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.stdin.read()))'"
+alias inflate="perl -mIO::Uncompress::RawInflate=rawinflate -erawinflate'\"-\",\"-\"'"
