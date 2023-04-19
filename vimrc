@@ -91,7 +91,7 @@ set cmdheight=2
 set t_Co=256
 set shortmess+=c
 set completeopt=menu,menuone,preview,noinsert,noselect
-set clipboard=unnamedplus
+set clipboard^=unnamedplus
 set updatetime=300
 set fileformats=unix
 set list
