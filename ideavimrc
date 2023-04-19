@@ -3,15 +3,19 @@ source ~/.vimrc
 set nonumber
 set clipboard=unnamedplus
 
-map <C-n> :action EditorDown<CR>
-map <C-p> :action EditorUp<CR>
+map <C-n> <Action>(EditorDown)
+map <C-p> <Action>(EditorUp)
+
+xnoremap p "_s<c-r>+<esc>
+xnoremap P "_s<c-r>+<esc>
 
 inoremap <C-\> <C-O>:action ParameterInfo<CR>
-map gd :action GotoDeclaration<CR>
-map gi :action GotoImplementation<CR>
+map gd <Action>(GotoDeclaration)
+map gi <Action>(GotoImplementation)
+map gt <Action>(GotoTypeDeclaration)
 
-map <C-O> :action Back<CR>
-map <C-I> :action Forward<CR>
+map <C-O> <Action>(Back)
+map <C-I> <Action>(Forward)
 
 map <C-l> <C-W>l
 map <C-h> <C-W>h
@@ -20,30 +24,29 @@ map <C-k> <C-W>k
 
 let mapleader = "\<space>"
 
-map <space>: :action GotoAction<CR>
-map <space>; :action GotoAction<CR>
-map <space>pf :action GotoFile<CR>
-map <space>pr :action RecentFiles<CR>
-map <space>pp :action ManageRecentProjects<CR>
+map <space>: <Action>(GotoAction)
+map <space>; <Action>(GotoAction)
+map <space>pf <Action>(GotoFile)
+map <space>pr <Action>(RecentFiles)
+map <space>pp <Action>(ManageRecentProjects)
 
 map <space>fc :exit<CR>
 
-map <space>sv :action SplitVertically<CR>
-map <space>sh :action SplitHorizontally<CR>
+map <space>sv <Action>(SplitVertically)
+map <space>sh <Action>(SplitHorizontally)
 
-map <space>wh :action HideAllWindows<CR>
-map <space>wc :action CloseContent<CR>
+map <space>wh <Action>(HideAllWindows)
+map <space>wc <Action>(CloseContent)
 
-map <space>ri :action OptimizeImports<CR>
-map <space>rr :action Refactorings.QuickListPopupAction<CR>
-map <space>rs :action SurroundWith<CR>
+map <space>ri <Action>(OptimizeImports)
+map <space>rr <Action>(Refactorings.QuickListPopupAction)
+map <space>rs <Action>(SurroundWith)
 
-map <space>tn :action GotoTest<CR>
-map <space>tr :action RunClass<CR>
-map <space>tt :action Rerun<CR>
-map <space>tf :action RerunFailedTests<CR>
+map <space>tn <Action>(GotoTest)
+map <space>tr <Action>(RunClass)
+map <space>tt <Action>(Rerun)
+map <space>tf <Action>(RerunFailedTests)
 
 map <space>n :noh<CR>
-map <space>jw :action KJumpAction.Word1<CR>
-map <space>jf :action KJumpAction<CR>
-
+map <space>jw <Action>(KJumpAction.Word1)
+map <space>jf <Action>(KJumpAction)
