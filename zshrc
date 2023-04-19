@@ -18,7 +18,6 @@ which javac > /dev/null 2>&1 && export JAVA_HOME=$(dirname $(dirname $(readlink 
 # Basic exports
 export LANG=en_US.utf8
 export EDITOR=vim
-export MANPAGER="nvim -c 'set ft=man' -"
 export TERM=screen-256color
 export LESS="-FXR"
 
