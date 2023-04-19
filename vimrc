@@ -303,9 +303,6 @@ EOF
 " airline
 let g:airline_theme = 'gruvbox_material'
 
-" ag
-let g:ag_working_path_mode="r" 
-
 " ale
 let g:ale_fix_on_save = 1
 
