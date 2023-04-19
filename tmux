@@ -20,6 +20,9 @@ set -g history-limit 100000000
 set-option -g mouse on
 set-option -s set-clipboard off
 
+# focus
+set-option -g focus-events on
+
 # disable leaving copy mode on click when in copy mode, but keep clearing selection
 # on click and exiting copy mode when scrolling back to the end
 unbind -T copy-mode-vi MouseDragEnd1Pane
