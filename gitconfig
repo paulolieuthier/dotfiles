@@ -34,8 +34,8 @@
     enabled = true
     autoupdate = true
 
-[includeIf "gitdir:~/Code/inloco/"]
-    path = ~/Code/inloco/.gitconfig
+[includeIf "gitdir:~/Code/incognia/"]
+    path = ~/Code/incognia/.gitconfig
 
 [http "https://gopkg.in"]
 	followRedirects = true
