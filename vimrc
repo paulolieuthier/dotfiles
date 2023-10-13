@@ -137,7 +137,7 @@ if has("gui_running")
 endif
 
 " basic mappings
-noremap ; :
+" noremap ; :
 noremap j gj
 noremap k gk
 
