@@ -3,8 +3,7 @@
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     OUTPUTS=$(swaymsg -t get_outputs | jq -r '.[] | .name')
     echo -n $OUTPUTS | parallel 'grim -o {} /tmp/screenlocked-{}.png; mogrify -scale 10% -scale 1000% /tmp/screenlocked-{}.png'
-    set -- $(echo -n $OUTPUTS | xargs -i echo '-i {}:/tmp/screenlocked-{}.png' | paste -sd' ')
-    exec swaylock $@
+    exec swaylock --daemonize $(echo -n $OUTPUTS | xargs -i echo '-i {}:/tmp/screenlocked-{}.png' | paste -sd' ')
 else
     maim /tmp/screenlocked.png
     mogrify -scale 10% -scale 1000% /tmp/screenlocked.png
