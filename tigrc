@@ -3,4 +3,5 @@ set line-graphics = utf-8
 set mouse = true
 set status-show-untracked-files = yes
 
+color cursor            black   yellow bold
 bind generic c >sh -c "echo -n %(commit) | copy"
