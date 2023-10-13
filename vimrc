@@ -336,3 +336,6 @@ nmap <leader>ac <Plug>(coc-codeaction)
 
 " apply AutoFix to problem on the current line.
 nmap <leader>qf <Plug>(coc-codeaction-line)
+
+" enter key for completions
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
