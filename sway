@@ -15,16 +15,13 @@ output * bg ~/.background.jpg fill
 
 ### Execs
 
-exec systemctl --user start user-applications.target
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK
+exec waybar
 exec mako
-exec wl-paste -t text --watch clipman store
 exec nm-applet --indicator
-exec dex-autostart --autostart
-
-# https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec hash dbus-update-activation-environment 2>/dev/null && \
-     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec pasystray
+exec wl-paste --type UTF8_STRING --watch clipman store
+exec kanshi
 
 ### Key bindings
 
@@ -66,10 +63,22 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exit
 
 ### Make some windows floating
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
 for_window [app_id="wdisplays"] floating enable
-for_window [app_id="gnome-calculator"] floating enable
+for_window [app_id="org.gnome.Calculator"] floating enable
 for_window [title="Firefox - Choose User Profile"] floating enabled
 for_window [title="Firefox — Sharing Indicator"] kill
+# for_window [title="^Extension: \(Checker Plus for Google Calendar.*"] floating enabled
+
+# Teamviewer
+for_window [instance="TeamViewer.exe"] floating enable
+for_window [class="TeamViewer"] floating enable
 
 ### Moving around
 
@@ -128,6 +137,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # splits
 bindsym $mod+b splith
 bindsym $mod+v splitv
+bindsym $mod+o split toggle
 
 # switch the current container between layout styles
 bindsym $mod+s layout stacking
@@ -143,16 +153,17 @@ bindsym $mod+Shift+space floating toggle
 # swap focus between the tiling area and the floating area
 bindsym $mod+space focus mode_toggle
 
-# move focus to the parent container
+# move focus to the parent container <-> child
 bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
 
 ### Scratchpad
 
 # wove window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus move scratchpad
 
 # show windows in scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus scratchpad show
 
 ### Resizing containers
 
@@ -173,15 +184,11 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-### Bar
-
-bar {
-    swaybar_command waybar
-}
-
 ### Device setup
 
 input type:keyboard {
+    repeat_delay 200
+    repeat_rate 30
     xkb_layout us
     xkb_variant intl
     xkb_layout arrowsinhomerow
@@ -193,6 +200,7 @@ input type:touchpad {
     natural_scroll enabled
     middle_emulation enabled
     tap_button_map lmr
+    pointer_accel 0.2
 }
 
 bindswitch --reload --locked lid:on output eDP-1 disable
@@ -203,9 +211,9 @@ bindswitch --reload --locked lid:off output eDP-1 enable
 set $leaveMode "Leave: [l]ock [e]xit [s]uspend [p]oweroff [r]estart"
 bindsym $mod+z mode $leaveMode
 mode $leaveMode {
-    bindsym l exec "~/.local/bin/lockscreen"; mode "default"
+    bindsym l exec "lockscreen"; mode "default"
     bindsym e exit; mode "default"
-    bindsym s exec "~/.local/bin/lockscreen && systemctl suspend"; mode "default"
+    bindsym s exec "lockscreen && systemctl suspend"; mode "default"
     bindsym p exec "systemctl poweroff"; mode "default"
     bindsym r exec "systemctl reboot"; mode "default"
     bindsym Escape mode "default"
