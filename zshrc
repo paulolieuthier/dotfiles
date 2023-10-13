@@ -67,3 +67,4 @@ fi
 alias urlencode="python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.stdin.read()))'"
 alias urldecode="python3 -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.stdin.read()))'"
 alias inflate="perl -mIO::Uncompress::RawInflate=rawinflate -erawinflate'\"-\",\"-\"'"
+alias deflate="perl -mIO::Compress::RawDeflate=rawdeflate -erawdeflate'\"-\",\"-\"'"
