@@ -15,13 +15,19 @@ output * bg ~/.background.jpg fill
 
 ### Execs
 
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK
+# WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=GNOME:sway SSH_AUTH_SOCK
+exec dbus-update-activation-environment --systemd --all
 exec waybar
 exec mako
 exec nm-applet --indicator
 exec pasystray
-exec wl-paste --type UTF8_STRING --watch clipman store
-exec kanshi
+exec wl-paste --type image --watch cliphist store
+exec wl-paste --type UTF8_STRING --watch cliphist store
+exec wlsunset -S 06:00 -s 18:00 -t 3000 -T 5000 -d 1800
+exec swayidle -w timeout 300 'swaymsg exec lockscreen dpms' before-sleep 'swaymsg exec lockscreen'
+# exec flatpak run com.github.wwmm.easyeffects --gapplication-service
+
+exec_always "killall kanshi; kanshi"
 
 ### Key bindings
 
@@ -38,13 +44,14 @@ bindsym Control+q exec true
 bindsym Ctrl+Alt+l exec lockscreen
 
 # clipboard management
-bindsym $mod+p exec clipman pick -t rofi
+# bindsym $mod+p exec clipman pick -t rofi
+bindsym $mod+p exec cliphist list | fuzzel -d | cliphist decode | wl-copy
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # launcher
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+d exec fuzzel
 
 # screenshot
 bindsym Print exec slurp | grim -g - - | wl-copy
@@ -69,16 +76,15 @@ for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
-
 for_window [app_id="wdisplays"] floating enable
 for_window [app_id="org.gnome.Calculator"] floating enable
-for_window [title="Firefox - Choose User Profile"] floating enabled
+for_window [title="Firefox - Choose User Profile"] floating enable
 for_window [title="Firefox — Sharing Indicator"] kill
-# for_window [title="^Extension: \(Checker Plus for Google Calendar.*"] floating enabled
-
-# Teamviewer
+for_window [app_id="firefox" title="^Extension.*"] floating enable
 for_window [instance="TeamViewer.exe"] floating enable
 for_window [class="TeamViewer"] floating enable
+for_window [app_id="com.paulolieuthier.Sheepdog"] floating enable
+for_window [app_id="sheepdog"] floating enable
 
 ### Moving around
 
@@ -187,11 +193,12 @@ bindsym $mod+r mode "resize"
 ### Device setup
 
 input type:keyboard {
-    repeat_delay 200
-    repeat_rate 30
+    repeat_delay 250
+    repeat_rate 50
     xkb_layout us
     xkb_variant intl
     xkb_layout arrowsinhomerow
+    # xkb_layout br
 }
 
 input type:touchpad {
@@ -213,7 +220,7 @@ bindsym $mod+z mode $leaveMode
 mode $leaveMode {
     bindsym l exec "lockscreen"; mode "default"
     bindsym e exit; mode "default"
-    bindsym s exec "lockscreen && systemctl suspend"; mode "default"
+    bindsym s exec "systemctl suspend"; mode "default"
     bindsym p exec "systemctl poweroff"; mode "default"
     bindsym r exec "systemctl reboot"; mode "default"
     bindsym Escape mode "default"
