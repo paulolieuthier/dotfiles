@@ -13,6 +13,7 @@ inoremap <C-\> <C-O>:action ParameterInfo<CR>
 map gd <Action>(GotoDeclaration)
 map gi <Action>(GotoImplementation)
 map gt <Action>(GotoTypeDeclaration)
+map gu <Action>(GotoSuperMethod)
 
 map <C-O> <Action>(Back)
 map <C-I> <Action>(Forward)
