@@ -2,30 +2,28 @@
     "height": 30,
     "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-right": ["network", "cpu", "memory", "backlight", "pulseaudio", "battery", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "custom/scratchpad_indicator", "pulseaudio", "battery", "clock", "tray"],
 
     "sway/workspaces": {
         "disable-scroll-wraparound": true,
         "enable-bar-scroll": true,
         "smooth-scrolling-threshold": 1.0
     },
-    "network": {
-        "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-linked": " {ifname} (No IP)",
-        "format-disconnected": " Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "idle_inhibitor": {
+        "format": "{icon} idle inhibitor: {status}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "timeout": 60
     },
-    "cpu": {
-        "format": " {usage}%",
-        "tooltip": false
-    },
-    "memory": {
-        "format": " {}%"
-    },
-    "backlight": {
-        "format": "{icon} {percent}%",
-        "format-icons": ["", ""]
+    "custom/scratchpad_indicator": {
+        "interval": 3,
+        "exec": "swaymsg -t get_tree | jq 'recurse(.nodes[]) | first(select(.name == \"__i3_scratch\")) | .floating_nodes | length'",
+        "format": "  {}",
+        "tooltip": "Scratchpad",
+        "on-click": "swaymsg 'scratchpad show'",
+        "on-click-right": "swaymsg 'move scratchpad'"
     },
     "pulseaudio": {
         "format": "{icon} {volume}%   {format_source}",
@@ -43,7 +41,9 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "on-click-middle": "wpctl set-mute @DEFAULT_SINK@ toggle",
+        "scroll-step": 1
     },
     "battery": {
         "states": {
