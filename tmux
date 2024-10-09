@@ -2,12 +2,12 @@
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # And type Prefix+I to install plugins
 
-set -g default-command '/usr/bin/zsh'
-set -g default-shell '/usr/bin/zsh'
+set -g default-command '/usr/bin/fish'
+set -g default-shell '/usr/bin/fish'
 
 # terminal
-set-option -g default-terminal screen-256color
-set-option -sa terminal-features ',screen-256color:RGB'
+# set -g default-terminal tmux-direct
+set -sg terminal-overrides ",*:RGB"
 
 # plugins
 set -g @plugin 'christoomey/vim-tmux-navigator'
@@ -18,7 +18,7 @@ set -g @plugin 'schasse/tmux-jump'
 set -g @themepack 'block/gray'
 
 # history
-set -g history-limit 100000000
+set -g history-limit 1000000
 
 # enable mouse support
 set-option -g mouse on
