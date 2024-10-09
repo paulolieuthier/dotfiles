@@ -16,17 +16,19 @@ filetype off
 call plug#begin('~/.config/nvim/bundle')
 
 " colors
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'sainnhe/gruvbox-material'
 
 " helpers
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-abolish' " case-insensitive substitution replace
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc' }
 Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-sneak'
 Plug 'mg979/vim-visual-multi'
+Plug 'chrisbra/matchit' " extend % matching
 
 " ide
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -40,17 +42,13 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fannheyward/telescope-coc.nvim'
 
-Plug 'ggandor/leap.nvim'
-
 " misc
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'airblade/vim-gitgutter'
 Plug 'moll/vim-bbye'
 Plug 'psliwka/vim-smoothie'
 
-" languages
-Plug 'udalov/kotlin-vim'
-Plug 'pedrohdz/vim-yaml-folds'
+Plug 'NoahTheDuke/vim-just'
 
 call plug#end()
 
@@ -103,12 +101,8 @@ set nofoldenable
 
 " colors
 set termguicolors
-let g:gruvbox_material_background='hard'
-let g:gruvbox_material_cursor='green'
-let g:gruvbox_material_enable_bold=1
-let g:gruvbox_material_enable_italic=1
-let g:gruvbox_material_transparent_background=1
-colorscheme gruvbox-material
+let g:gruvbox_transparent_bg = 1
+colorscheme gruvbox
 
 if has("nvim")
     set inccommand=nosplit
@@ -156,11 +150,11 @@ if !has('nvim')
 end
 
 " easily move between splits
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-nnoremap <leader>wc <c-w>c
+" nnoremap <c-j> <c-w>j
+" nnoremap <c-k> <c-w>k
+" nnoremap <c-h> <c-w>h
+" nnoremap <c-l> <c-w>l
+" nnoremap <leader>wc <c-w>c
 
 " easily create splits
 nnoremap <leader>sv :vsp<cr>
@@ -252,20 +246,18 @@ EOF
 " vim-bbye: close buffer without closing split view
 nnoremap <silent><c-c> :Bdelete<cr>
 
+" tmux navigation
+let g:tmux_navigator_disable_when_zoomed = 1
+
 " nvim-tree
 nnoremap <silent><expr> <a-1> &filetype == 'NvimTree' ? ":NvimTreeClose\<cr>" : ":NvimTreeFocus\<cr>"
-nnoremap <silent> <leader>nc <cmd>NvimTreeFindFile<cr>
+nnoremap <silent> <leader>ff <cmd>NvimTreeFindFile<cr>
 lua <<EOF
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
   require("nvim-tree").setup {
     view = {
       adaptive_size = true,
-      mappings = {
-        list = {
-          { key = "u", action = "dir_up" },
-        },
-      },
     },
     renderer = {
       group_empty = true,
@@ -295,13 +287,8 @@ require('telescope').setup {
 }
 EOF
 
-" leap
-lua <<EOF
-require('leap').set_default_keymaps()
-EOF
-
 " airline
-let g:airline_theme = 'gruvbox_material'
+let g:airline_theme = 'gruvbox'
 
 " ale
 let g:ale_fix_on_save = 1
@@ -329,7 +316,8 @@ nmap <leader>rr <Plug>(coc-rename)
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " show signature help
-inoremap <silent><c-k> <c-o>:call CocActionAsync('showSignatureHelp')<cr>
+inoremap <silent><c-\> <c-r>=CocActionAsync('showSignatureHelp')<cr>
+inoremap <silent><c-k> <c-r>=CocActionAsync('showSignatureHelp')<cr>
 
 " remap keys for applying codeAction to the current buffer.
 nmap <leader>ac <Plug>(coc-codeaction)
