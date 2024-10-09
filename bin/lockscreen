@@ -1,11 +1,24 @@
 #!/usr/bin/env zsh
 
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    OUTPUTS=$(swaymsg -t get_outputs | jq -r '.[] | .name')
-    echo -n $OUTPUTS | parallel 'grim -o {} /tmp/screenlocked-{}.png; mogrify -scale 10% -scale 1000% /tmp/screenlocked-{}.png'
-    exec swaylock --daemonize $(echo -n $OUTPUTS | xargs -i echo '-i {}:/tmp/screenlocked-{}.png' | paste -sd' ')
-else
-    maim /tmp/screenlocked.png
-    mogrify -scale 10% -scale 1000% /tmp/screenlocked.png
-    exec i3lock -i /tmp/screenlocked.png
+DPMS=$(echo "$@" | grep -w dpms && echo ON || echo OFF)
+
+OUTPUTS=$(swaymsg -t get_outputs | jq -r '.[] | select(.active == true) | .name')
+echo -n $OUTPUTS | parallel 'grim -o {} /tmp/screenlocked-{}.png; mogrify -scale 10% -scale 1000% /tmp/screenlocked-{}.png'
+
+if [[ "$DPMS" = "ON" ]]
+then
+    swayidle \
+        timeout 2 'swaymsg output \* dpms off' \
+        resume     'swaymsg output \* dpms on' \
+        &
+    SWAYIDLE_PID=$!
+fi
+
+swaylock $(echo -n $OUTPUTS | xargs -i echo '-i {}:/tmp/screenlocked-{}.png' | paste -sd' ')
+
+if [[ "$DPMS" = "ON" ]]
+then
+    # screen unlocked: terminate swayidle
+    kill -TERM $SWAYIDLE_PID
+    wait
 fi
