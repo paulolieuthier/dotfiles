@@ -22,6 +22,8 @@ map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 
+map K <Action>(ShowHoverInfo)
+
 let mapleader = "\<space>"
 
 map <space>: <Action>(GotoAction)
@@ -29,8 +31,6 @@ map <space>; <Action>(GotoAction)
 map <space>pf <Action>(GotoFile)
 map <space>pr <Action>(RecentFiles)
 map <space>pp <Action>(ManageRecentProjects)
-
-map <space>fc :exit<CR>
 
 map <space>sv <Action>(SplitVertically)
 map <space>sh <Action>(SplitHorizontally)
