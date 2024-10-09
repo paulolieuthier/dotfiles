@@ -1,7 +1,10 @@
 source ~/.vimrc
 
 set nonumber
-set clipboard=unnamedplus
+set ideajoin
+set ideamarks
+set clipboard=ideaput
+set idearefactormode=keep
 
 map <C-n> <Action>(EditorDown)
 map <C-p> <Action>(EditorUp)
