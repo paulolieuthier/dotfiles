@@ -32,7 +32,7 @@ exec_always "killall kanshi; kanshi"
 ### Key bindings
 
 # start a terminal
-bindsym $mod+Return exec alacritty -e tmux
+bindsym $mod+Return exec alacritty -e zellij
 
 # start a file manager
 bindsym $mod+Shift+Return exec nautilus
