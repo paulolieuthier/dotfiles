@@ -15,7 +15,8 @@ end
 
 function prompt_git
     set ref (git symbolic-ref HEAD 2> /dev/null || git rev-parse --short HEAD 2> /dev/null) || return 0
-    set dirty (test -n "$(git status --porcelain | tail -n1)" && echo " X")
+    set dirty (test -n "$(git status --porcelain | tail -n1)" && echo ' X' || echo '')
+
     echo (bcyan)'git:('(bred)(string replace 'refs/heads/' '' $ref)(yellow)$dirty(bcyan)')'
 end
 
