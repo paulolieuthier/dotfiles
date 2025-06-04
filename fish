@@ -21,6 +21,7 @@ alias ll "ls -lh --color=auto --group-directories-first"
 alias la "ls -ah --color=auto --group-directories-first"
 alias lla "ls -lah --color=auto --group-directories-first"
 alias parallel "parallel --will-cite"
+alias k kubectl
 alias open "xdg-open"
 alias gw "./gradlew"
 
