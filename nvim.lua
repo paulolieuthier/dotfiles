@@ -1,3 +1,4 @@
+-- basic settings
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.o.number = false
@@ -17,6 +18,7 @@ vim.o.cursorline = true
 vim.o.confirm = true
 vim.o.showcmd = true
 vim.o.scrolloff = 10
+vim.o.winborder = 'rounded'
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -26,12 +28,20 @@ vim.schedule(function()
 	vim.o.clipboard = 'unnamedplus'
 end)
 
+-- basic keymaps
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>')
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>')
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
+vim.keymap.set('n', '<leader>ev', ':edit $MYVIMRC<CR>')
+vim.keymap.set('n', '<leader>sv', ':source $MYVIMRC<CR>')
 
+-- diagnostics
+vim.diagnostic.config({ underline = true, virtual_text = true, })
+vim.keymap.set('n', '<c-w>d', function() vim.diagnostic.open_float({ border = 'rounded' }) end)
+
+-- plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -44,7 +54,7 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
-
+-- plugins
 require('lazy').setup({
     {
         'catppuccin/nvim',
@@ -108,7 +118,8 @@ require('lazy').setup({
             { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
             { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
             { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
-            { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+            { "<leader>sd", function() Snacks.picker.diagnostics_buffer() end, desc = "Diagnostics" },
+            { "<leader>sD", function() Snacks.picker.diagnostics() end, desc = "Buffer Diagnostics" },
 
             { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
             { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
@@ -118,6 +129,7 @@ require('lazy').setup({
             { "gs", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
             { "gS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
 
+            { "<C-c>",  function() Snacks.bufdelete() end, desc = "Close buffer" },
             { "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
             { "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
             { "leader>bd",  function() Snacks.bufdelete() end, desc = "Delete Buffer" },
@@ -134,9 +146,7 @@ require('lazy').setup({
         main = 'nvim-treesitter.configs',
         opts = {
             auto_install = true,
-            highlight = {
-                enable = true,
-            },
+            highlight = { enable = true },
             indent = { enable = true },
         },
     },
