@@ -193,8 +193,11 @@ require('lazy').setup({
             'folke/lazydev.nvim',
         },
         opts = {
-            keymap = { preset = 'default' },
-            completion = { documentation = { auto_show = true, auto_show_delay_ms = 500 } },
+            keymap = { preset = 'enter' },
+            completion = {
+                list = { selection = { preselect = false } },
+                documentation = { auto_show = true, auto_show_delay_ms = 500 }
+            },
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'lazydev' },
                 providers = {
@@ -203,6 +206,7 @@ require('lazy').setup({
             },
             snippets = { preset = 'luasnip' },
             fuzzy = { implementation = 'lua' },
+            ghost_text = { enabled = true },
             signature = { enabled = true },
         },
     },
