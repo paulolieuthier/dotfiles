@@ -9,6 +9,13 @@ window#waybar {
   color: white;
 }
 
+window#waybar > box {
+  background: #111;
+  border-radius: 5px;
+  margin: 10px 10px 0 10px;
+  padding: 8px 0;
+}
+
 #workspaces button {
   background: transparent;
   padding: 0 2px;
