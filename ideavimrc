@@ -1,5 +1,3 @@
-source ~/.vimrc
-
 set nonumber
 set ideajoin
 set ideamarks
