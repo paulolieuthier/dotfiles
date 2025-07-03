@@ -1,9 +1,0 @@
-clear Lock
-keycode 66 = ISO_Level3_Shift NoSymbol NoSymbol Caps_Lock Caps_Lock
-
-keycode 42 = g G NoSymbol NoSymbol Home Home
-keycode 43 = h H NoSymbol NoSymbol Left Left
-keycode 44 = j J NoSymbol NoSymbol Down Down
-keycode 45 = k K NoSymbol NoSymbol Up Up
-keycode 46 = l L NoSymbol NoSymbol Right Right
-keycode 47 = semicolon colon NoSymbol NoSymbol End End
