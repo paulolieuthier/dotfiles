@@ -1,15 +1,15 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 DPMS=$(echo "$@" | grep -w dpms && echo ON || echo OFF)
 
-OUTPUTS=$(swaymsg -t get_outputs | jq -r '.[] | select(.active == true) | .name')
+OUTPUTS=$(niri msg -j outputs | jq -r '.[] | select(.current_mode != null) | .name')
 echo -n $OUTPUTS | parallel 'grim -o {} /tmp/screenlocked-{}.png; mogrify -scale 10% -scale 1000% /tmp/screenlocked-{}.png'
 
 if [[ "$DPMS" = "ON" ]]
 then
     swayidle \
-        timeout 2 'swaymsg output \* dpms off' \
-        resume     'swaymsg output \* dpms on' \
+        timeout 2 'niri msg action power-off-monitors' \
+        resume 'niri msg action power-on-monitors' \
         &
     SWAYIDLE_PID=$!
 fi
