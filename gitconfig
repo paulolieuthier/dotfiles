@@ -1,6 +1,7 @@
 [user]
     name = Paulo Lieuthier
     email = paulolieuthier@gmail.com
+    signingkey = ~/.ssh/id_ecdsa.pub
 
 [alias]
     co = checkout
@@ -33,6 +34,12 @@
 [rerere]
     enabled = true
     autoupdate = true
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	format = ssh
 
 [includeIf "gitdir:~/Code/incognia/"]
     path = ~/Code/incognia/.gitconfig
