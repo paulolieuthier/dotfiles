@@ -13,16 +13,21 @@ def symlink_file(file_name, symlink_name):
 
     if os.path.lexists(full_symlink_name):
         if os.path.islink(full_symlink_name) and not os.path.exists(os.readlink(full_symlink_name)):
+            print(f"Removing broken link in {full_symlink_name}")
             os.remove(full_symlink_name)
         elif os.path.samefile(full_symlink_name, full_config_name):
+            print(f"Ignoring already set link in {full_symlink_name}")
             return
         else:
+            print(f"Backing up different config in {full_symlink_name}")
             shutil.move(full_symlink_name, full_symlink_name + ".old")
     else:
         dirname = os.path.dirname(full_symlink_name)
         if not os.path.exists(dirname):
+            print(f"Creating dirs for {dirname}")
             os.makedirs(dirname)
 
+    print(f"Creating link in {full_symlink_name}")
     os.symlink(full_config_name, full_symlink_name)
 
 symlink_file("background.jpg", "~/.background.jpg")
