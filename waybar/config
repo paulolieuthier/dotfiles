@@ -47,7 +47,7 @@
         "format-icons": ["", "", "", "", ""]
     },
     "clock": {
-        "format": " {:%H:%M %a %d/%m}"
+        "format": " {:%H:%M %a %d}"
     },
     "tray": {
         "spacing": 5,
