@@ -1,10 +1,15 @@
 {
     "height": 30,
     "layer": "top",
-    "modules-left": ["niri/workspaces"],
+    "modules-left": ["niri/workspaces", "custom/activewindow"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "battery", "clock", "tray"],
 
     "niri/workspaces": {
+    },
+    "custom/activewindow": {
+        "exec": "niri msg -j focused-window | jq -r '\"\\(.app_id): \\(.title)\"' | head -c 60",
+        "interval": 1,
+        "format": "{} "
     },
     "idle_inhibitor": {
         "format": "{icon} idle inhibitor: {status}",
