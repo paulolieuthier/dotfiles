@@ -149,9 +149,9 @@ require('lazy').setup({
             -- load the session for the current directory
             { "<leader>qs", function() require("persistence").load() end },
             -- select a session to load
-            { "<leader>qS", function() require("persistence").select() end) },
+            { "<leader>qS", function() require("persistence").select() end },
             -- load the last session
-            { "<leader>ql", function() require("persistence").load({ last = true }) end) },
+            { "<leader>ql", function() require("persistence").load({ last = true }) end },
         },
     },
 
