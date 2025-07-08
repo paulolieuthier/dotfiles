@@ -140,6 +140,20 @@ require('lazy').setup({
     },
 
     {
+        "folke/persistence.nvim",
+        event = "BufReadPre",
+        opts = {},
+        keys = {
+            -- load the session for the current directory
+            { "<leader>qs", function() require("persistence").load() end },
+            -- select a session to load
+            { "<leader>qS", function() require("persistence").select() end) },
+            -- load the last session
+            { "<leader>ql", function() require("persistence").load({ last = true }) end) },
+        },
+    },
+
+    {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         main = 'nvim-treesitter.configs',
