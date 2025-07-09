@@ -7,7 +7,7 @@
     "niri/workspaces": {
     },
     "custom/activewindow": {
-        "exec": "niri msg -j focused-window | jq -r '\"\\(.app_id): \\(.title)\"' | head -c 60",
+        "exec": "niri msg -j focused-window | jq -r 'if has(\"app_id\") then \"\\(.app_id): \\(.title)\" else \"\" end' | head -c 60",
         "interval": 1,
         "format": "{} "
     },
