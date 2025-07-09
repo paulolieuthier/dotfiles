@@ -12,32 +12,30 @@
         "format": "{} "
     },
     "idle_inhibitor": {
-        "format": "{icon} idle inhibitor: {status}",
+        "format": "{icon}  idle inhib.",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "<span rise=\"2pt\"></span>",
+            "deactivated": "<span rise=\"2pt\"></span>"
         },
         "timeout": 60
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%   {format_source}",
-        "format-bluetooth": "{icon} {volume}%   {format_source}",
-        // "format-bluetooth-muted": " {icon}   {format_source}",
-        // "format-muted": "{volume}%     {format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": "",
+        "format": "{icon} {volume}%  {format_source}",
+        "format-muted": "<span size=\"x-large\" rise=\"-1pt\">󰖁</span> {volume}%  {format_source}",
+        "format-bluetooth": "{icon} {volume}%  {format_source}",
+        "format-source": "<span size=\"large\" rise=\"-1pt\">󰍬</span> {volume}%",
+        "format-source-muted": "<span size=\"large\" rise=\"-1pt\">󰍭</span> {volume}%",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "<span size=\"x-large\" rise=\"-1pt\">󰕿</span>",
+                "<span size=\"x-large\" rise=\"-1pt\">󰖀</span>",
+                "<span size=\"x-large\" rise=\"-1pt\">󰕾</span>"
+            ]
         },
         "on-click": "pavucontrol",
         "on-click-middle": "wpctl set-mute @DEFAULT_SINK@ toggle",
-        "scroll-step": 1
+        "scroll-step": 1,
+        "max-volume": 100
     },
     "battery": {
         "states": {
@@ -45,14 +43,20 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
+        "format": "{icon}  {capacity}%",
+        "format-charging": "<span size=\"large\">󰚥</span> {capacity}%",
+        "format-plugged": "<span size=\"large\">󰚥</span> {capacity}%",
         "format-alt": "{icon} {time}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "<span size=\"large\"></span>",
+            "<span size=\"large\"></span>",
+            "<span size=\"large\"></span>",
+            "<span size=\"large\"></span>",
+            "<span size=\"large\"></span>"
+        ]
     },
     "clock": {
-        "format": " {:%H:%M %a %d}"
+        "format": "<span size=\"large\"></span> {:%H:%M %a %d} "
     },
     "tray": {
         "spacing": 5,
