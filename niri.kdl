@@ -63,6 +63,7 @@ spawn-at-startup "xwayland-satellite" ":42"
 spawn-at-startup "bash" "-c" "sleep 5; exec pasystray"
 spawn-at-startup "wl-paste" "--watch" "cliphist store"
 spawn-at-startup "wlsunset" "-t" "2000" "-S" "06:30" "-s" "18:00" "-d" "2000"
+spawn-at-startup "swaybg" "-m" "fill" "~/.background.jpg"
 
 prefer-no-csd
 
