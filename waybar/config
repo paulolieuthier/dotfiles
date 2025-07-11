@@ -57,7 +57,7 @@
         "format": "<span size=\"large\"></span> {:%H:%M %a %d} "
     },
     "tray": {
-        "spacing": 5,
+        "spacing": 10,
         "icon-size": 20
     }
 }
