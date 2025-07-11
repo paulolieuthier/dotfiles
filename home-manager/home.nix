@@ -57,6 +57,7 @@
       ".config/tig/config".source = extra/tigrc;
       ".config/fuzzel/fuzzel.ini".source = extra/fuzzel.ini;
       ".config/kanshi/config".source = extra/kanshi;
+      ".config/mako/config".source = extra/mako;
     };
 
     sessionVariables = {
