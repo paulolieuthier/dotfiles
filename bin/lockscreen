@@ -8,17 +8,12 @@ echo -n $OUTPUTS | parallel 'grim -o {} /tmp/screenlocked-{}.png; mogrify -scale
 if [[ "$DPMS" = "ON" ]]
 then
     swayidle \
+        -w \
         timeout 2 'niri msg action power-off-monitors' \
         resume 'niri msg action power-on-monitors' \
         &
     SWAYIDLE_PID=$!
+    trap "kill -TERM $SWAYIDLE_PID; wait $SWAYIDLE_PID" EXIT
 fi
 
 swaylock $(echo -n $OUTPUTS | xargs -i echo '-i {}:/tmp/screenlocked-{}.png' | paste -sd' ')
-
-if [[ "$DPMS" = "ON" ]]
-then
-    # screen unlocked: terminate swayidle
-    kill -TERM $SWAYIDLE_PID
-    wait
-fi
