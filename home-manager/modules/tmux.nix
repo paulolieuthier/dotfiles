@@ -27,8 +27,8 @@
       bind b break-pane -d
 
       # better split bindings
-      bind \\ split-window -h
-      bind - split-window -v
+      bind \\ split-window -h -c '#{pane_current_path}'
+      bind - split-window -v -c '#{pane_current_path}'
 
       # make clipboard easier
       setw -g mode-keys vi
