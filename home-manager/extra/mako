@@ -3,3 +3,11 @@ default-timeout=10000
 margin=40
 padding=10
 sort=+time
+
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#a6e3a1
+progress-color=over #313244
+
+[urgency=high]
+border-color=#9b0000

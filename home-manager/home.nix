@@ -37,6 +37,7 @@
       pkgs.delta
       pkgs.nerd-fonts.fira-code
       pkgs.wl-clipboard
+      pkgs.mako
       pkgs.fuzzel
       pkgs.grim
       pkgs.cliphist
