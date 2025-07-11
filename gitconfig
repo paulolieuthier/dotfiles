@@ -17,6 +17,7 @@
 
 [core]
     pager = delta
+    hooksPath = $HOME/.githooks
 
 [interactive]
     diffFilter = delta --color-only
