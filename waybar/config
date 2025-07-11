@@ -1,15 +1,13 @@
 {
     "height": 30,
     "layer": "top",
-    "modules-left": ["niri/workspaces", "custom/activewindow"],
+    "modules-left": ["niri/workspaces", "niri/window"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "battery", "clock", "tray"],
 
     "niri/workspaces": {
     },
-    "custom/activewindow": {
-        "exec": "niri msg -j focused-window | jq -r 'if has(\"app_id\") then \"\\(.app_id): \\(.title)\" else \"\" end' | head -c 60",
-        "interval": 1,
-        "format": "{} "
+    "niri/window": {
+        "format": "{app_id}: {title}"
     },
     "idle_inhibitor": {
         "format": "{icon}  idle inhib.",
