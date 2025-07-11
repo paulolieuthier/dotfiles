@@ -23,6 +23,7 @@
     packages = [
       pkgs.git
       pkgs.fish
+      pkgs.tmux
       pkgs.zellij
       pkgs.neovim
       pkgs.helix
@@ -68,6 +69,7 @@
 
   imports = [
     ./modules/fish.nix
+    ./modules/tmux.nix
   ];
 
   programs.zoxide = {

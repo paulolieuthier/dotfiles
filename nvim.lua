@@ -32,10 +32,6 @@ end)
 vim.keymap.set('n', 'j', 'gj')
 vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>')
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>')
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
 vim.keymap.set('n', '<leader>ev', ':edit $MYVIMRC<CR>')
 vim.keymap.set('n', '<leader>sv', ':source $MYVIMRC<CR>')
 
@@ -76,6 +72,25 @@ require('lazy').setup({
 		ft = 'lua',
 		opts = {}
 	},
+
+    {
+        "christoomey/vim-tmux-navigator",
+        cmd = {
+            "TmuxNavigateLeft",
+            "TmuxNavigateDown",
+            "TmuxNavigateUp",
+            "TmuxNavigateRight",
+            "TmuxNavigatePrevious",
+            "TmuxNavigatorProcessList",
+        },
+        keys = {
+            { "<C-h>", "<cmd><C-U>TmuxNavigateLeft<CR>" },
+            { "<C-j>", "<cmd><C-U>TmuxNavigateDown<CR>" },
+            { "<C-k>", "<cmd><C-U>TmuxNavigateUp<CR>" },
+            { "<C-l>", "<cmd><C-U>TmuxNavigateRight<CR>" },
+            { "<C-\\>", "<cmd><C-U>TmuxNavigatePrevious<CR>" },
+        },
+    },
 
 	{
 		'echasnovski/mini.nvim',
