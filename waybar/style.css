@@ -13,7 +13,7 @@ window#waybar > box {
   background: #111;
   border-radius: 5px;
   margin: 10px 10px 0 10px;
-  padding: 8px 0;
+  padding: 8px 0 8px 8px;
 }
 
 #workspaces button {
