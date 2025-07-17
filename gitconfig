@@ -6,7 +6,8 @@
 [alias]
     co = checkout
     st = status
-    diff = diff -M
+    dlog = log --ext-diff
+    dshow = show --ext-diff
 
 [init]
 	defaultBranch = master
@@ -42,7 +43,7 @@
     autoSquash = true
 
 [diff]
-    algorithm = patience
+    external = difft
 
 [rerere]
     enabled = true

@@ -34,6 +34,7 @@
       pkgs.fd
       pkgs.parallel
       pkgs.tig
+      pkgs.difftastic
       pkgs.delta
       pkgs.nerd-fonts.fira-code
       pkgs.wl-clipboard
