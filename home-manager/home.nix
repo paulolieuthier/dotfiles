@@ -44,7 +44,10 @@
       pkgs.cliphist
       pkgs.imagemagick
       pkgs.awscli
+      pkgs.python313Packages.ec2instanceconnectcli
       pkgs.kubectl
+      pkgs.kustomize
+      pkgs.sops
       pkgs.rustup
 
       # # You can also create simple shell scripts directly inside your
