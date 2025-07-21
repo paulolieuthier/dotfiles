@@ -4,4 +4,4 @@ set mouse = true
 set status-show-untracked-files = yes
 
 color cursor            black   yellow bold
-bind generic c >sh -c "echo -n %(commit) | copy"
+bind generic c >sh -c "echo -n %(commit) | wl-copy"
