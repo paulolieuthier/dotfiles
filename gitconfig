@@ -17,7 +17,7 @@
     conflictstyle = zdiff3
 
 [core]
-    hooksPath = $HOME/.githooks
+    hooksPath = /home/paulo.lieuthier/.githooks
 
 [pull]
     ff = only
