@@ -1,7 +1,7 @@
 set nonumber
 set ideajoin
 set ideamarks
-set clipboard^=ideaput
+set clipboard=unnamedplus
 set idearefactormode=keep
 
 map <C-n> <Action>(EditorDown)
