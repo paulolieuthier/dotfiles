@@ -95,8 +95,27 @@ require('lazy').setup({
 	{
 		'echasnovski/mini.nvim',
 		config = function()
-			require('mini.ai').setup { n_lines = 500 }
-			require('mini.surround').setup()
+            local brackets = {
+                ['('] = { '(', ')' },
+                ['['] = { '[', ']' },
+                ['{'] = { '{', '}' },
+                ['<'] = { '<', '>' },
+            }
+            require('mini.surround').setup({
+                -- custom surrounding mapping to add newlines
+                custom_surroundings = {
+                    ['n'] = {
+                        output = function()
+                            local id = vim.fn.getcharstr()
+                            local left, right = unpack(brackets[id])
+                            local indent = vim.api.nvim_get_current_line():match('^%s*')
+                            local sw = vim.bo.shiftwidth
+                            local tab_text = vim.bo.expandtab and string.rep(' ', sw == 0 and vim.bo.tabstop or sw) or '\t'
+                            return { left = left .. '\n' .. indent .. tab_text, right = '\n' .. indent .. right }
+                        end,
+                    },
+                }
+            })
 			require('mini.comment').setup()
 			require('mini.pairs').setup()
             require('mini.move').setup()
