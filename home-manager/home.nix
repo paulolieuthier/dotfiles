@@ -32,10 +32,13 @@
       pkgs.skim
       pkgs.ripgrep
       pkgs.fd
+      pkgs.jq
+      pkgs.yq
       pkgs.parallel
       pkgs.tig
       pkgs.difftastic
       pkgs.delta
+      pkgs.htop
       pkgs.nerd-fonts.fira-code
       pkgs.wl-clipboard
       pkgs.mako
@@ -43,13 +46,14 @@
       pkgs.grim
       pkgs.cliphist
       pkgs.imagemagick
-      pkgs.awscli
+      pkgs.awscli2
       pkgs.python313Packages.ec2instanceconnectcli
       pkgs.kubectl
       pkgs.kustomize
       pkgs.sops
       pkgs.rustup
       pkgs.vault
+      pkgs.grpcurl
 
       # # You can also create simple shell scripts directly inside your
       # # configuration. For example, this adds a command 'my-hello' to your
