@@ -21,6 +21,7 @@ vim.o.confirm = true
 vim.o.showcmd = true
 vim.o.scrolloff = 10
 vim.o.winborder = 'rounded'
+vim.o.jumpoptions = 'view'
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
