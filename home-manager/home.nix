@@ -64,6 +64,7 @@
       ".config/fuzzel/fuzzel.ini".source = extra/fuzzel.ini;
       ".config/kanshi/config".source = extra/kanshi;
       ".config/mako/config".source = extra/mako;
+      ".gradle/gradle.properties".source = extra/gradle.properties;
     };
 
     sessionVariables = {
