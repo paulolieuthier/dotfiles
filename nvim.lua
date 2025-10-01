@@ -49,8 +49,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	end
 end
 
-local rtp = vim.opt.rtp
-rtp:prepend(lazypath)
+vim.opt.rtp:prepend(lazypath)
 
 -- plugins
 require('lazy').setup({
@@ -220,12 +219,20 @@ require('lazy').setup({
                 ensure_installed = {},
                 automatic_enable = true,
                 automatic_installation = false,
-                handlers = {
-                    function(server_name)
-                        require('lspconfig')[server_name].setup()
-                    end,
-                },
+                inlay_hints = { enabled = true },
             }
+
+            vim.lsp.config('gopls', {
+                settings = {
+                    ['gopls'] = {
+                        buildFlags = { '-tags=test' },
+                        hints = { parameterNames = true, },
+                        analyses = { unusedparams = true, },
+                        staticcheck = true,
+                        gofumpt = true,
+                    }
+                }
+            })
         end,
     },
 
