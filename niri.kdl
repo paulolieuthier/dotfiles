@@ -50,20 +50,15 @@ layout {
     }
 }
 
-environment {
-    DISPLAY ":42"
-}
-
-spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
-spawn-at-startup "waybar"
-spawn-at-startup "mako"
-spawn-at-startup "swaybg" "-m" "fill" "-i" "~/.background.jpg"
-spawn-at-startup "nm-applet --indicator"
-spawn-at-startup "xwayland-satellite" ":42"
-spawn-at-startup "bash" "-c" "sleep 5; exec pasystray"
-spawn-at-startup "wl-paste" "--type" "text"  "--watch" "cliphist" "store"
-spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
-spawn-at-startup "wlsunset" "-t" "2000" "-S" "06:30" "-s" "18:00" "-d" "2000"
+spawn-sh-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
+spawn-sh-at-startup "waybar"
+spawn-sh-at-startup "mako"
+spawn-sh-at-startup "swaybg -m fill -i ~/.background.jpg"
+spawn-sh-at-startup "nm-applet --indicator"
+spawn-sh-at-startup "pasystray"
+spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
+spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
+spawn-sh-at-startup "wlsunset -t 2000 -S 06:30 -s 18:00 -d 2000"
 
 prefer-no-csd
 
