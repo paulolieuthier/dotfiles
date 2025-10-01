@@ -17,16 +17,7 @@
     conflictstyle = zdiff3
 
 [core]
-    pager = delta
     hooksPath = $HOME/.githooks
-
-[interactive]
-    diffFilter = delta --color-only
-
-[delta]
-    navigate = true
-    dark = true
-    line-numbers = true
 
 [pull]
     ff = only
