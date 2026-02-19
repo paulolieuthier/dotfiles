@@ -133,6 +133,11 @@ binds {
     Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
     Mod+Ctrl+L     { move-column-right; }
 
+    Mod+Ctrl+Alt+Down { spawn-sh "niri-new-workspace down"; }
+    Mod+Ctrl+Alt+J    { spawn-sh "niri-new-workspace down"; }
+    Mod+Ctrl+Alt+Up   { spawn-sh "niri-new-workspace up"; }
+    Mod+Ctrl+Alt+K    { spawn-sh "niri-new-workspace up"; }
+
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
     Mod+Ctrl+Home { move-column-to-first; }
