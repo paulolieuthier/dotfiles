@@ -54,7 +54,7 @@ clipboard {
     disable-primary true
 }
 
-spawn-sh-at-startup "noctalia-shell"
+spawn-at-startup "noctalia-shell"
 
 prefer-no-csd
 
