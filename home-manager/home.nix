@@ -1,10 +1,13 @@
 { config, nixgl, pkgs, ... }:
 
 {
-  nixGL = {
-    packages = import nixgl { inherit pkgs; };
-    defaultWrapper = "mesa";
-    installScripts = [ "mesa" ];
+  targets.genericLinux = {
+    enable = true;
+    nixGL = {
+      packages = import nixgl { inherit pkgs; };
+      defaultWrapper = "mesa";
+      installScripts = ["mesa"];
+    };
   };
 
   home = {
@@ -18,7 +21,7 @@
     # You should not change this value, even if you update Home Manager. If you do
     # want to update the value, then make sure to first check the Home Manager
     # release notes.
-    stateVersion = "25.05";
+    stateVersion = "25.11";
 
     packages = [
       pkgs.git
