@@ -60,6 +60,10 @@ spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 spawn-sh-at-startup "wlsunset -t 2000 -S 06:30 -s 18:00 -d 2000"
 
+clipboard {
+    disable-primary true
+}
+
 prefer-no-csd
 
 screenshot-path null
