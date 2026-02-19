@@ -1,14 +1,7 @@
-{ config, nixgl, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  targets.genericLinux = {
-    enable = true;
-    nixGL = {
-      packages = import nixgl { inherit pkgs; };
-      defaultWrapper = "mesa";
-      installScripts = ["mesa"];
-    };
-  };
+  targets.genericLinux.enable = true;
 
   home = {
     username = "paulo.lieuthier";
@@ -89,7 +82,6 @@
 
   programs.alacritty = {
     enable = true;
-    package = config.lib.nixGL.wrap pkgs.alacritty;
     settings = {
       window = {
         opacity = 0.9;
