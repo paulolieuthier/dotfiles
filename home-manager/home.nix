@@ -27,9 +27,7 @@
       pkgs.git
       pkgs.fish
       pkgs.tmux
-      pkgs.zellij
       pkgs.neovim
-      pkgs.helix
       pkgs.zoxide
       pkgs.fzf
       pkgs.skim
@@ -44,8 +42,6 @@
       pkgs.htop
       pkgs.nerd-fonts.fira-code
       pkgs.wl-clipboard
-      pkgs.mako
-      pkgs.fuzzel
       pkgs.grim
       pkgs.cliphist
       pkgs.imagemagick
@@ -68,9 +64,7 @@
 
     file = {
       ".config/tig/config".source = extra/tigrc;
-      ".config/fuzzel/fuzzel.ini".source = extra/fuzzel.ini;
       ".config/kanshi/config".source = extra/kanshi;
-      ".config/mako/config".source = extra/mako;
       ".gradle/gradle.properties".source = extra/gradle.properties;
     };
 
