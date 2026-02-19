@@ -40,6 +40,7 @@
       pkgs.difftastic
       pkgs.delta
       pkgs.htop
+      pkgs.noctalia-shell
       pkgs.nerd-fonts.fira-code
       pkgs.wl-clipboard
       pkgs.grim

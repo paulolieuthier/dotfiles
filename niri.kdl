@@ -50,23 +50,20 @@ layout {
     }
 }
 
-spawn-sh-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
-spawn-sh-at-startup "waybar"
-spawn-sh-at-startup "mako"
-spawn-sh-at-startup "swaybg -m fill -i ~/.background.jpg"
-spawn-sh-at-startup "nm-applet --indicator"
-spawn-sh-at-startup "pasystray"
-spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
-spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
-spawn-sh-at-startup "wlsunset -t 2000 -S 06:30 -s 18:00 -d 2000"
-
 clipboard {
     disable-primary true
 }
 
+spawn-sh-at-startup "noctalia-shell"
+
 prefer-no-csd
 
 screenshot-path null
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
 
 window-rule {
     geometry-corner-radius 2
@@ -79,6 +76,11 @@ window-rule {
     open-floating true
 }
 
+layer-rule {
+    match namespace="^noctalia-overview*"
+    place-within-backdrop true
+}
+
 binds {
     // To find an XKB name for a particular key, you may use a program like wev.
     // Most actions that you can bind here can also be invoked programmatically
@@ -88,17 +90,18 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty" "-e" "tmux"; }
-    Mod+Shift+Return hotkey-overlay-title="Open a File Explorer: nautilus" { spawn "nautilus"; }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Mod+P hotkey-overlay-title="Clipboard History" { spawn "bash" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "lockscreen"; }
-    Super+Alt+Shift+L hotkey-overlay-title="Lock the Screen and sleep: swaylock" { spawn "lockscreen" "dpms"; }
+    Mod+Return { spawn "alacritty" "-e" "tmux"; }
+    Mod+Shift+Return { spawn "nautilus"; }
+    Mod+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Mod+P { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+    Mod+X { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+    Super+Alt+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Super+Alt+Shift+L { spawn "noctalia-shell ipc call sessionMenu" "lockAndSuspend"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    Shift+XF86AudioMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    Shift+XF86AudioMute  allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+1%"; }
     Shift+XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+5%"; }

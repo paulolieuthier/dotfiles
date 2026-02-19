@@ -11,10 +11,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, nixgl, home-manager, ... }:
+    { nixpkgs, nixgl, home-manager, noctalia, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -24,13 +28,16 @@
       };
     in
     {
-      homeConfigurations."paulo.lieuthier" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home.nix
-        ];
-        extraSpecialArgs = {
-          nixgl = nixgl;
+      homeConfigurations = {
+        "paulo.lieuthier" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            noctalia.homeModules.default
+            ./home.nix
+          ];
+          extraSpecialArgs = {
+            nixgl = nixgl;
+          };
         };
       };
     };
