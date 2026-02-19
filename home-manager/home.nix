@@ -33,7 +33,6 @@
       pkgs.difftastic
       pkgs.delta
       pkgs.htop
-      pkgs.noctalia-shell
       pkgs.nerd-fonts.fira-code
       pkgs.wl-clipboard
       pkgs.grim
@@ -71,9 +70,14 @@
   programs.home-manager.enable = true;
 
   imports = [
+    noctalia.homeModules.default
     ./modules/fish.nix
     ./modules/tmux.nix
   ];
+
+  programs.noctalia-shell = {
+    enable = true;
+  };
 
   programs.zoxide = {
     enable = true;

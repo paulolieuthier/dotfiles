@@ -28,10 +28,10 @@
         "paulo.lieuthier" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            noctalia.homeModules.default
             ./home.nix
           ];
           extraSpecialArgs = {
+            noctalia = noctalia;
           };
         };
       };
