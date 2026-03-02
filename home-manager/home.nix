@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, noctalia, ... }:
 
 {
   targets.genericLinux.enable = true;
