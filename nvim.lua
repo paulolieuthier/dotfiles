@@ -337,6 +337,7 @@ require('lazy').setup({
         config = function()
             local dap, dapui = require('dap'), require('dapui')
 
+            dapui.setup()
             dap.listeners.before.attach.dapui_config = function()
                 dapui.open()
             end
@@ -353,9 +354,9 @@ require('lazy').setup({
             vim.keymap.set('n', '<F5>', function() dap.continue() end)
             vim.keymap.set('n', '<F8>', function() dap.step_over() end)
             vim.keymap.set('n', '<F7>', function() dap.step_into() end)
-            vim.keymap.set('n', '<F8>', function() dap.step_out() end)
-            vim.keymap.set('n', '<M-b>', function() dap.toggle_breakpoint() end)
-            vim.keymap.set('n', '<M-e>', function() dapui.eval() end)
+            vim.keymap.set('n', '<F6>', function() dap.step_out() end)
+            vim.keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end)
+            vim.keymap.set('n', '<leader>de', function() dapui.eval() end)
 
             require('nvim-dap-virtual-text').setup()
             require('dap-go').setup()
