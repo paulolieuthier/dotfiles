@@ -37,6 +37,7 @@ vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>ev', ':edit $MYVIMRC<CR>')
 vim.keymap.set('n', '<leader>sv', ':source $MYVIMRC<CR>')
+vim.keymap.set('i', '<c-\\>', function() end)
 
 -- diagnostics
 vim.diagnostic.config({ underline = true, virtual_text = true, })
