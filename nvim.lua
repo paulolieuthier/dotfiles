@@ -297,7 +297,11 @@ require('lazy').setup({
             'fredrikaverpil/neotest-golang',
         },
         config = function()
-            require('neotest').setup({
+            neotest = require("neotest")
+            neotest.setup({
+                output = {
+                    open_on_run = false,
+                },
                 adapters = {
                     require('neotest-golang') {
                         runner = 'gotestsum',
@@ -305,6 +309,21 @@ require('lazy').setup({
                     },
                 },
             })
+
+            clear_panel_and_run = function(command)
+                neotest.output_panel.clear()
+                command()
+            end
+
+            vim.keymap.set('n', '<leader>tr', function() clear_panel_and_run(function() neotest.run.run() end) end)
+            vim.keymap.set('n', '<leader>tf', function() clear_panel_and_run(function() neotest.run.run(vim.fn.expand('%')) end) end)
+            vim.keymap.set('n', '<leader>tl', function() clear_panel_and_run(function() neotest.run.run_last() end) end)
+            vim.keymap.set('n', '<leader>tld', function() clear_panel_and_run(function() neotest.run.run_last({strategy = 'dap'}) end) end)
+            vim.keymap.set('n', '<leader>td', function() clear_panel_and_run(function() neotest.run.run({strategy = 'dap'}) end) end)
+            vim.keymap.set('n', '<leader>te', function() neotest.run.stop() end)
+            vim.keymap.set('n', '<leader>to', function() neotest.output.open({ enter = true }) end)
+            vim.keymap.set('n', '<leader>tp', function() neotest.output_panel.toggle() end)
+            vim.keymap.set('n', '<leader>ts', function() neotest.summary.toggle() end)
         end,
     },
 
