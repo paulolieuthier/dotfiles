@@ -20,6 +20,7 @@
       urldecode="python3 -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.stdin.read()))'";
       inflate="perl -mIO::Uncompress::RawInflate=rawinflate -erawinflate'\"-\",\"-\"'";
       deflate="perl -mIO::Compress::RawDeflate=rawdeflate -erawdeflate'\"-\",\"-\"'";
+      sqlformat="uvx --from sqlparse sqlformat - --reindent --keywords upper --use_space_around_operators";
     };
 
     plugins = [
