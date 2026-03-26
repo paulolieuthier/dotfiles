@@ -372,6 +372,7 @@ require('lazy').setup({
             vim.keymap.set('n', '<F6>', function() dap.step_out() end)
             vim.keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end)
             vim.keymap.set('n', '<leader>de', function() dapui.eval() end)
+            vim.keymap.set('n', '<leader>du', function() dapui.toggle({}) end)
 
             require('nvim-dap-virtual-text').setup()
             require('mason-nvim-dap').setup({
