@@ -103,7 +103,7 @@ require('lazy').setup({
     },
 
 	{
-		'echasnovski/mini.nvim',
+		'nvim-mini/mini.nvim',
 		config = function()
             local brackets = {
                 ['('] = { '(', ')' },
