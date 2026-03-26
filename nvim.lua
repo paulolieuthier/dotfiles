@@ -41,7 +41,6 @@ vim.keymap.set('i', '<c-\\>', function() end)
 
 -- diagnostics
 vim.diagnostic.config({ underline = true, virtual_text = true, })
-vim.keymap.set('n', '<c-w>d', function() vim.diagnostic.open_float({ border = 'rounded' }) end)
 
 -- plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
