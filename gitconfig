@@ -33,9 +33,6 @@
 [rebase]
     autoSquash = true
 
-[diff]
-    external = difft
-
 [rerere]
     enabled = true
     autoupdate = true
