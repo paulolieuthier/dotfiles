@@ -347,7 +347,7 @@ require('lazy').setup({
         dependencies = {
             'mfussenegger/nvim-dap',
             'theHamsta/nvim-dap-virtual-text',
-            'leoluz/nvim-dap-go',
+            'jay-babu/mason-nvim-dap.nvim',
         },
         config = function()
             local dap, dapui = require('dap'), require('dapui')
@@ -374,7 +374,10 @@ require('lazy').setup({
             vim.keymap.set('n', '<leader>de', function() dapui.eval() end)
 
             require('nvim-dap-virtual-text').setup()
-            require('dap-go').setup()
+            require('mason-nvim-dap').setup({
+                ensure_installed = {'go', 'python'},
+                handlers = {}, -- sets up dap in the predefined manner
+            })
         end,
     },
 })
