@@ -308,6 +308,7 @@ require('lazy').setup({
             'nvim-neotest/nvim-nio',
             'nvim-treesitter/nvim-treesitter',
             'fredrikaverpil/neotest-golang',
+            'nvim-neotest/neotest-python',
         },
         config = function()
             neotest = require("neotest")
@@ -320,6 +321,7 @@ require('lazy').setup({
                         runner = 'gotestsum',
                         testify_enabled = true,
                     },
+                    require("neotest-python"),
                 },
             })
 
