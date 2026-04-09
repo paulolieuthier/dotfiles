@@ -348,6 +348,7 @@ require('lazy').setup({
             'mfussenegger/nvim-dap',
             'theHamsta/nvim-dap-virtual-text',
             'jay-babu/mason-nvim-dap.nvim',
+            'leoluz/nvim-dap-go', -- necessary for neotest-go
         },
         config = function()
             local dap, dapui = require('dap'), require('dapui')
@@ -379,6 +380,20 @@ require('lazy').setup({
                 ensure_installed = {'go', 'python'},
                 handlers = {}, -- sets up dap in the predefined manner
             })
+
+            require('dap-go').setup {
+                delve = {
+                    port = "2345",
+                },
+                dap_configurations = {
+                    {
+                        type = "go",
+                        name = "Attach remote",
+                        mode = "remote",
+                        request = "attach",
+                    },
+                },
+            }
         end,
     },
 })
