@@ -253,17 +253,6 @@ require('lazy').setup({
     },
 
     {
-        'filipdutescu/renamer.nvim',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-        },
-        opts = {},
-        keys = {
-            { "<leader>rn", function() require('renamer').rename() end, desc = "Rename variable" },
-        },
-    },
-
-    {
         'saghen/blink.cmp',
         event = 'VimEnter',
         version = '1.*',
