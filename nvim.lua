@@ -245,10 +245,7 @@ require('lazy').setup({
                 }
             })
             
-            vim.keymap.set('n', '<leader>aa', function() vim.lsp.buf.code_action() end)
-            vim.keymap.set('n', '<leader>af', function() vim.lsp.buf.format() end)
-            -- <c-_> maps to <c-/>
-            vim.keymap.set('i', '<c-_>',  function() vim.lsp.buf.signature_help() end)
+            vim.keymap.set('n', 'grf', function() vim.lsp.buf.format() end)
         end,
     },
 
