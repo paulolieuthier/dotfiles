@@ -37,6 +37,7 @@
       bind alt-shift-f forward-bigword
       bind alt-backspace kill-word
       bind alt-shift-backspace kill-bigword
+      bind ctrl-t 'commandline -i (sk)'
       
       function ..    ; cd .. ; end
       function ...   ; cd ../.. ; end
