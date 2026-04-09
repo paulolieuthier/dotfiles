@@ -307,6 +307,7 @@ require('lazy').setup({
         dependencies = {
             'nvim-neotest/nvim-nio',
             'nvim-treesitter/nvim-treesitter',
+            'nvim-lua/plenary.nvim',
             'fredrikaverpil/neotest-golang',
             'nvim-neotest/neotest-python',
         },
