@@ -289,6 +289,18 @@ require('lazy').setup({
     },
 
     {
+        'Bekaboo/dropbar.nvim',
+        dependencies = {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            build = 'make'
+        },
+        config = function()
+            local dropbar = require('dropbar.api')
+            vim.keymap.set('n', '<leader>;', dropbar.pick)
+        end
+    },
+
+    {
         'nvim-neotest/neotest',
         dependencies = {
             'nvim-neotest/nvim-nio',
