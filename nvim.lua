@@ -19,6 +19,7 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 vim.o.confirm = true
 vim.o.showcmd = true
+vim.o.autoread = true
 vim.o.scrolloff = 10
 vim.o.winborder = 'rounded'
 vim.o.jumpoptions = 'view'
