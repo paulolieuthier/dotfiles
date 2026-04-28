@@ -28,6 +28,7 @@
       pkgs.fd
       pkgs.jq
       pkgs.yq
+      pkgs.xh
       pkgs.parallel
       pkgs.tig
       pkgs.difftastic
@@ -66,6 +67,8 @@
     };
   };
 
+  xdg.autostart.enable = false;
+  xdg.autostart.readOnly = true;
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
 
