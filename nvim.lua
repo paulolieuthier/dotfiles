@@ -318,8 +318,10 @@ require('lazy').setup({
                 },
                 adapters = {
                     require('neotest-golang') {
-                        runner = 'gotestsum',
-                        testify_enabled = true,
+                        runner = 'go',
+                        colorize_test_output = true,
+                        -- testify_enabled = true,
+                        go_test_args = {"-v", "-count=1", "-tags=test"},
                     },
                     require("neotest-python"),
                 },
