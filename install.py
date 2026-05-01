@@ -31,7 +31,6 @@ def symlink_file(file_name, symlink_name):
     os.symlink(full_config_name, full_symlink_name)
 
 symlink_file("home-manager", "~/.config/home-manager")
-symlink_file("background.jpg", "~/.background.jpg")
 symlink_file("environment.conf", "~/.config/environment.d/basic.conf")
 symlink_file("nvim.lua", "~/.config/nvim/init.lua")
 symlink_file("niri.kdl", "~/.config/niri/config.kdl")

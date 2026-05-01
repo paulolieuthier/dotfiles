@@ -57,6 +57,7 @@
     ];
 
     file = {
+      ".background.jpg".source = extra/background.jpg;
       ".config/tig/config".source = extra/tigrc;
       ".config/kanshi/config".source = extra/kanshi;
       ".gradle/gradle.properties".source = extra/gradle.properties;
