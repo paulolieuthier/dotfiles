@@ -92,6 +92,11 @@ require('lazy').setup({
         config = function()
             vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-forward)')
             vim.keymap.set({'n', 'x', 'o'}, 'gS', '<Plug>(leap-backward)')
+            vim.keymap.set({'x', 'o'}, 'an', function()
+                require('leap.treesitter').select {
+                    opts = require('leap.user').with_traversal_keys('n', 'N')
+                }
+            end)
         end
     },
 
