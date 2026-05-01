@@ -10,11 +10,11 @@ map <C-p> <Action>(EditorUp)
 xnoremap p "_s<c-r>+<esc>
 xnoremap P "_s<c-r>+<esc>
 
-inoremap <C-\> <C-O>:action ParameterInfo<CR>
-map gd <Action>(GotoDeclaration)
-map gi <Action>(GotoImplementation)
-map gt <Action>(GotoTypeDeclaration)
-map gu <Action>(GotoSuperMethod)
+inoremap <C-S> <C-O>:action ParameterInfo<CR>
+map grd <Action>(GotoDeclaration)
+map gri <Action>(GotoImplementation)
+map grt <Action>(GotoTypeDeclaration)
+map gru <Action>(GotoSuperMethod)
 
 map <C-O> <Action>(Back)
 map <C-I> <Action>(Forward)
@@ -28,16 +28,13 @@ map K <Action>(ShowHoverInfo)
 
 let mapleader = "\<space>"
 
+map <space>n :noh<CR>
+
 map <space>: <Action>(GotoAction)
 map <space>; <Action>(GotoAction)
-map <space>pf <Action>(GotoFile)
-map <space>pr <Action>(RecentFiles)
-map <space>pp <Action>(ManageRecentProjects)
+map <space>ff <Action>(GotoFile)
+map <space>fr <Action>(RecentFiles)
 
-map <space>sv <Action>(SplitVertically)
-map <space>sh <Action>(SplitHorizontally)
-
-map <space>wh <Action>(HideAllWindows)
 map <space>wc <Action>(CloseContent)
 
 map <space>ri <Action>(OptimizeImports)
@@ -45,10 +42,6 @@ map <space>rr <Action>(Refactorings.QuickListPopupAction)
 map <space>rs <Action>(SurroundWith)
 
 map <space>tn <Action>(GotoTest)
-map <space>tr <Action>(RunClass)
-map <space>tt <Action>(Rerun)
-map <space>tf <Action>(RerunFailedTests)
-
-map <space>n :noh<CR>
-map <space>jw <Action>(KJumpAction.Word1)
-map <space>jf <Action>(KJumpAction)
+map <space>tf <Action>(RunClass)
+map <space>tl <Action>(Rerun)
+map <space>tr <Action>(RerunFailedTests)
