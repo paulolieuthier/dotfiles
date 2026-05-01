@@ -209,20 +209,17 @@ require('lazy').setup({
         'nvim-treesitter/nvim-treesitter',
         branch = 'main',
         build = ':TSUpdate',
-        opts = {
-            auto_install = true,
-            highlight = { enable = true },
-            indent = { enable = true },
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "gnn",
-                    node_incremental = "grn",
-                    scope_incremental = "grc",
-                    node_decremental = "grm",
-                },
-            },
-        },
+        config = function()
+            vim.api.nvim_create_autocmd('FileType', {
+                callback = function(args)
+                    local lang = vim.treesitter.language.get_lang(args.match)
+                    if lang and vim.treesitter.language.add(lang) then
+                        vim.treesitter.start()
+                        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                    end
+                end,
+            })
+        end
     },
 
     {
