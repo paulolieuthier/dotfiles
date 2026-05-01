@@ -162,7 +162,6 @@ require('lazy').setup({
 			words = { enabled = true },
 		},
         keys = {
-            { "<leader>:",  function() Snacks.picker.command_history() end, desc = "Command History" },
             { "<leader>n",  function() Snacks.picker.notifications() end, desc = "Notification History" },
             { "<leader>e",  function() Snacks.explorer() end, desc = "File Explorer" },
 
@@ -171,7 +170,6 @@ require('lazy').setup({
             { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
             { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
             { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
-            { "<leader>pf", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
 
             { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
             { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
@@ -188,12 +186,8 @@ require('lazy').setup({
             { "go", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
 
             { "<C-c>",  function() Snacks.bufdelete() end, desc = "Close buffer" },
-            { "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
-            { "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
             { "<leader>bd",  function() Snacks.bufdelete() end, desc = "Delete Buffer" },
             { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-            { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
-            { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
         },
     },
 
