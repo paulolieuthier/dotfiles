@@ -37,6 +37,7 @@
       pkgs.nerd-fonts.fira-code
       pkgs.wl-clipboard
       pkgs.grim
+      pkgs.xwayland-satellite
       pkgs.cliphist
       pkgs.imagemagick
       pkgs.awscli2
@@ -47,6 +48,7 @@
       pkgs.rustup
       pkgs.vault
       pkgs.grpcurl
+      pkgs.tree-sitter
 
       # # You can also create simple shell scripts directly inside your
       # # configuration. For example, this adds a command 'my-hello' to your
