@@ -16,6 +16,10 @@ input {
     mouse {
         accel-speed 0.3
     }
+
+    touch {
+        off
+    }
 }
 
 layout {
