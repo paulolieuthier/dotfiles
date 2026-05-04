@@ -38,6 +38,7 @@
       pkgs.wl-clipboard
       pkgs.grim
       pkgs.xwayland-satellite
+      pkgs.brightnessctl
       pkgs.cliphist
       pkgs.imagemagick
       pkgs.awscli2
