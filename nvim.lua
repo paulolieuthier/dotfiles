@@ -24,7 +24,7 @@ vim.o.winborder = 'rounded'
 vim.o.jumpoptions = 'view'
 
 vim.schedule(function()
-	vim.o.clipboard = 'unnamedplus'
+    vim.o.clipboard = 'unnamedplus'
 end)
 
 -- basic keymaps
@@ -41,22 +41,22 @@ vim.diagnostic.config({ underline = true, virtual_text = true, })
 -- plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-	local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-	if vim.v.shell_error ~= 0 then
-		error('Error cloning lazy.nvim:\n' .. out)
-	end
+    local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+    local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+    if vim.v.shell_error ~= 0 then
+        error('Error cloning lazy.nvim:\n' .. out)
+    end
 end
 
 -- remember last position for every file
 vim.api.nvim_create_autocmd("BufReadPost", {
-  callback = function()
-    local mark = vim.api.nvim_buf_get_mark(0, '"')
-    local lcount = vim.api.nvim_buf_line_count(0)
-    if mark[1] > 0 and mark[1] <= lcount then
-      pcall(vim.api.nvim_win_set_cursor, 0, mark)
-    end
-  end,
+    callback = function()
+        local mark = vim.api.nvim_buf_get_mark(0, '"')
+        local lcount = vim.api.nvim_buf_line_count(0)
+        if mark[1] > 0 and mark[1] <= lcount then
+            pcall(vim.api.nvim_win_set_cursor, 0, mark)
+        end
+    end,
 })
 
 vim.opt.rtp:prepend(lazypath)
@@ -76,11 +76,11 @@ require('lazy').setup({
         end
     },
 
-	{
-		'folke/lazydev.nvim',
-		ft = 'lua',
-		opts = {}
-	},
+    {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {}
+    },
 
     {
         'tpope/vim-sleuth',
@@ -118,9 +118,9 @@ require('lazy').setup({
         },
     },
 
-	{
-		'nvim-mini/mini.nvim',
-		config = function()
+    {
+        'nvim-mini/mini.nvim',
+        config = function()
             local brackets = {
                 ['('] = { '(', ')' },
                 ['['] = { '[', ']' },
@@ -142,29 +142,29 @@ require('lazy').setup({
                     },
                 }
             })
-			require('mini.comment').setup()
-			require('mini.pairs').setup()
+            require('mini.comment').setup()
+            require('mini.pairs').setup()
             require('mini.move').setup()
             require('mini.icons').setup()
             require('mini.statusline').setup()
-		end,
-	},
+        end,
+    },
 
-	{
-		'folke/snacks.nvim',
-		lazy = false,
-		opts = {
-			bigfile = { enabled = true },
-			dashboard = { enabled = true },
-			explorer = { enabled = true },
-			indent = { enabled = true },
-			input = { enabled = true },
-			picker = { enabled = true },
-			notifier = { enabled = true },
-			quickfile = { enabled = true },
-			scope = { enabled = true },
-			words = { enabled = true },
-		},
+    {
+        'folke/snacks.nvim',
+        lazy = false,
+        opts = {
+            bigfile = { enabled = true },
+            dashboard = { enabled = true },
+            explorer = { enabled = true },
+            indent = { enabled = true },
+            input = { enabled = true },
+            picker = { enabled = true },
+            notifier = { enabled = true },
+            quickfile = { enabled = true },
+            scope = { enabled = true },
+            words = { enabled = true },
+        },
         keys = {
             { "<leader>n",  function() Snacks.picker.notifications() end, desc = "Notification History" },
             { "<leader>e",  function() Snacks.explorer() end, desc = "File Explorer" },
@@ -251,7 +251,7 @@ require('lazy').setup({
                     }
                 }
             })
-            
+
             vim.keymap.set('n', 'grf', function() vim.lsp.buf.format() end)
         end,
     },
