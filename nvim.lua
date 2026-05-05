@@ -6,7 +6,6 @@ vim.o.mouse = 'a'
 vim.o.showmode = false
 vim.o.breakindent = true
 vim.o.autoindent = true
-vim.o.smartindent = true
 vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -23,10 +22,6 @@ vim.o.autoread = true
 vim.o.scrolloff = 10
 vim.o.winborder = 'rounded'
 vim.o.jumpoptions = 'view'
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
 
 vim.schedule(function()
 	vim.o.clipboard = 'unnamedplus'
@@ -86,6 +81,10 @@ require('lazy').setup({
 		ft = 'lua',
 		opts = {}
 	},
+
+    {
+        'tpope/vim-sleuth',
+    },
 
     {
         'https://codeberg.org/andyg/leap.nvim',
