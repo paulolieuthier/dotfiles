@@ -22,6 +22,10 @@ vim.o.autoread = true
 vim.o.scrolloff = 10
 vim.o.winborder = 'rounded'
 vim.o.jumpoptions = 'view'
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
 
 vim.schedule(function()
     vim.o.clipboard = 'unnamedplus'
