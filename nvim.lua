@@ -26,6 +26,7 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.sessionoptions:append 'localoptions'
 
 vim.schedule(function()
     vim.opt.clipboard = 'unnamedplus'
@@ -52,13 +53,15 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     end
 end
 
--- remember last position for every file
-vim.api.nvim_create_autocmd("BufReadPost", {
+-- remember last position for files not in a automatic session
+vim.api.nvim_create_autocmd('BufReadPost', {
     callback = function()
-        local mark = vim.api.nvim_buf_get_mark(0, '"')
-        local lcount = vim.api.nvim_buf_line_count(0)
-        if mark[1] > 0 and mark[1] <= lcount then
-            pcall(vim.api.nvim_win_set_cursor, 0, mark)
+        if vim.v.this_session == '' then
+            local mark = vim.api.nvim_buf_get_mark(0, '"')
+            local lcount = vim.api.nvim_buf_line_count(0)
+            if mark[1] > 0 and mark[1] <= lcount then
+                pcall(vim.api.nvim_win_set_cursor, 0, mark)
+            end
         end
     end,
 })
@@ -91,19 +94,6 @@ require('lazy').setup({
     },
 
     {
-        'https://codeberg.org/andyg/leap.nvim',
-        config = function()
-            vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-forward)')
-            vim.keymap.set({'n', 'x', 'o'}, 'gS', '<Plug>(leap-backward)')
-            vim.keymap.set({'x', 'o'}, 'an', function()
-                require('leap.treesitter').select {
-                    opts = require('leap.user').with_traversal_keys('n', 'N')
-                }
-            end)
-        end
-    },
-
-    {
         "christoomey/vim-tmux-navigator",
         cmd = {
             "TmuxNavigateLeft",
@@ -125,91 +115,107 @@ require('lazy').setup({
     {
         'nvim-mini/mini.nvim',
         config = function()
-            local brackets = {
-                ['('] = { '(', ')' },
-                ['['] = { '[', ']' },
-                ['{'] = { '{', '}' },
-                ['<'] = { '<', '>' },
-            }
-            require('mini.surround').setup({
-                -- custom surrounding mapping to add newlines
-                custom_surroundings = {
-                    ['n'] = {
-                        output = function()
-                            local id = vim.fn.getcharstr()
-                            local left, right = unpack(brackets[id])
-                            local indent = vim.api.nvim_get_current_line():match('^%s*')
-                            local sw = vim.bo.shiftwidth
-                            local tab_text = vim.bo.expandtab and string.rep(' ', sw == 0 and vim.bo.tabstop or sw) or '\t'
-                            return { left = left .. '\n' .. indent .. tab_text, right = '\n' .. indent .. right }
-                        end,
-                    },
-                }
-            })
+            require('mini.ai').setup()
+            require('mini.surround').setup()
             require('mini.comment').setup()
             require('mini.pairs').setup()
             require('mini.move').setup()
             require('mini.icons').setup()
             require('mini.statusline').setup()
+            require('mini.cursorword').setup()
+            require('mini.splitjoin').setup()
+            require('mini.snippets').setup()
+            require('mini.completion').setup()
+            require('mini.clue').setup()
+            require('mini.indentscope').setup()
+            require('mini.visits').setup()
+            require('mini.starter').setup()
+
+            local bufremove = require('mini.bufremove')
+            bufremove.setup({
+                silent = true,
+            })
+            vim.keymap.set('n', '<C-c>', bufremove.wipeout)
+
+            local jump2d = require('mini.jump2d')
+            vim.keymap.set({'n', 'x'}, 's', function() jump2d.start(jump2d.builtin_opts.single_character) end)
+
+            local pick, extra = require('mini.pick'), require('mini.extra')
+            pick.setup()
+            extra.setup()
+
+            vim.keymap.set('n', '<leader>fl', pick.builtin.resume)
+            vim.keymap.set('n', '<leader>fb', pick.builtin.buffers)
+            vim.keymap.set('n', '<leader>fg', pick.builtin.grep_live)
+            vim.keymap.set('n', '<leader>ff', pick.builtin.files)
+
+            vim.keymap.set('n', '<leader>sD', extra.pickers.diagnostic)
+            vim.keymap.set('n', '<leader>sd', function() extra.pickers.diagnostic({ scope = 'current' }) end)
+
+            vim.keymap.set('n', '<leader>fR', function() extra.pickers.visit_paths({ recency_weight = 1, cwd = '' }) end)
+            vim.keymap.set('n', '<leader>fr', function()
+                extra.pickers.visit_paths({
+                    recency_weight = 1,
+                    filter = function(data) return vim.startswith(data.path, vim.fs.root(0, '.git') .. '/') end,
+                }) 
+            end)
+
+            local notify = require('mini.notify')
+            notify.setup()
+            vim.keymap.set('n', '<leader>n', function()
+                pick.start({ source = { items = vim.iter(notify.get_all()):map(function(n) return n.msg end):totable() } })
+            end)
+
+            vim.keymap.set('n', 'grd', function() extra.pickers.lsp({ scope = 'definition' }) end)
+            vim.keymap.set('n', 'grD', function() extra.pickers.lsp({ scope = 'declaration' }) end)
+            vim.keymap.set('n', 'grr', function() extra.pickers.lsp({ scope = 'references' }) end)
+            vim.keymap.set('n', 'gri', function() extra.pickers.lsp({ scope = 'implementation' }) end)
+            vim.keymap.set('n', 'grt', function() extra.pickers.lsp({ scope = 'type_definition' }) end)
+            vim.keymap.set('n', 'gO', function() extra.pickers.lsp({ scope = 'document_symbol' }) end)
+            vim.keymap.set('n', 'go', function() extra.pickers.lsp({ scope = 'workspace_symbol_live' }) end)
+
+            local files = require('mini.files')
+            files.setup({
+                mappings = {
+                    go_in  = '<cr>',
+                    go_out = '<bs>',
+                    reset  = '',
+                }
+            })
+            vim.keymap.set('n', '<leader>e', files.open)
+
+            local keymap = require('mini.keymap')
+            keymap.setup()
+            keymap.map_multistep('i', '<Tab>',   { 'pmenu_next' })
+            keymap.map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
+            keymap.map_multistep('i', '<CR>',    { 'pmenu_accept', 'minipairs_cr' })
+            keymap.map_multistep('i', '<BS>',    { 'minipairs_bs' })
+
+            local sessions = require('mini.sessions')
+            sessions.setup({ autoread = true })
+
+            local function git_session_name()
+                local git_root = vim.fs.root(0, '.git')
+                -- safe filename (/home/user/projects/skynet -> projects%skynet)
+                return git_root and git_root:gsub('[/\\]', '%%')
+            end
+
+            vim.api.nvim_create_autocmd('VimEnter', {
+                callback = function()
+                    if vim.fn.argc() == 0 then
+                        local name = git_session_name()
+                        if name and sessions.detected[name] then
+                            sessions.read(name)
+                        elseif name then 
+                            sessions.write(name)
+                        end
+                    end
+                end,
+            })
         end,
     },
 
     {
-        'folke/snacks.nvim',
-        lazy = false,
-        opts = {
-            bigfile = { enabled = true },
-            dashboard = { enabled = true },
-            explorer = { enabled = true },
-            indent = { enabled = true },
-            input = { enabled = true },
-            picker = { enabled = true },
-            notifier = { enabled = true },
-            quickfile = { enabled = true },
-            scope = { enabled = true },
-            words = { enabled = true },
-        },
-        keys = {
-            { "<leader>n",  function() Snacks.picker.notifications() end, desc = "Notification History" },
-            { "<leader>e",  function() Snacks.explorer() end, desc = "File Explorer" },
-
-            { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-            { "<leader>fg", function() Snacks.picker.grep() end, desc = "Grep" },
-            { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
-            { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
-            { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
-
-            { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
-            { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
-            { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
-            { "<leader>sd", function() Snacks.picker.diagnostics_buffer() end, desc = "Diagnostics" },
-            { "<leader>sD", function() Snacks.picker.diagnostics() end, desc = "Buffer Diagnostics" },
-
-            { "grd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-            { "grD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
-            { "grr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
-            { "gri", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
-            { "grt", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-            { "gO", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
-            { "go", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-
-            { "<C-c>",  function() Snacks.bufdelete() end, desc = "Close buffer" },
-            { "<leader>bd",  function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-            { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-        },
-    },
-
-    {
-        "folke/persistence.nvim",
-        event = "BufReadPre",
-        opts = {},
-        keys = {
-            -- load the session for the current directory
-            { "<leader>qs", function() require("persistence").load() end },
-            -- select a session to load
-            { "<leader>qS", function() require("persistence").select() end },
-            -- load the last session
-            { "<leader>ql", function() require("persistence").load({ last = true }) end },
         },
     },
 
@@ -258,45 +264,6 @@ require('lazy').setup({
 
             vim.keymap.set('n', 'grf', function() vim.lsp.buf.format() end)
         end,
-    },
-
-    {
-        'saghen/blink.cmp',
-        event = 'VimEnter',
-        version = '1.*',
-        dependencies = {
-            {
-                'L3MON4D3/LuaSnip',
-                version = '2.*',
-                dependencies = {
-                    -- `friendly-snippets` contains a variety of premade snippets.
-                    {
-                        'rafamadriz/friendly-snippets',
-                        config = function()
-                            require('luasnip.loaders.from_vscode').lazy_load()
-                        end,
-                    },
-                },
-                opts = {},
-            },
-            'folke/lazydev.nvim',
-        },
-        opts = {
-            keymap = { preset = 'enter' },
-            completion = {
-                list = { selection = { preselect = false } },
-                documentation = { auto_show = true, auto_show_delay_ms = 500 }
-            },
-            sources = {
-                default = { 'lsp', 'path', 'snippets', 'lazydev' },
-                providers = {
-                    lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-                },
-            },
-            snippets = { preset = 'luasnip' },
-            fuzzy = { implementation = 'lua' },
-            signature = { enabled = true },
-        },
     },
 
     {
