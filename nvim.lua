@@ -1,34 +1,34 @@
 -- basic settings
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.o.number = false
-vim.o.mouse = 'a'
-vim.o.showmode = false
-vim.o.breakindent = true
-vim.o.autoindent = true
-vim.o.undofile = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.signcolumn = 'yes'
-vim.o.updatetime = 250
-vim.o.timeoutlen = 600
-vim.o.splitright = true
-vim.o.splitbelow = true
-vim.o.inccommand = 'split'
-vim.o.cursorline = true
-vim.o.confirm = true
-vim.o.showcmd = true
-vim.o.autoread = true
-vim.o.scrolloff = 10
-vim.o.winborder = 'rounded'
-vim.o.jumpoptions = 'view'
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
+vim.opt.number = false
+vim.opt.mouse = 'a'
+vim.opt.showmode = false
+vim.opt.breakindent = true
+vim.opt.autoindent = true
+vim.opt.undofile = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.signcolumn = 'yes'
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 600
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.inccommand = 'split'
+vim.opt.cursorline = true
+vim.opt.confirm = true
+vim.opt.showcmd = true
+vim.opt.autoread = true
+vim.opt.scrolloff = 10
+vim.opt.winborder = 'rounded'
+vim.opt.jumpoptions = 'view'
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 vim.schedule(function()
-    vim.o.clipboard = 'unnamedplus'
+    vim.opt.clipboard = 'unnamedplus'
 end)
 
 -- basic keymaps
