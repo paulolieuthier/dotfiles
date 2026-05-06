@@ -39,6 +39,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>ev', ':edit $MYVIMRC<CR>')
 vim.keymap.set('n', '<leader>sv', ':source $MYVIMRC<CR>')
 vim.keymap.set('i', '<c-\\>', function() end)
+vim.keymap.set('n', 'grf', function() vim.lsp.buf.format() end)
 
 -- diagnostics
 vim.diagnostic.config({ underline = true, virtual_text = true, })
@@ -52,6 +53,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         error('Error cloning lazy.nvim:\n' .. out)
     end
 end
+vim.opt.rtp:prepend(lazypath)
 
 -- remember last position for files not in a automatic session
 vim.api.nvim_create_autocmd('BufReadPost', {
@@ -66,14 +68,11 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     end,
 })
 
-vim.opt.rtp:prepend(lazypath)
-
 -- plugins
 require('lazy').setup({
     {
         'catppuccin/nvim',
         name = 'catppuccin',
-        priority = 1000,
         config = function()
             require('catppuccin').setup({
                 flavour = 'macchiato',
@@ -84,31 +83,22 @@ require('lazy').setup({
     },
 
     {
-        'folke/lazydev.nvim',
-        ft = 'lua',
-        opts = {}
-    },
-
-    {
         'tpope/vim-sleuth',
     },
 
     {
-        "christoomey/vim-tmux-navigator",
+        'christoomey/vim-tmux-navigator',
         cmd = {
-            "TmuxNavigateLeft",
-            "TmuxNavigateDown",
-            "TmuxNavigateUp",
-            "TmuxNavigateRight",
-            "TmuxNavigatePrevious",
-            "TmuxNavigatorProcessList",
+            'TmuxNavigateLeft',
+            'TmuxNavigateDown',
+            'TmuxNavigateUp',
+            'TmuxNavigateRight',
         },
         keys = {
-            { "<C-h>", "<cmd><C-U>TmuxNavigateLeft<CR>" },
-            { "<C-j>", "<cmd><C-U>TmuxNavigateDown<CR>" },
-            { "<C-k>", "<cmd><C-U>TmuxNavigateUp<CR>" },
-            { "<C-l>", "<cmd><C-U>TmuxNavigateRight<CR>" },
-            { "<C-\\>", "<cmd><C-U>TmuxNavigatePrevious<CR>" },
+            { '<C-h>', '<cmd><C-U>TmuxNavigateLeft<CR>' },
+            { '<C-j>', '<cmd><C-U>TmuxNavigateDown<CR>' },
+            { '<C-k>', '<cmd><C-U>TmuxNavigateUp<CR>' },
+            { '<C-l>', '<cmd><C-U>TmuxNavigateRight<CR>' },
         },
     },
 
@@ -118,7 +108,7 @@ require('lazy').setup({
             require('mini.ai').setup()
             require('mini.surround').setup()
             require('mini.comment').setup()
-            require('mini.pairs').setup()
+            require('mini.pairs').setup({ modes = { command = true } })
             require('mini.move').setup()
             require('mini.icons').setup()
             require('mini.statusline').setup()
@@ -130,50 +120,67 @@ require('lazy').setup({
             require('mini.indentscope').setup()
             require('mini.visits').setup()
             require('mini.starter').setup()
-
+            
             local bufremove = require('mini.bufremove')
             bufremove.setup({
                 silent = true,
             })
             vim.keymap.set('n', '<C-c>', bufremove.wipeout)
-
+            
             local jump2d = require('mini.jump2d')
-            vim.keymap.set({'n', 'x'}, 's', function() jump2d.start(jump2d.builtin_opts.single_character) end)
-
+            vim.keymap.set({'n', 'x'}, 's', function()
+                jump2d.start(jump2d.builtin_opts.single_character)
+            end)
+            
             local pick, extra = require('mini.pick'), require('mini.extra')
             pick.setup()
             extra.setup()
-
+            
             vim.keymap.set('n', '<leader>fl', pick.builtin.resume)
             vim.keymap.set('n', '<leader>fb', pick.builtin.buffers)
             vim.keymap.set('n', '<leader>fg', pick.builtin.grep_live)
             vim.keymap.set('n', '<leader>ff', pick.builtin.files)
-
+            
             vim.keymap.set('n', '<leader>sD', extra.pickers.diagnostic)
-            vim.keymap.set('n', '<leader>sd', function() extra.pickers.diagnostic({ scope = 'current' }) end)
-
-            vim.keymap.set('n', '<leader>fR', function() extra.pickers.visit_paths({ recency_weight = 1, cwd = '' }) end)
+            vim.keymap.set('n', '<leader>sd', function() 
+                extra.pickers.diagnostic({ scope = 'current' })
+            end)
+            
+            vim.keymap.set('n', '<leader>fR', function()
+                extra.pickers.visit_paths({ recency_weight = 1, cwd = '' })
+            end)
             vim.keymap.set('n', '<leader>fr', function()
                 extra.pickers.visit_paths({
                     recency_weight = 1,
-                    filter = function(data) return vim.startswith(data.path, vim.fs.root(0, '.git') .. '/') end,
+                    filter = function(data)
+                        return vim.startswith(data.path, vim.fs.root(0, '.git') .. '/') 
+                    end,
                 }) 
             end)
-
+            
             local notify = require('mini.notify')
             notify.setup()
             vim.keymap.set('n', '<leader>n', function()
-                pick.start({ source = { items = vim.iter(notify.get_all()):map(function(n) return n.msg end):totable() } })
+                pick.start({
+                    source = {
+                        items = vim.iter(notify.get_all())
+                            :map(function(n) return n.msg end)
+                            :totable()
+                    }
+                })
             end)
-
-            vim.keymap.set('n', 'grd', function() extra.pickers.lsp({ scope = 'definition' }) end)
-            vim.keymap.set('n', 'grD', function() extra.pickers.lsp({ scope = 'declaration' }) end)
-            vim.keymap.set('n', 'grr', function() extra.pickers.lsp({ scope = 'references' }) end)
-            vim.keymap.set('n', 'gri', function() extra.pickers.lsp({ scope = 'implementation' }) end)
-            vim.keymap.set('n', 'grt', function() extra.pickers.lsp({ scope = 'type_definition' }) end)
-            vim.keymap.set('n', 'gO', function() extra.pickers.lsp({ scope = 'document_symbol' }) end)
-            vim.keymap.set('n', 'go', function() extra.pickers.lsp({ scope = 'workspace_symbol_live' }) end)
-
+            
+            local lsp = function(scope)
+                return function() extra.pickers.lsp({ scope = scope }) end
+            end
+            vim.keymap.set('n', 'grd', lsp('definition'))
+            vim.keymap.set('n', 'grD', lsp('declaration'))
+            vim.keymap.set('n', 'grr', lsp('references'))
+            vim.keymap.set('n', 'gri', lsp('implementation'))
+            vim.keymap.set('n', 'grt', lsp('type_definition'))
+            vim.keymap.set('n', 'gO', lsp('document_symbol'))
+            vim.keymap.set('n', 'go', lsp('workspace_symbol_live'))
+            
             local files = require('mini.files')
             files.setup({
                 mappings = {
@@ -183,23 +190,23 @@ require('lazy').setup({
                 }
             })
             vim.keymap.set('n', '<leader>e', files.open)
-
+            
             local keymap = require('mini.keymap')
             keymap.setup()
             keymap.map_multistep('i', '<Tab>',   { 'pmenu_next' })
             keymap.map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
             keymap.map_multistep('i', '<CR>',    { 'pmenu_accept', 'minipairs_cr' })
             keymap.map_multistep('i', '<BS>',    { 'minipairs_bs' })
-
+            
             local sessions = require('mini.sessions')
             sessions.setup({ autoread = true })
-
+            
             local function git_session_name()
                 local git_root = vim.fs.root(0, '.git')
                 -- safe filename (/home/user/projects/skynet -> projects%skynet)
                 return git_root and git_root:gsub('[/\\]', '%%')
             end
-
+            
             vim.api.nvim_create_autocmd('VimEnter', {
                 callback = function()
                     if vim.fn.argc() == 0 then
@@ -216,7 +223,15 @@ require('lazy').setup({
     },
 
     {
+        'Bekaboo/dropbar.nvim',
+        dependencies = {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            build = 'make'
         },
+        config = function()
+            local dropbar = require('dropbar.api')
+            vim.keymap.set('n', '<leader>;', dropbar.pick)
+        end
     },
 
     {
@@ -262,20 +277,7 @@ require('lazy').setup({
                 }
             })
 
-            vim.keymap.set('n', 'grf', function() vim.lsp.buf.format() end)
         end,
-    },
-
-    {
-        'Bekaboo/dropbar.nvim',
-        dependencies = {
-            'nvim-telescope/telescope-fzf-native.nvim',
-            build = 'make'
-        },
-        config = function()
-            local dropbar = require('dropbar.api')
-            vim.keymap.set('n', '<leader>;', dropbar.pick)
-        end
     },
 
     {
@@ -288,7 +290,7 @@ require('lazy').setup({
             'nvim-neotest/neotest-python',
         },
         config = function()
-            neotest = require("neotest")
+            neotest = require('neotest')
             neotest.setup({
                 output = {
                     open_on_run = false,
@@ -298,9 +300,9 @@ require('lazy').setup({
                         runner = 'go',
                         colorize_test_output = true,
                         -- testify_enabled = true,
-                        go_test_args = {"-v", "-count=1", "-tags=test"},
+                        go_test_args = {'-v', '-count=1', '-tags=test'},
                     },
-                    require("neotest-python"),
+                    require('neotest-python'),
                 },
             })
 
@@ -333,26 +335,18 @@ require('lazy').setup({
             local dap, dapui = require('dap'), require('dapui')
 
             dapui.setup()
-            dap.listeners.before.attach.dapui_config = function()
-                dapui.open()
-            end
-            dap.listeners.before.launch.dapui_config = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated.dapui_config = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited.dapui_config = function()
-                dapui.close()
-            end
+            dap.listeners.before.attach.dapui_config = dapui.open
+            dap.listeners.before.launch.dapui_config = dapui.open
+            dap.listeners.before.event_terminated.dapui_config = dapui.close
+            dap.listeners.before.event_exited.dapui_config = dapui.close
 
-            vim.keymap.set('n', '<F5>', function() dap.continue() end)
-            vim.keymap.set('n', '<F8>', function() dap.step_over() end)
-            vim.keymap.set('n', '<F7>', function() dap.step_into() end)
-            vim.keymap.set('n', '<F6>', function() dap.step_out() end)
-            vim.keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end)
-            vim.keymap.set('n', '<leader>de', function() dapui.eval() end)
-            vim.keymap.set('n', '<leader>du', function() dapui.toggle({}) end)
+            vim.keymap.set('n', '<F5>', dap.continue)
+            vim.keymap.set('n', '<F8>', dap.step_over)
+            vim.keymap.set('n', '<F7>', dap.step_into)
+            vim.keymap.set('n', '<F6>', dap.step_out)
+            vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)
+            vim.keymap.set('n', '<leader>de', dapui.eval)
+            vim.keymap.set('n', '<leader>du', dapui.toggle)
 
             require('nvim-dap-virtual-text').setup()
             require('mason-nvim-dap').setup({
@@ -362,14 +356,14 @@ require('lazy').setup({
 
             require('dap-go').setup {
                 delve = {
-                    port = "2345",
+                    port = '2345',
                 },
                 dap_configurations = {
                     {
-                        type = "go",
-                        name = "Attach remote",
-                        mode = "remote",
-                        request = "attach",
+                        type = 'go',
+                        name = 'Attach remote',
+                        mode = 'remote',
+                        request = 'attach',
                     },
                 },
             }
