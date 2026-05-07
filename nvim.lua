@@ -54,15 +54,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- remember last position for files not in a automatic session
+-- remember last position for files (works for files outside sessions)
 vim.api.nvim_create_autocmd('BufReadPost', {
     callback = function()
-        if vim.v.this_session == '' then
-            local mark = vim.api.nvim_buf_get_mark(0, '"')
-            local lcount = vim.api.nvim_buf_line_count(0)
-            if mark[1] > 0 and mark[1] <= lcount then
-                pcall(vim.api.nvim_win_set_cursor, 0, mark)
-            end
+        local mark = vim.api.nvim_buf_get_mark(0, '"')
+        local lcount = vim.api.nvim_buf_line_count(0)
+        if mark[1] > 0 and mark[1] <= lcount then
+            pcall(vim.api.nvim_win_set_cursor, 0, mark)
         end
     end,
 })
