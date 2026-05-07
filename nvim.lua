@@ -98,7 +98,7 @@ require('lazy').setup({
             require('mini.ai').setup()
             require('mini.surround').setup()
             require('mini.comment').setup()
-            require('mini.pairs').setup({ modes = { command = true } })
+            require('mini.pairs').setup()
             require('mini.move').setup()
             require('mini.icons').setup()
             require('mini.statusline').setup()
