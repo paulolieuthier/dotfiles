@@ -194,7 +194,7 @@ require('lazy').setup({
             keymap.map_multistep('i', '<Tab>',   { 'pmenu_next' })
             keymap.map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
             keymap.map_multistep('i', '<CR>',    { 'pmenu_accept', 'minipairs_cr' })
-            keymap.map_multistep('i', '<BS>',    { 'minipairs_bs' })
+            keymap.map_multistep('i', '<BS>',    { 'hungry_bs', 'minipairs_bs' })
         end,
     },
 
