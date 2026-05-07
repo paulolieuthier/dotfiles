@@ -109,7 +109,6 @@ require('lazy').setup({
             require('mini.clue').setup()
             require('mini.indentscope').setup()
             require('mini.visits').setup()
-            require('mini.starter').setup()
 
             local trailspace = require('mini.trailspace')
             trailspace.setup()
