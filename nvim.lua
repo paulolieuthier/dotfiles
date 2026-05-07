@@ -110,6 +110,15 @@ require('lazy').setup({
             require('mini.indentscope').setup()
             require('mini.visits').setup()
             require('mini.starter').setup()
+
+            local trailspace = require('mini.trailspace')
+            trailspace.setup()
+            vim.api.nvim_create_autocmd('BufWritePre', {
+                callback = function()
+                    trailspace.trim()
+                    trailspace.trim_last_lines()
+                end,
+            })
             
             local bufremove = require('mini.bufremove')
             bufremove.setup({
