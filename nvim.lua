@@ -118,32 +118,30 @@ require('lazy').setup({
                     trailspace.trim_last_lines()
                 end,
             })
-            
+
             local bufremove = require('mini.bufremove')
-            bufremove.setup({
-                silent = true,
-            })
+            bufremove.setup({ silent = true })
             vim.keymap.set('n', '<C-c>', bufremove.wipeout)
-            
+
             local jump2d = require('mini.jump2d')
             vim.keymap.set({'n', 'x'}, 's', function()
                 jump2d.start(jump2d.builtin_opts.single_character)
             end)
-            
+
             local pick, extra = require('mini.pick'), require('mini.extra')
             pick.setup()
             extra.setup()
-            
+
             vim.keymap.set('n', '<leader>fl', pick.builtin.resume)
             vim.keymap.set('n', '<leader>fb', pick.builtin.buffers)
             vim.keymap.set('n', '<leader>fg', pick.builtin.grep_live)
             vim.keymap.set('n', '<leader>ff', pick.builtin.files)
-            
+
             vim.keymap.set('n', '<leader>sD', extra.pickers.diagnostic)
-            vim.keymap.set('n', '<leader>sd', function() 
+            vim.keymap.set('n', '<leader>sd', function()
                 extra.pickers.diagnostic({ scope = 'current' })
             end)
-            
+
             vim.keymap.set('n', '<leader>fR', function()
                 extra.pickers.visit_paths({ recency_weight = 1, cwd = '' })
             end)
@@ -151,11 +149,11 @@ require('lazy').setup({
                 extra.pickers.visit_paths({
                     recency_weight = 1,
                     filter = function(data)
-                        return vim.startswith(data.path, vim.fs.root(0, '.git') .. '/') 
+                        return vim.startswith(data.path, vim.fs.root(0, '.git') .. '/')
                     end,
-                }) 
+                })
             end)
-            
+
             local notify = require('mini.notify')
             notify.setup()
             vim.keymap.set('n', '<leader>n', function()
@@ -167,7 +165,7 @@ require('lazy').setup({
                     }
                 })
             end)
-            
+
             local lsp = function(scope)
                 return function() extra.pickers.lsp({ scope = scope }) end
             end
@@ -178,7 +176,7 @@ require('lazy').setup({
             vim.keymap.set('n', 'grt', lsp('type_definition'))
             vim.keymap.set('n', 'gO', lsp('document_symbol'))
             vim.keymap.set('n', 'go', lsp('workspace_symbol_live'))
-            
+
             local files = require('mini.files')
             files.setup({
                 mappings = {
@@ -188,7 +186,7 @@ require('lazy').setup({
                 }
             })
             vim.keymap.set('n', '<leader>e', files.open)
-            
+
             local keymap = require('mini.keymap')
             keymap.setup()
             keymap.map_multistep('i', '<Tab>',   { 'pmenu_next' })
