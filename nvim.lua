@@ -106,9 +106,11 @@ require('lazy').setup({
             require('mini.splitjoin').setup()
             require('mini.snippets').setup()
             require('mini.completion').setup()
-            require('mini.clue').setup()
+            require('mini.cmdline').setup()
             require('mini.indentscope').setup()
             require('mini.visits').setup()
+            require('mini.hipatterns').setup()
+            require('mini.operators').setup()
 
             local trailspace = require('mini.trailspace')
             trailspace.setup()
