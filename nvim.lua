@@ -43,17 +43,6 @@ vim.keymap.set('n', 'grf', function() vim.lsp.buf.format() end)
 -- diagnostics
 vim.diagnostic.config({ underline = true, virtual_text = true, })
 
--- plugin manager
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-    local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-    if vim.v.shell_error ~= 0 then
-        error('Error cloning lazy.nvim:\n' .. out)
-    end
-end
-vim.opt.rtp:prepend(lazypath)
-
 -- remember last position for files (works for files outside sessions)
 vim.api.nvim_create_autocmd('BufReadPost', {
     callback = function()
@@ -66,6 +55,10 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 })
 
 -- plugins
+vim.pack.add({
+    { src = 'https://github.com/folke/lazy.nvim.git', name = 'lazy' }
+}, { confirm = false })
+require('lazy').bootstrap()
 require('lazy').setup({
     {
         'catppuccin/nvim',
