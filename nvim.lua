@@ -26,7 +26,6 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.sessionoptions:append 'localoptions'
 
 vim.schedule(function()
     vim.opt.clipboard = 'unnamedplus'
@@ -197,28 +196,6 @@ require('lazy').setup({
             keymap.map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
             keymap.map_multistep('i', '<CR>',    { 'pmenu_accept', 'minipairs_cr' })
             keymap.map_multistep('i', '<BS>',    { 'minipairs_bs' })
-            
-            local sessions = require('mini.sessions')
-            sessions.setup({ autoread = true })
-            
-            local function git_session_name()
-                local git_root = vim.fs.root(0, '.git')
-                -- safe filename (/home/user/projects/skynet -> projects%skynet)
-                return git_root and git_root:gsub('[/\\]', '%%')
-            end
-            
-            vim.api.nvim_create_autocmd('VimEnter', {
-                callback = function()
-                    if vim.fn.argc() == 0 then
-                        local name = git_session_name()
-                        if name and sessions.detected[name] then
-                            sessions.read(name)
-                        elseif name then 
-                            sessions.write(name)
-                        end
-                    end
-                end,
-            })
         end,
     },
 
@@ -231,6 +208,16 @@ require('lazy').setup({
         config = function()
             local dropbar = require('dropbar.api')
             vim.keymap.set('n', '<leader>;', dropbar.pick)
+        end
+    },
+
+    {
+        'olimorris/persisted.nvim',
+        config = function()
+            local persisted = require('persisted')
+            persisted.setup({ autoload = true })
+            vim.keymap.set('n', '<leader>qs', function() persisted.select() end)
+            vim.keymap.set('n', '<leader>ql', function() persisted.load({ last = true }) end)
         end
     },
 
