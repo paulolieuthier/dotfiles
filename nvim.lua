@@ -107,7 +107,6 @@ require('lazy').setup({
             require('mini.indentscope').setup()
             require('mini.visits').setup()
             require('mini.hipatterns').setup()
-            require('mini.operators').setup()
 
             local trailspace = require('mini.trailspace')
             trailspace.setup()
