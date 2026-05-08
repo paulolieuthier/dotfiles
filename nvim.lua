@@ -181,10 +181,13 @@ require('lazy').setup({
                         callback = function(args)
                             -- filter out element under cursor
                             local opts = pick.get_picker_opts()
-                            local filtered = vim.iter(opts.source.items):filter(function(item)
-                                local row, col = cur[1], cur[2] + 1
-                                return row < item.lnum or row > item.end_lnum or col < item.col or col > item.end_col
-                            end):totable()
+                            local filtered = vim.iter(opts.source.items)
+                                :filter(function(item)
+                                    local row, col = cur[1], cur[2] + 1
+                                    return row < item.lnum or row > item.end_lnum
+                                        or col < item.col or col > item.end_col
+                                end)
+                                :totable()
                             pick.set_picker_items(filtered)
 
                             -- choose element if it's the only one
