@@ -122,8 +122,15 @@ require('lazy').setup({
             vim.keymap.set('n', '<c-c>', bufremove.wipeout)
 
             local jump2d = require('mini.jump2d')
-            vim.keymap.set({'n', 'x'}, 's', function()
-                jump2d.start(jump2d.builtin_opts.single_character)
+            vim.keymap.set({'n', 'x'}, 'gs', function()
+                jump2d.start({
+                    spotter = jump2d.gen_spotter.pattern(vim.pesc(vim.fn.getcharstr())),
+                    silent = true,
+                    view = {
+                        dim = true,
+                        n_steps_ahead = 2,
+                    },
+                })
             end)
 
             local pick, extra = require('mini.pick'), require('mini.extra')
