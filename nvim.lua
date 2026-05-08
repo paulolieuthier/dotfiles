@@ -199,7 +199,7 @@ require('lazy').setup({
             vim.keymap.set('n', 'gri', lsp('implementation'))
             vim.keymap.set('n', 'grt', lsp('type_definition'))
             vim.keymap.set('n', 'gO', lsp('document_symbol'))
-            vim.keymap.set('n', 'go', lsp('workspace_symbol_live'))
+            vim.keymap.set('n', 'go', lsp('workspace_symbol'))
 
             local files = require('mini.files')
             files.setup({
