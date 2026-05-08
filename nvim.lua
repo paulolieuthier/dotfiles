@@ -34,11 +34,11 @@ end)
 -- basic keymaps
 vim.keymap.set('n', 'j', 'gj')
 vim.keymap.set('n', 'k', 'gk')
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', '<leader>ev', ':edit $MYVIMRC<CR>')
-vim.keymap.set('n', '<leader>sv', ':source $MYVIMRC<CR>')
+vim.keymap.set('n', '<esc>', vim.cmd.nohlsearch)
+vim.keymap.set('n', '<leader>ev', function() vim.cmd.edit('$MYVIMRC') end)
+vim.keymap.set('n', '<leader>r', vim.cmd.restart)
 vim.keymap.set('i', '<c-\\>', function() end)
-vim.keymap.set('n', 'grf', function() vim.lsp.buf.format() end)
+vim.keymap.set('n', 'grf', vim.lsp.buf.format)
 
 -- diagnostics
 vim.diagnostic.config({ underline = true, virtual_text = true, })
@@ -120,7 +120,7 @@ require('lazy').setup({
 
             local bufremove = require('mini.bufremove')
             bufremove.setup({ silent = true })
-            vim.keymap.set('n', '<C-c>', bufremove.wipeout)
+            vim.keymap.set('n', '<c-c>', bufremove.wipeout)
 
             local jump2d = require('mini.jump2d')
             vim.keymap.set({'n', 'x'}, 's', function()
@@ -158,6 +158,7 @@ require('lazy').setup({
             vim.keymap.set('n', '<leader>n', function()
                 pick.start({
                     source = {
+                        name = 'Notifications',
                         items = vim.iter(notify.get_all())
                             :map(function(n) return n.msg end)
                             :totable()
