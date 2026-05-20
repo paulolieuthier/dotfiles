@@ -41,6 +41,9 @@
       # enable mouse control
       set -g mouse on
 
+      # show scrollbar in copy mode
+      set -g pane-scrollbars modal
+
       # reload config file
       bind r source-file ~/.config/tmux/tmux.conf
 
