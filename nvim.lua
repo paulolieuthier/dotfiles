@@ -47,7 +47,12 @@ vim.keymap.set('i', '<c-\\>', function() end)
 vim.keymap.set('n', 'grf', vim.lsp.buf.format)
 
 -- diagnostics
-vim.diagnostic.config({ underline = true, virtual_text = true, })
+vim.diagnostic.config({
+    underline = true,
+    virtual_text = true,
+    signs = true,
+    severity_sort = true,
+})
 
 -- remember last position for files (works for files outside sessions)
 vim.api.nvim_create_autocmd('BufReadPost', {
