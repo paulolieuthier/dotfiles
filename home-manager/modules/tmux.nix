@@ -12,8 +12,7 @@
     plugins = [
       pkgs.tmuxPlugins.catppuccin
       pkgs.tmuxPlugins.vim-tmux-navigator
-      pkgs.tmuxPlugins.tmux-thumbs
-      pkgs.tmuxPlugins.urlview
+      pkgs.tmuxPlugins.fingers
     ];
 
     extraConfig = ''
