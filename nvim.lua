@@ -284,7 +284,6 @@ require('lazy').setup({
                     }
                 }
             })
-
         end,
     },
 
