@@ -206,6 +206,16 @@ require('lazy').setup({
                 extra.pickers.diagnostic({ scope = 'current' })
             end)
 
+            local files = require('mini.files')
+            files.setup({
+                mappings = {
+                    go_in  = '<cr>',
+                    go_out = '<bs>',
+                    reset  = '',
+                }
+            })
+            vim.keymap.set('n', '<leader>fe', files.open, { nowait = true })
+
             vim.keymap.set('n', '<leader>fR', function()
                 extra.pickers.visit_paths({ recency_weight = 1, cwd = '' })
             end)
@@ -217,16 +227,6 @@ require('lazy').setup({
                     end,
                 })
             end)
-
-            local files = require('mini.files')
-            files.setup({
-                mappings = {
-                    go_in  = '<cr>',
-                    go_out = '<bs>',
-                    reset  = '',
-                }
-            })
-            vim.keymap.set('n', '<leader>e', files.open)
 
             local keymap = require('mini.keymap')
             keymap.setup()
