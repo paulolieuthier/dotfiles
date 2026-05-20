@@ -46,6 +46,9 @@ vim.keymap.set('n', '<leader>r', vim.cmd.restart)
 vim.keymap.set('i', '<c-\\>', function() end)
 vim.keymap.set('n', 'grf', vim.lsp.buf.format)
 vim.keymap.set('n', 'grd', '<c-]>')
+vim.keymap.set('n', 'gq', vim.cmd.copen)
+vim.keymap.set('n', '<m-s-k>', '<cmd>cprev<cr>')
+vim.keymap.set('n', '<m-s-j>', '<cmd>cnext<cr>')
 
 -- diagnostics
 vim.diagnostic.config({
@@ -53,6 +56,14 @@ vim.diagnostic.config({
     virtual_text = true,
     signs = true,
     severity_sort = true,
+})
+
+-- quickfix
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'qf',
+    callback = function()
+        vim.keymap.set('n', 'q', vim.cmd.close, { buffer = true, silent = true })
+    end,
 })
 
 -- remember last position for files (works for files outside sessions)
@@ -83,6 +94,14 @@ require('lazy').setup({
 
     {
         'tpope/vim-sleuth',
+    },
+
+
+    {
+        'kevinhwang91/nvim-bqf',
+        dependencies = {
+            'junegunn/fzf'
+        },
     },
 
     {
