@@ -21,11 +21,17 @@ vim.opt.showcmd = true
 vim.opt.autoread = true
 vim.opt.scrolloff = 2
 vim.opt.winborder = 'rounded'
+vim.opt.pumborder = 'rounded'
 vim.opt.jumpoptions = 'view'
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.wildmenu = true
+vim.opt.wildmode = 'noselect:full'
+vim.opt.completeopt = { 'menuone', 'noselect', 'noinsert' }
+vim.opt.completetimeout = 1000
+vim.opt.pumheight = 10
 
 vim.schedule(function()
     vim.opt.clipboard = 'unnamedplus'
@@ -103,7 +109,6 @@ require('lazy').setup({
             require('mini.splitjoin').setup()
             require('mini.snippets').setup()
             require('mini.completion').setup()
-            require('mini.cmdline').setup()
             require('mini.indentscope').setup()
             require('mini.visits').setup()
             require('mini.hipatterns').setup()
