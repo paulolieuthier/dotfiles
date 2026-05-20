@@ -104,6 +104,10 @@ require('lazy').setup({
         'tpope/vim-sleuth',
     },
 
+    {
+        "j-hui/fidget.nvim",
+        opts = {},
+    },
 
     {
         'kevinhwang91/nvim-bqf',
@@ -194,19 +198,6 @@ require('lazy').setup({
                     filter = function(data)
                         return vim.startswith(data.path, vim.fs.root(0, '.git') .. '/')
                     end,
-                })
-            end)
-
-            local notify = require('mini.notify')
-            notify.setup()
-            vim.keymap.set('n', '<leader>n', function()
-                pick.start({
-                    source = {
-                        name = 'Notifications',
-                        items = vim.iter(notify.get_all())
-                            :map(function(n) return n.msg end)
-                            :totable()
-                    }
                 })
             end)
 
