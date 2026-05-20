@@ -50,6 +50,14 @@ vim.keymap.set('n', 'gq', vim.cmd.copen)
 vim.keymap.set('n', '<m-s-k>', '<cmd>cprev<cr>')
 vim.keymap.set('n', '<m-s-j>', '<cmd>cnext<cr>')
 
+-- signatures
+vim.keymap.set('i', '<c-s>', function()
+    vim.lsp.buf.signature_help({
+        anchor_bias = 'above',
+        focusable = false,
+    })
+end)
+
 -- diagnostics
 vim.diagnostic.config({
     underline = true,
