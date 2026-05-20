@@ -3,14 +3,17 @@ set ideajoin
 set ideamarks
 set clipboard=unnamedplus
 set idearefactormode=keep
+set ideavimsupport=dialog,singleline
+
+set mini-ai
+set surround
+set VimEverywhere
 
 map <C-n> <Action>(EditorDown)
 map <C-p> <Action>(EditorUp)
 
-xnoremap p "_s<c-r>+<esc>
-xnoremap P "_s<c-r>+<esc>
-
 inoremap <C-S> <C-O>:action ParameterInfo<CR>
+map grr <Action>(ShowUsages)
 map grd <Action>(GotoDeclaration)
 map gri <Action>(GotoImplementation)
 map grt <Action>(GotoTypeDeclaration)
