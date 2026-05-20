@@ -218,44 +218,6 @@ require('lazy').setup({
                 })
             end)
 
-            local lsp = function(scope)
-                return function()
-                    local cur = vim.api.nvim_win_get_cursor(0)
-                    vim.api.nvim_create_autocmd('User', {
-                        pattern = 'MiniPickStart',
-                        once = true,
-                        callback = function(args)
-                            -- filter out element under cursor
-                            local opts = pick.get_picker_opts()
-                            local filtered = vim.iter(opts.source.items)
-                                :filter(function(item)
-                                    local row, col = cur[1], cur[2] + 1
-                                    return row < item.lnum or row > item.end_lnum
-                                        or col < item.col or col > item.end_col
-                                end)
-                                :totable()
-                            pick.set_picker_items(filtered)
-
-                            -- choose element if it's the only one
-                            vim.schedule(function()
-                                if #filtered > 1 then return end
-                                pick.stop()
-                                if #filtered ~= 1 then return end
-                                opts.source.choose(filtered[1])
-                            end)
-                        end,
-                    })
-                    extra.pickers.lsp({ scope = scope })
-                end
-            end
-            vim.keymap.set('n', 'grd', lsp('definition'))
-            vim.keymap.set('n', 'grD', lsp('declaration'))
-            vim.keymap.set('n', 'grr', lsp('references'))
-            vim.keymap.set('n', 'gri', lsp('implementation'))
-            vim.keymap.set('n', 'grt', lsp('type_definition'))
-            vim.keymap.set('n', 'gO', lsp('document_symbol'))
-            vim.keymap.set('n', 'go', lsp('workspace_symbol'))
-
             local files = require('mini.files')
             files.setup({
                 mappings = {
