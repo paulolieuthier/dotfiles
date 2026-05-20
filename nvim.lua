@@ -133,6 +133,23 @@ require('lazy').setup({
     },
 
     {
+        'nvim-treesitter/nvim-treesitter',
+        branch = 'main',
+        build = ':TSUpdate',
+        config = function()
+            vim.api.nvim_create_autocmd('FileType', {
+                callback = function(args)
+                    local lang = vim.treesitter.language.get_lang(args.match)
+                    if lang and vim.treesitter.language.add(lang) then
+                        vim.treesitter.start()
+                        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                    end
+                end,
+            })
+        end
+    },
+
+    {
         'nvim-mini/mini.nvim',
         config = function()
             require('mini.ai').setup()
@@ -277,23 +294,6 @@ require('lazy').setup({
             persisted.setup({ autoload = true })
             vim.keymap.set('n', '<leader>qs', function() persisted.select() end)
             vim.keymap.set('n', '<leader>ql', function() persisted.load({ last = true }) end)
-        end
-    },
-
-    {
-        'nvim-treesitter/nvim-treesitter',
-        branch = 'main',
-        build = ':TSUpdate',
-        config = function()
-            vim.api.nvim_create_autocmd('FileType', {
-                callback = function(args)
-                    local lang = vim.treesitter.language.get_lang(args.match)
-                    if lang and vim.treesitter.language.add(lang) then
-                        vim.treesitter.start()
-                        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-                    end
-                end,
-            })
         end
     },
 
