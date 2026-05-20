@@ -45,6 +45,7 @@ vim.keymap.set('n', '<leader>ev', function() vim.cmd.edit('$MYVIMRC') end)
 vim.keymap.set('n', '<leader>r', vim.cmd.restart)
 vim.keymap.set('i', '<c-\\>', function() end)
 vim.keymap.set('n', 'grf', vim.lsp.buf.format)
+vim.keymap.set('n', 'grd', '<c-]>')
 
 -- diagnostics
 vim.diagnostic.config({
