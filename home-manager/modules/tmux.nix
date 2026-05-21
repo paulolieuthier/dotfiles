@@ -52,6 +52,10 @@
       set -g visual-silence off
       setw -g monitor-activity off
       set -g bell-action none
+
+      # tmux-fingers with better binding
+      set -g @fingers-key Space
+      set -g @fingers-pattern-0 '([a-z0-9-]+-[a-z0-9]+)'
     '';
   };
 }
