@@ -214,7 +214,15 @@ require('lazy').setup({
                     reset  = '',
                 }
             })
-            vim.keymap.set('n', '<leader>fe', files.open, { nowait = true })
+            vim.keymap.set('n', '<leader>ee', function()
+                files.open(files.get_latest_path(), true)
+            end)
+            vim.keymap.set('n', '<leader>er', function()
+                if not files.get_explorer_state() then
+                    files.open(vim.api.nvim_buf_get_name(0), true)
+                end
+                files.reveal_cwd()
+            end)
 
             vim.keymap.set('n', '<leader>fR', function()
                 extra.pickers.visit_paths({ recency_weight = 1, cwd = '' })
