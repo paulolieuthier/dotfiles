@@ -37,9 +37,10 @@
       bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
       bind -T copy-mode-vi y send -X copy-selection
 
-      # don't exit copy mode and jump to the bottom on double-click and drag release
+      # sensible mouse defaults in copy mode
       bind -T copy-mode-vi DoubleClick1Pane select-pane \; send-keys -X select-word
-      unbind- -T copy-mode-vi MouseDragEnd1Pane
+      bind -T copy-mode-vi MouseDown1Pane select-pane \; send-keys -X clear-selection
+      unbind -T copy-mode-vi MouseDragEnd1Pane
 
       # enable mouse control
       set -g mouse on
