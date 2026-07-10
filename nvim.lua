@@ -261,7 +261,7 @@ require('lazy').setup({
         'olimorris/persisted.nvim',
         config = function()
             local persisted = require('persisted')
-            persisted.setup({ autoload = true })
+            persisted.setup()
             vim.keymap.set('n', '<leader>qs', function() persisted.select() end)
             vim.keymap.set('n', '<leader>ql', function() persisted.load({ last = true }) end)
         end
