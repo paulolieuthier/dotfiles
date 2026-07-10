@@ -60,8 +60,8 @@
 
       # tmux-fingers with better binding
       set -g @fingers-key Space
-      set -g @fingers-pattern-0 '([a-z0-9-.:]+-[a-z0-9]+)'
-      set -g @fingers-pattern-1 '([a-z0-9_.:]+_[a-z0-9]+)'
+      set -g @fingers-pattern-0 '([a-zA-Z0-9-.:]+-[a-zA-Z0-9]+)'
+      set -g @fingers-pattern-1 '([a-zA-Z0-9_.:]+_[a-zA-Z0-9]+)'
     '';
   };
 }
