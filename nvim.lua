@@ -49,6 +49,7 @@ vim.keymap.set('n', 'grd', '<c-]>')
 vim.keymap.set('n', 'gq', vim.cmd.copen)
 vim.keymap.set('n', '<m-s-k>', '<cmd>cprev<cr>')
 vim.keymap.set('n', '<m-s-j>', '<cmd>cnext<cr>')
+vim.keymap.set('n', '<leader>c', function() vim.fn.setreg('+', vim.fn.expand('%:.')) end)
 
 -- signatures
 vim.keymap.set('i', '<c-s>', function()
