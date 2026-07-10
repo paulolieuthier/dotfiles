@@ -178,7 +178,7 @@ require('lazy').setup({
 
             local bufremove = require('mini.bufremove')
             bufremove.setup({ silent = true })
-            vim.keymap.set('n', '<c-c>', bufremove.wipeout)
+            vim.keymap.set('n', '<c-c>', bufremove.delete)
 
             local jump2d = require('mini.jump2d')
             vim.keymap.set({'n', 'x'}, 'gs', function()
