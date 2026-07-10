@@ -82,7 +82,7 @@
     ./modules/tmux.nix
   ];
 
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
   };
 
