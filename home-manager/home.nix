@@ -36,6 +36,7 @@
       pkgs.btop
       pkgs.nerd-fonts.fira-code
       pkgs.wl-clipboard
+      pkgs.kanshi
       pkgs.grim
       pkgs.xwayland-satellite
       pkgs.brightnessctl
