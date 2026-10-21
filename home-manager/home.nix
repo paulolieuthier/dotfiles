@@ -1,4 +1,4 @@
-{ config, pkgs, noctalia, ... }:
+{ config, pkgs, pam-shim, ... }:
 
 {
   targets.genericLinux.enable = true;
@@ -78,14 +78,13 @@
   programs.home-manager.enable = true;
 
   imports = [
-    noctalia.homeModules.default
+    pam-shim.homeModules.default
+    ./modules/noctalia.nix
     ./modules/fish.nix
     ./modules/tmux.nix
   ];
 
-  programs.noctalia = {
-    enable = true;
-  };
+  pamShim.enable = true;
 
   programs.zoxide = {
     enable = true;

@@ -7,14 +7,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+    pam-shim = {
+      url = "github:Cu3PO42/pam_shim/next";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
-    { nixpkgs, home-manager, noctalia, ... }:
+    { nixpkgs, home-manager, pam-shim, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -31,7 +31,7 @@
             ./home.nix
           ];
           extraSpecialArgs = {
-            noctalia = noctalia;
+            pam-shim = pam-shim;
           };
         };
       };
