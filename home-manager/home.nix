@@ -3,6 +3,14 @@
 {
   targets.genericLinux.enable = true;
 
+  pamShim.enable = true;
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      noctalia = config.lib.pamShim.replacePam prev.noctalia;
+    })
+  ];
+
   home = {
     username = "paulo.lieuthier";
     homeDirectory = "/home/paulo.lieuthier";
@@ -36,6 +44,7 @@
       pkgs.btop
       pkgs.nerd-fonts.symbols-only
       pkgs.nerd-fonts.fira-code
+      pkgs.noctalia
       pkgs.wl-clipboard
       pkgs.kanshi
       pkgs.grim
@@ -80,12 +89,9 @@
 
   imports = [
     pam-shim.homeModules.default
-    ./modules/noctalia.nix
     ./modules/fish.nix
     ./modules/tmux.nix
   ];
-
-  pamShim.enable = true;
 
   programs.zoxide = {
     enable = true;
