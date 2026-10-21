@@ -34,6 +34,7 @@
       pkgs.difftastic
       pkgs.delta
       pkgs.btop
+      pkgs.nerd-fonts.symbols-only
       pkgs.nerd-fonts.fira-code
       pkgs.wl-clipboard
       pkgs.kanshi
