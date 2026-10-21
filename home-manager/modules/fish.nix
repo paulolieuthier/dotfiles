@@ -25,6 +25,7 @@
 
     plugins = [
       { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
+      { name = "sdkman-for-fish"; src = pkgs.fishPlugins.sdkman-for-fish.src; }
     ];
 
     interactiveShellInit = ''
@@ -38,7 +39,7 @@
       bind alt-backspace kill-word
       bind alt-shift-backspace kill-bigword
       bind ctrl-t 'commandline -i (sk)'
-      
+
       function ..    ; cd .. ; end
       function ...   ; cd ../.. ; end
       function ....  ; cd ../../.. ; end
@@ -68,27 +69,27 @@
           function bcyan; set_color cyan; end
           function bred; set_color red; end
           function normal; set_color normal; end
-          
+
           function prompt_clock
               echo (white)(date +'%R')
           end
-          
+
           function prompt_cwd
               echo (yellow)(string replace (echo $HOME) '~' (echo $PWD))
           end
-          
+
           function prompt_git
               set ref (git symbolic-ref HEAD 2> /dev/null || git rev-parse --short HEAD 2> /dev/null) || return 0
               set dirty (test -n "$(git status --porcelain | tail -n1)" && echo ' X' || echo ''')
-          
+
               echo (bcyan)'git:('(bred)(string replace 'refs/heads/' ''' $ref)(yellow)$dirty(bcyan)')'
           end
-          
+
           function prompt_aws
               set profile (export | grep AWS_PROFILE) || return 0
               echo (bcyan)'aws:('(bred)$AWS_PROFILE(bcyan)')'
           end
-          
+
           function prompt_kube
               set ctx (kubectl config current-context 2> /dev/null) || return 0
               set ns (kubectl config view --minify --output 'jsonpath={..namespace}' 2> /dev/null)
@@ -97,7 +98,7 @@
               end
               echo (bcyan)'k8s:('(bred)(string replace -r '.*:cluster/' ''' $ctx)(white)':'(bgreen)$ns(bcyan)')'
           '''end
-          
+
           function prompt_prompt -a last_status
               if test "$last_status" = '0'
                   echo (bgreen)'>'(normal)
@@ -107,23 +108,23 @@
                   echo (bred)'>'(normal)
               end
           end
-      
+
           set clock (prompt_clock)
           set cwd (prompt_cwd)
           set git (prompt_git)
           set aws (prompt_aws)
           set kube (prompt_kube)
           set prompt (prompt_prompt $last_status)
-      
+
           set prompt_first (string join ' ' $clock $cwd)
           set prompt_last (string join ' ' $git $aws $kube)
           set prompt_sep " "
-      
+
           # if too large use multi line
           if test (string length --visible "$prompt_first$prompt_sep$prompt_last") -gt $COLUMNS
               set prompt_sep '\n'
           end
-      
+
           echo -e "\n$prompt_first$prompt_sep$prompt_last\n$prompt "
 
           functions -e yellow
