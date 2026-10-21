@@ -59,6 +59,7 @@ clipboard {
 }
 
 spawn-at-startup "noctalia"
+spawn-at-startup "kanshi"
 
 prefer-no-csd
 
