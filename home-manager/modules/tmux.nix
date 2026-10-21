@@ -12,7 +12,15 @@
     plugins = [
       pkgs.tmuxPlugins.catppuccin
       pkgs.tmuxPlugins.vim-tmux-navigator
-      pkgs.tmuxPlugins.fingers
+      {
+        plugin = pkgs.tmuxPlugins.tmux-thumbs;
+        extraConfig = ''
+          set -g @thumbs-command 'echo -n {} | wl-copy'
+          set -g @thumbs-upcase-command 'xdg-open {}'
+          set -g @thumbs-regexp-0 '([a-zA-Z0-9-.:]+-[a-zA-Z0-9]+)'
+          set -g @thumbs-regexp-1 '([a-zA-Z0-9_.:]+_[a-zA-Z0-9]+)'
+        '';
+      }
     ];
 
     extraConfig = ''
@@ -57,11 +65,6 @@
       set -g visual-silence off
       setw -g monitor-activity off
       set -g bell-action none
-
-      # tmux-fingers with better binding
-      set -g @fingers-key Space
-      set -g @fingers-pattern-0 '([a-zA-Z0-9-.:]+-[a-zA-Z0-9]+)'
-      set -g @fingers-pattern-1 '([a-zA-Z0-9_.:]+_[a-zA-Z0-9]+)'
     '';
   };
 }
