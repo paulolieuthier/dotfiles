@@ -30,6 +30,8 @@
       pkgs.tmux
       pkgs.neovim
       pkgs.zoxide
+      pkgs.direnv
+      pkgs.nix-direnv
       pkgs.fzf
       pkgs.skim
       pkgs.ripgrep
@@ -92,6 +94,13 @@
     ./modules/fish.nix
     ./modules/tmux.nix
   ];
+
+  programs.direnv  = {
+    enable = true;
+    silent = true;
+    enableFishIntegration = true;
+    nix-direnv.enable = true;
+  };
 
   programs.zoxide = {
     enable = true;

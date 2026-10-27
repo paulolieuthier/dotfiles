@@ -78,6 +78,11 @@
               echo (yellow)(string replace (echo $HOME) '~' (echo $PWD))
           end
 
+          function prompt_nix
+              set nix (export | grep IN_NIX_SHELL) || return 0
+              echo (bcyan)'('(bred)'nix'(bcyan)')'
+          end
+
           function prompt_git
               set ref (git symbolic-ref HEAD 2> /dev/null || git rev-parse --short HEAD 2> /dev/null) || return 0
               set dirty (test -n "$(git status --porcelain | tail -n1)" && echo ' X' || echo ''')
@@ -109,6 +114,7 @@
               end
           end
 
+          set nix (prompt_nix)
           set clock (prompt_clock)
           set cwd (prompt_cwd)
           set git (prompt_git)
@@ -117,7 +123,7 @@
           set prompt (prompt_prompt $last_status)
 
           set prompt_first (string join ' ' $clock $cwd)
-          set prompt_last (string join ' ' $git $aws $kube)
+          set prompt_last (string join ' ' $nix $git $aws $kube)
           set prompt_sep " "
 
           # if too large use multi line
