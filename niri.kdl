@@ -114,6 +114,10 @@ binds {
     XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl set 1%-"; }
     Shift+XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl set 5%-"; }
 
+    Print { spawn-sh "noctalia msg screenshot-region"; }
+    Shift+Print { spawn-sh "noctalia msg screenshot-fullscreen"; }
+    Ctrl+Print { spawn-sh "noctalia msg screenshot-annotate"; }
+
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
@@ -315,10 +319,6 @@ binds {
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
-
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
