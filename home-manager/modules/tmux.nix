@@ -10,7 +10,7 @@
     escapeTime = 0;
     historyLimit = 100000;
     plugins = [
-      pkgs.tmuxPlugins.catppuccin
+      pkgs.tmuxPlugins.gruvbox
       pkgs.tmuxPlugins.vim-tmux-navigator
       {
         plugin = pkgs.tmuxPlugins.tmux-thumbs;
