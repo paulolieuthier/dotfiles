@@ -95,23 +95,24 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return { spawn "alacritty" "-e" "tmux"; }
+    Mod+Return { spawn-sh "alacritty -e tmux"; }
+
     Mod+Shift+Return { spawn "nautilus"; }
-    Mod+D { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
-    Mod+P { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
-    Mod+X { spawn "noctalia" "msg" "panel-toggle" "session"; }
-    Super+Alt+L { spawn "noctalia" "msg" "session" "lock"; }
-    Super+Alt+Shift+L { spawn "noctalia" "msg" "session" "lock-and-suspend"; }
+    Mod+D { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+P { spawn-sh "noctalia msg panel-toggle clipboard"; }
+    Mod+X { spawn-sh "noctalia msg panel-toggle session"; }
+    Super+Alt+L { spawn-sh "noctalia msg session lock"; }
+    Super+Alt+Shift+L { spawn-sh "noctalia msg session lock-and-suspend"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
-    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    Shift+XF86AudioMute  allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    Shift+XF86AudioMute  allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+1%"; }
-    Shift+XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+5%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "1%-"; }
-    Shift+XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn-sh "brightnessctl set +1%"; }
+    Shift+XF86MonBrightnessUp allow-when-locked=true { spawn-sh "brightnessctl set +5%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl set 1%-"; }
+    Shift+XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl set 5%-"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
