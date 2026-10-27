@@ -113,6 +113,7 @@
       window = {
         opacity = 0.9;
         dynamic_padding = true;
+        option_as_alt = "Both";
       };
       font.normal.family = "FiraCodeNerdFont";
     };
