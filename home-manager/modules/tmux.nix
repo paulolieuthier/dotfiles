@@ -168,7 +168,7 @@ in
   programs.tmux = {
     enable = true;
     shell = "${pkgs.fish}/bin/fish";
-    terminal = "screen-256color";
+    terminal = "xterm-256color";
     baseIndex = 1;
     clock24 = true;
     escapeTime = 0;
