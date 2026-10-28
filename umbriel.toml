@@ -52,7 +52,7 @@ radius = 3
 [input.keyboard]
 numlock_toggle = true
 layout = "us(intl)"
-options = "lv5:caps_switch,ctrl:menu_rctrl"
+options = "custom:capslock_arrows"
 
 [input.touchpad]
 natural_scroll = true

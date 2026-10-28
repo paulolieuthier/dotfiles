@@ -1,0 +1,6 @@
+// 1. Pull down the entire system-installed standard keyboard library safely
+! include %S/evdev
+
+// 2. Dynamically attach your custom caps_arrows symbol block over it
+! option = symbols
+  custom:capslock_arrows = +capslock_arrows(capslock_arrows)
