@@ -61,7 +61,24 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "pam-shim": "pam-shim"
+        "pam-shim": "pam-shim",
+        "tmux-assistant-resurrect": "tmux-assistant-resurrect"
+      }
+    },
+    "tmux-assistant-resurrect": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793188987,
+        "narHash": "sha256-cOELCysXWctjFd7fNnc/9t97dBpiFd9uFyPu9+sDSJ4=",
+        "owner": "timvw",
+        "repo": "tmux-assistant-resurrect",
+        "rev": "73a3c44756ddea9949344434b91162221448800a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "timvw",
+        "repo": "tmux-assistant-resurrect",
+        "type": "github"
       }
     }
   },

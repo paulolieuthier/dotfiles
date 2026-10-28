@@ -11,10 +11,14 @@
       url = "github:Cu3PO42/pam_shim/next";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tmux-assistant-resurrect = {
+      url = "github:timvw/tmux-assistant-resurrect";
+      flake = false;
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, pam-shim, ... }:
+    { nixpkgs, home-manager, pam-shim, tmux-assistant-resurrect, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -32,6 +36,7 @@
           ];
           extraSpecialArgs = {
             pam-shim = pam-shim;
+            tmux-assistant-resurrect = tmux-assistant-resurrect;
           };
         };
       };
