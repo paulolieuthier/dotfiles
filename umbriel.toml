@@ -146,6 +146,7 @@ options = "lv5:caps_switch,ctrl:menu_rctrl"
 "Mod+Tab" = "scratchpad-focus-next"
 
 [layout]
+gap = 16
 # mode = "scrolling" # "scrolling", "dwindle", "master", or "floating".
 extent_presets = [0.333, 0.5, 0.667]
 
