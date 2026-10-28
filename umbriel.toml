@@ -54,11 +54,8 @@ numlock_toggle = true
 layout = "us(intl)"
 options = "lv5:caps_switch,ctrl:menu_rctrl"
 
-# Focus can follow the pointer across tiled, floating, and pinned windows.
-#
-# [input.focus]
-# follows_mouse = true
-# hover_raises = false # Hover focuses only; clicks and keybinds raise.
+[input.touchpad]
+natural_scroll = true
 
 [keybinds]
 
