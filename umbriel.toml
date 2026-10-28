@@ -150,7 +150,7 @@ options = "lv5:caps_switch,ctrl:menu_rctrl"
 extent_presets = [0.333, 0.5, 0.667]
 
 [layout.scrolling]
-default_extent_fraction = 0.5
+default_extent_fraction = 0.667
 
 [[window_rule]]
 blur = true
