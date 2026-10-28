@@ -3,6 +3,12 @@
 {
   targets.genericLinux.enable = true;
 
+  imports = [
+    pam-shim.homeModules.default
+    ./modules/fish.nix
+    ./modules/tmux.nix
+  ];
+
   pamShim.enable = true;
 
   nixpkgs.overlays = [
@@ -26,8 +32,6 @@
 
     packages = [
       pkgs.git
-      pkgs.fish
-      pkgs.tmux
       pkgs.neovim
       pkgs.zoxide
       pkgs.direnv
@@ -88,12 +92,6 @@
   xdg.autostart.readOnly = true;
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
-
-  imports = [
-    pam-shim.homeModules.default
-    ./modules/fish.nix
-    ./modules/tmux.nix
-  ];
 
   programs.direnv  = {
     enable = true;
