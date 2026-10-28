@@ -51,6 +51,7 @@ radius = 3
 
 [input.keyboard]
 numlock_toggle = true
+track_layout = "global"
 layout = "us(intl)"
 options = "custom:capslock_arrows"
 
